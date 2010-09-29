@@ -20,11 +20,9 @@ $role = $this->session->userdata('user_level');
 		else
 		{
 ?>
-<?=anchor('contacts', 'Contacts')?>
+<?=anchor('members', 'Members')?>
 
-<?=anchor('quotes', 'Quotes')?>
-<?=anchor('purchase_orders', 'Purchase Orders')?>
-<?=anchor('orders', 'Orders')?>
+
 <?php 
 		}
 		?>
