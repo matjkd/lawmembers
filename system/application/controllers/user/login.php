@@ -41,17 +41,11 @@ function Login()
 						$user_firstname = $row->firstname;
 						$user_lastname = $row->lastname;
 						$activated = $row->activated;
+						$company_id = $row->member_company;
 					}
 			}
-			$this->db->where('employee_id', $user_id);
-			$query3 = $this->db->get('company_members');
-			if($query3->num_rows == 1)
-			{
-				foreach($query3->result() as $row)
-					{
-						$company_id = $row->company_id;
-					}
-			}
+			
+			
 			$data = array(
 				'username' => $this->input->post('username'),
 				'user_level' => $user_level,
@@ -59,7 +53,7 @@ function Login()
 				'activated' => $activated,
 				'user_firstname' => $user_firstname,
 				'user_lastname' => $user_lastname,
-			'company_id' => $company_id,
+				'company_id' => $company_id,
 				'is_logged_in' => true,
 			
 				
@@ -67,7 +61,7 @@ function Login()
 			
 		$this->session->set_userdata($data);
 		$this->session->set_flashdata('conf_msg', "Welcome");
-				redirect('contacts/');
+				redirect('members/');
 		}
 		else // incorrect username or password
 	
@@ -150,7 +144,7 @@ function Login()
 		$is_logged_in = $this->session->userdata('is_logged_in');
 		if(!isset($is_logged_in) || $is_logged_in == true)
 		{
-			redirect('contacts/');
+			redirect('members/');
 		}		
 	}	
 
