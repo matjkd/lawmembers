@@ -11,7 +11,7 @@ class Companies_model extends Model {
 	{
 			
 		$this->db->where('idcompany', $id);
-		$query = $this->db->get('companies');
+		$query = $this->db->get('mydb_company');
 		if($query->num_rows == 1);
 			{
 				return $query->result();
@@ -22,7 +22,7 @@ class Companies_model extends Model {
 	{
 			
 		$this->db->where('company_name', $idname);
-		$query = $this->db->get('companies');
+		$query = $this->db->get('mydb_company');
 		if($query->num_rows == 1);
 			{
 				return $query->result();
@@ -44,8 +44,8 @@ function get_address($id)
 	function list_companies()
 	{
 		$data = array();
-		$this->db->from('company_type');
-		$this->db->join('companies', 'companies.company_type=company_type.id_company_type', 'right');
+		$this->db->from('mydb_company');
+	
 		
 		$Q = $this->db->get();
 		if ($Q->num_rows() > 0)
@@ -62,7 +62,7 @@ function get_address($id)
 	function list_company_names()
 	{
 		$this->db->select('company_name');
-		$this->db->from('companies');
+		$this->db->from('mydb_company');
 		$Q = $this->db->get();
 		if ($Q->num_rows() > 0)
 		{
@@ -78,9 +78,9 @@ function get_address($id)
 	function get_employees($id)
 	{
 		
-		$this->db->from('users');
-		$this->db->join('company_members', 'company_members.employee_id=users.id', 'right');
-		$this->db->where('company_members.company_id', $id);
+		$this->db->from('mydb_keypeople');
+	
+		$this->db->where('idcompany', $id);
 		
 		$query = $this->db->get();
 		if($query->num_rows > 0)
@@ -164,9 +164,8 @@ function get_address($id)
 	
 function get_addresses($id)
 	{
-		$this->db->from('address');
-		$this->db->join('company_addresses', 'company_addresses.address_id=address.address_id', 'right');
-		$this->db->where('company_addresses.company_id', $id);
+		$this->db->from('mydb_address');
+		$this->db->where('idcompany', $id);
 		
 		$query = $this->db->get();
 		if($query->num_rows > 0)
