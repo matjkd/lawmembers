@@ -12,7 +12,7 @@ function Login()
 	function index()
 	{
 		$this->is_logged_in();
-		$data['query'] = $this->db->get('content');	
+		//$data['query'] = $this->db->get('content');	
 		$data['main'] = 'user/index';
 		$this->load->vars($data);
 		$this->load->view('main_template');

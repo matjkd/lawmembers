@@ -1,0 +1,91 @@
+/*______________________________ Page Styles */
+:focus{outline:none;}
+html{
+	background-color:#000;
+	margin:0 auto;
+	padding:0;
+}
+body {
+	background-color:#111;
+	border:1px solid #222;
+	border-top:none;
+	color:#fff;
+	font-size:0.9em;
+	font-family:"Lucida Grande", Tahoma, Arial, Verdana, sans-serif;
+	width:700px;
+	margin:0 auto;
+	padding:0;
+}
+h1{
+	font-size:1.5em;
+	text-align:center;
+	background-color:#222;
+	padding:0.2em;
+	
+}
+h1 small{ font-size: 0.7em;}
+a:link, a:visited{color: #f3f4ce; text-decoration:none;}
+a:hover, a:active{color: #fffea7;}
+/*______________________________ Buttons */
+#controls{margin:0 0 0 1em;}
+button{
+	background-color:#CCC;
+	color:#565656;
+	border:1px solid #abb6bf;
+    border-top:1px solid #EEE;
+    border-left:1px solid #EEE;
+	padding:0.3em 0.3em 0.3em 18px;
+	margin:0 0.2em;
+	cursor:pointer;
+	background-repeat:no-repeat !important;
+	background-position:2px center !important;
+}
+button:hover{
+	color:#c7c7c7;
+	background:#4f4f4f;
+	border:1px solid #585858;
+}
+button:active{color:#CCC !important;}
+/* Positive actions */
+button.positive{color:#4c8318;}
+button.positive:hover{background-color:#a9bea3 !important;color:#396212;}
+button.positive:active{background-color:#3d5b40 !important;}
+/* Negative actions */
+button.negative{color:#d12f19;}
+button.negative:hover{background-color:#eca8a8 !important;color:#d12f19;}
+button.negative:active{background-color:#782c21 !important;}
+/* Specific Buttons */
+#addRow{background-image:url('img/add.png') !important;}
+#submitNewRows{background-image:url('img/submit.png') !important;}
+#removeAllRows, .removeRow{background-image:url('img/remove.png') !important;}
+/* Disabled Buttons */
+button[disabled], button[disabled]:hover, button[disabled]:active{
+	color:#666 !important;
+	background-color:#CCC !important;
+	border:1px solid #EEE;
+	cursor:wait;
+}
+
+/*______________________________ Tables */
+#myTable{width:670px;margin:1em;}
+#myTable #column1{width:15%;}
+#myTable #column2{width:40%;}
+#myTable #column3{width:45%;}
+#myTable thead tr th{
+	background:#c2cc9c;
+	color:#333;
+	border-bottom:1px solid #111;
+	border-right:1px solid #111;
+}
+#myTable tbody tr.rowEven{background:#646850;}
+#myTable tbody tr.rowOdd{background:#4e513e;}
+#myTable tbody tr:hover{background-color: #878d6c;}
+#myTable tbody tr td{
+	border-bottom:1px solid #111;
+	border-right:1px solid #111;
+	padding:2px;
+	text-align:center;
+}
+#myTable tbody tr td a{display:block;}
+
+.hidden, #blankRow, .hiddenControls, .newRow td div{display:none;}
