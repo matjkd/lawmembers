@@ -1,0 +1,18 @@
+
+#page-wrap {
+	width: 480px;
+	background: white;
+	margin: 20px auto;
+	padding: 20px;
+}
+
+a.reveal {
+	font-size: 100%;
+	padding: 3px;
+	background: #990000;
+	color: white;
+	font-family: Georgia, serif;
+	font-style: italic;
+	cursor: pointer;
+	text-align:center;
+}
