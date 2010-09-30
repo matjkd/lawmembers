@@ -10,7 +10,7 @@
 <script src="<?=base_url()?>js/jquery.jeditable.datepicker.js" type="text/javascript"></script>
 <script src="<?=base_url()?>js/jquery.dataTables.min.js" type="text/javascript"></script>
 <script src="<?=base_url()?>js/tiny_mce/tiny_mce.js" type="text/javascript"></script>
-
+<script src="<?=base_url()?>js/tiny_mce/jquery.tiny_mce.js" type="text/javascript"></script>
 
 <link rel='stylesheet' href='<?=base_url()?>css/demo_table_jui.css' type='text/css' />
 <link rel='stylesheet' href='<?=base_url()?>css/js.css' type='text/css' />
@@ -21,6 +21,6 @@
 		
 		});
 	</script>
-<title>Ignite Database</title>
+<title>Laworld Members Area</title>
 </head>
 
