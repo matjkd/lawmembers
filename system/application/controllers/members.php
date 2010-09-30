@@ -57,6 +57,25 @@ function view()
 		$this->load->vars($data);
 		$this->load->view('main_template');
 	}
+	
+function view_address()
+	{
+		
+	
+		$segment_active = $this->uri->segment(3);
+		$data['address'] = $this->companies_model->get_address($segment_active); 
+		
+		$data['companies'] = $this->companies_model->list_companies(); 
+		$data['address_id'] = $segment_active;
+		$data['main'] = '/user/logged_in_area';
+		$data['grid'] = '/members/companygrid';
+		$data['body'] = '/members/edit_address';
+		$this->load->vars($data);
+		$this->load->view('/members/edit_address');
+		
+		
+	}
+	
 function is_logged_in()
 	{
 		$is_logged_in = $this->session->userdata('is_logged_in');
