@@ -246,6 +246,7 @@ border: solid 1px #999999;
 	
 }
 .leftcolumn {
+	width: 100px;
 	background: #dddddd;
 	font-weight:bold;
 }

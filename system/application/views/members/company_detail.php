@@ -37,14 +37,14 @@
 		</div>
 
 <div id="image" style="float:left; width:230px; padding-left:20px;">
-image here
+<img width="100" height="100" src="http://www.laworld.com/images/stories/companies/<?=$companydetail->company_image?>">
 </div>
 
 <div style="clear:both;"></div>	
 
-	
+	<br/>
 	<form>
-	<textarea>
+	<textarea cols="70">
 	<?=$companydetail->description?>
 	</textarea>
 	<input type="button" value="Update Description">
