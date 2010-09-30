@@ -20,18 +20,18 @@ function addressconfirm(id) {
 	var answer = confirm("are you sure you want to delete this address?")
 	if (answer){
 		
-		$.post('<?=base_url()?>contacts/delete_address/', {id: id});
+		$.post('<?=base_url()?>members/delete_address/', {id: id});
 			
 	}
 	else{
 		alert("nothing deleted!")
 	}
-	$('#ajax_addresses').load('<?=base_url()?>contacts/address_table/<?=$company_id?>');
+	$('#ajax_addresses').load('<?=base_url()?>members/address_table/<?=$company_id?>');
 }
 
 function showaddress(id2) {
 	
-	$('#view_address').load('<?=base_url()?>contacts/view_address/' + id2);
+	$('#view_address').load('<?=base_url()?>members/view_address/' + id2);
 }
 
 

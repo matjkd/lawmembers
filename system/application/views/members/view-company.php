@@ -1,4 +1,11 @@
 <script type="text/javascript">
+tinyMCE.init({
+	mode : "textareas",
+	theme : "advanced"
+
+});
+</script>
+<script type="text/javascript">
 	$(function() {
 		$("#accordion").accordion({
 			collapsible: true,
@@ -14,7 +21,7 @@
 	<script>
 $(document).ready(function() {
 	var uid = "<?=$company_id?>";
-    $(".edit").editable("<?=site_url('/contacts/edit_company')?>", 
+    $(".edit").editable("<?=site_url('/members/edit_company')?>", 
     	    {
     	    	indicator : 'Saving...',
     	    	id   : 'elementid',
@@ -31,7 +38,8 @@ $(document).ready(function() {
    
     
 });
-</script>	
+</script>
+
 
 <div class="demo">
 	<div id="accordion">

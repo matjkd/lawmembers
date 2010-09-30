@@ -33,8 +33,8 @@ function get_address($id)
 	{
 	
 		
-		$this->db->where('address_id', $id);
-		$query = $this->db->get('address');
+		$this->db->where('idaddress', $id);
+		$query = $this->db->get('mydb_address');
 		if($query->num_rows == 1);
 			{
 				return $query->result();
