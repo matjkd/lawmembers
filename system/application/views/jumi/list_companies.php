@@ -48,46 +48,54 @@ include 'editor.inc';
 <?php
 
 if ($_POST==NULL)
-{
-// echo "post is null";
-}
-else
-{
-$select_practice = str_replace(" ", '&nbsp;', $select_practice); 
-$select_country = str_replace(" ", '&nbsp;', $select_country); 
-$select_city = str_replace(" ", '&nbsp;', $select_city); 
+		{
+			// echo "post is null";
+		}
+		else
+		{
+			$select_practice = str_replace(" ", '&nbsp;', $select_practice); 
+			$select_country = str_replace(" ", '&nbsp;', $select_country); 
+			$select_city = str_replace(" ", '&nbsp;', $select_city); 
+			
+			$sqlarray = array();
+			
+			if ($select_name!='NULL') 
+				{
+				header("Location:view-company.html?companyid=$select_name");
+				
+				   $sqlarray[] = "mydb_company.idcompany = '$select_name'";
+				   
+				}
 
-$sqlarray = array();
-if ($select_name!='NULL') {
-header("Location:view-company.html?companyid=$select_name");
-
-   $sqlarray[] = "mydb_company.idcompany = '$select_name'";
-   
-}
-
-if ($select_practice!='NULL') {
-   $sqlarray[] = "mydb_company.key_areas LIKE '%$select_practice%'";
-}
-if ($select_country!='NULL') {
-   $sqlarray[] = "mydb_address.country = '$select_country'";
-$searchaddress = "INNER JOIN mydb_address ON mydb_company.idcompany=mydb_address.idcompany";
-}
-if ($select_city!='NULL') {
-   $sqlarray[] = "mydb_address.city = '$select_city'";
-$searchaddress = "INNER JOIN mydb_address ON mydb_company.idcompany=mydb_address.idcompany";
-}
-if ($select_region!='NULL') {
-   $sqlarray[] = "mydb_address.region = '$select_region'";
-$searchaddress = "INNER JOIN mydb_address ON mydb_company.idcompany=mydb_address.idcompany";
-}
-$mysqlarray = implode($sqlarray, ' AND ');
-if ($mysqlarray!=NULL)
-{
-$where="WHERE";
-
-}
-}
-$sql="SELECT  * FROM mydb_company $searchaddress $where $mysqlarray ORDER BY company_name ASC"; 
+			if ($select_practice!='NULL') 
+				{
+				   $sqlarray[] = "mydb_company.key_areas LIKE '%$select_practice%'";
+				}
+			if ($select_country!='NULL') 
+				{
+				   $sqlarray[] = "mydb_address.country = '$select_country'";
+					$searchaddress = "INNER JOIN mydb_address ON mydb_company.idcompany=mydb_address.idcompany";
+				}
+			if ($select_city!='NULL') 
+				{
+				   $sqlarray[] = "mydb_address.city = '$select_city'";
+					$searchaddress = "INNER JOIN mydb_address ON mydb_company.idcompany=mydb_address.idcompany";
+				}
+			if ($select_region!='NULL') 
+				{
+				   $sqlarray[] = "mydb_address.region = '$select_region'";
+					$searchaddress = "INNER JOIN mydb_address ON mydb_company.idcompany=mydb_address.idcompany";
+				}
+		}
+		$sqlarray[] = "mydb_company.active = '1' ";
+		$mysqlarray = implode($sqlarray, ' AND ');
+			if ($mysqlarray!=NULL)
+				{
+					$where="WHERE";
+				
+				}
+			
+$sql="SELECT  * FROM mydb_company $searchaddress $where $mysqlarray  ORDER BY company_name ASC"; 
 // echo $sql;
         $result=mysql_query($sql)
 	    or die (mysql_error());
@@ -100,6 +108,7 @@ $sql="SELECT  * FROM mydb_company $searchaddress $where $mysqlarray ORDER BY com
 	
 
 	<?php 
+	
 	if ($sitegroupid=="25")
 	{
 	?>

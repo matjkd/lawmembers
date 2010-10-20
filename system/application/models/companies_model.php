@@ -252,9 +252,25 @@ function edit_company($id, $field, $value)
 					$field => $value
 					);
 		$this->db->where('idcompany', $id);
-		$update = $this->db->update('companies', $company_update_data);
+		$update = $this->db->update('mydb_company', $company_update_data);
 		return $update;
 	}
+
+	function update_description($id)
+	{
+		$form_data = array(
+    					'description' => $this->input->post('description'),
+    					);
+		
+		$this->db->where('idcompany', $id);
+		$this->db->update('mydb_company', $form_data);
+		
+		if ($this->db->affected_rows() == '1')
+		{
+			return TRUE;
+		}
+	}
+	
 function edit_address($id, $field, $value)
 	{
 		$address_update_data = array(
