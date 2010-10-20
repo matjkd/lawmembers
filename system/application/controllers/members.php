@@ -21,7 +21,7 @@ function view()
 			}
 		else
 			{
-				$data['company_id'] = $this->session->userdata('company_id');
+				$data['company_id'] = 15;
 				
 			}
 		$id = $data['company_id'];
