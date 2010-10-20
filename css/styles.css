@@ -174,7 +174,7 @@ float:left;
 {
 display:inline;
 float:left;
-width:360px;
+width:940px;
 margin-left:20px;
 }
 .bodytext
@@ -249,6 +249,11 @@ border: solid 1px #999999;
 	width: 100px;
 	background: #dddddd;
 	font-weight:bold;
+	float:left;
+}
+.edit {
+	float:left;
+	
 }
 .editquote  {
 	background:#ffffff;
@@ -258,4 +263,9 @@ width: 150px;
 	background:#ffffff;
 width: 150px;
 
+}
+.formfield {
+	margin:5px 0;
+	border: solid 0px #000000;
+	padding: 5px;
 }

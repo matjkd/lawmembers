@@ -60,8 +60,6 @@ function view()
 	
 function view_address()
 	{
-		
-	
 		$segment_active = $this->uri->segment(3);
 		$data['address'] = $this->companies_model->get_address($segment_active); 
 		
@@ -74,6 +72,32 @@ function view_address()
 		$this->load->view('/members/edit_address');
 		
 		
+	}
+function edit_company()
+	{
+		$data['id'] = $this->input->post('id');
+		$data['field'] = $this->input->post('elementid');
+		$data['value'] = $this->input->post('value');
+		
+		$this->companies_model->edit_company($data['id'], $data['field'], $data['value']);
+		
+		$update = $this->input->post('value');
+		
+		if($data['field'] == 'active')
+			{
+							
+				if($data['value'] == 0 ) {$update = 'No';}
+				if($data['value'] == 1 ) {$update = 'Yes';}
+			
+			}
+			
+		$this->output->set_output($update);
+	}
+function edit_description($id) 
+	{
+			$this->companies_model->update_description($id); 
+		
+			redirect('members/view/'.$id.'');  
 	}
 	
 function is_logged_in()

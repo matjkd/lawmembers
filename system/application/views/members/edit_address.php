@@ -1,3 +1,4 @@
+<?php  foreach($address as $addressdetail): ?>	
 <script>
 $(document).ready(function() {
 	var uid = "<?=$address_id?>";
@@ -15,12 +16,23 @@ $(document).ready(function() {
         	        
     	    });
 
-   
+    $(".regionedit").editable("<?=site_url('/members/edit_address')?>", 
+    	    {
+    		data   : "{'1':'Other','2':'Europe','3':'North America','4':'Asia/Pacific','5':'South America','6':'Middle East','selected':'<?php echo $addressdetail->region;?>'}",
+     	    type   : "select",
+     	    onblur : "submit",
+     	    style  : "inherit",
+     	    id   : 'elementid',     
+     	        submitdata : function() 
+     	        	{
+     	        		return {id : uid};
+    				}
+    	    });
     
 });
 </script>	
 
-<?php  foreach($address as $addressdetail): ?>	
+
 		
 	<div>
 	
@@ -126,7 +138,7 @@ $(document).ready(function() {
 	Region
 		</td>
 		<td>
-		 <div class='editaddress' id='region'><?=$addressdetail->region?></div>
+		 <div class='regionedit' id='region'><?=$addressdetail->region?></div>
 		</td>
 	</tr>
 
