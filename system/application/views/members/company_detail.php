@@ -5,13 +5,14 @@
 	
 
 
-		<h3><a href="#"><?php echo $companydetail->company_name; ?></a></h3>
+		<h3><a href="#"><?php echo $companydetail->company_name;  ?></a></h3>
 	
 <div>
 <div id="main_edit" style="float:left; width:610px; ">	
 
 <div id="image" style="float:left; width:180px; padding-right:20px;">
 <img width="180" height="180" src="http://www.laworld.com/images/stories/companies/<?=$companydetail->company_image?>">
+<img width="180" height="180" src="http://www.laworld.com/admin/images/companies/thumbs/<?=$companydetail->filename?>">
 </div>
 	
 		<div style="float:left; width:410px;">
@@ -46,6 +47,10 @@
 						echo realpath(APPPATH . '../images/companies');
 						echo form_open_multipart('members/upload_image');
 						echo form_hidden('id', $companydetail->idcompany);
+						if(isset($companydetail->filename))
+						{
+						echo form_hidden('current_image', $companydetail->filename);
+						}
 						echo form_upload('userfile');
 						echo form_submit('upload', 'Upload');
 						echo form_close();
