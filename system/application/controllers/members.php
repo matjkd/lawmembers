@@ -100,6 +100,19 @@ function edit_description($id)
 			redirect('members/view/'.$id.'');  
 	}
 	
+function upload_image()
+	{
+		
+		$id = $this->input->post('id');
+		if($this->input->post('upload'))
+		{
+			$this->Gallery_model->do_upload($id);
+		}
+			
+		redirect('');   // or whatever logic needs to occur
+		
+	}
+	
 function is_logged_in()
 	{
 		$is_logged_in = $this->session->userdata('is_logged_in');
