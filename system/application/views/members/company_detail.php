@@ -28,11 +28,7 @@
 						  <div style="clear:both;"></div> 
 				</div>
 				
-				<div class="formfield">
-						<div class="leftcolumn">Upload Image:</div>
-						 <div class='edit' id='imageeee'><?=$companydetail->company_image?></div>
-						 <div style="clear:both;"></div>
-				</div>
+			
 					
 				<div class="formfield">
 						<div class="leftcolumn">Active:</div>
@@ -44,6 +40,19 @@
 						</div>
 						 <div style="clear:both;"></div>
 				</div>
+				
+				<div id="upload">
+					<?php 
+						echo realpath(APPPATH . '../images/companies');
+						echo form_open_multipart('members/upload_image');
+						echo form_hidden('id', $companydetail->idcompany);
+						echo form_upload('userfile');
+						echo form_submit('upload', 'Upload');
+						echo form_close();
+					?>
+				
+				</div>
+				<div style="clear:both;"></div>
 				
 		</div>
 

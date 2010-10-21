@@ -19,7 +19,7 @@ function confirmation(id) {
 	<thead>
 		<tr>
 			<th>Company Name</th>
-		
+			<th>Country</th>
 			<th>web site</th>
 			<th>Actions</th>
 		</tr>
@@ -31,6 +31,8 @@ function confirmation(id) {
 ?>
 		<tr>
 			<td style="padding:3px; "><span class="<?=$row['company_name']?>"></span><?="<a href='".base_url()."members/view/".$row['idcompany']."'>".$row['company_name']."</a>"?></td>
+			
+			<td style="padding:3px;"><?=$row['country']?></td>
 			
 			<td style="padding:3px;"><?=$row['company_web']?></td>
 			

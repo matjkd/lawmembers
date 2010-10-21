@@ -3,7 +3,7 @@ $(document).ready(function() {
 		"bStateSave": true,
 		"bJQueryUI": true,
 		"sPaginationType": "full_numbers",
-		"aoColumns": [null, {"bSearchable": false}, {"bSearchable": false}]
+		"aoColumns": [null, null, {"bSearchable": false}, {"bSearchable": false}]
 		
 		});
 } );

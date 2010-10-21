@@ -45,7 +45,8 @@ function get_address($id)
 	{
 		$data = array();
 		$this->db->from('mydb_company');
-	
+		$this->db->join('mydb_address', 'mydb_address.idcompany=mydb_company.idcompany', 'left');
+		$this->db->group_by('mydb_company.idcompany');
 		
 		$Q = $this->db->get();
 		if ($Q->num_rows() > 0)
@@ -327,6 +328,9 @@ function add_tag($id)
 		$this->db->insert('company_tags', $new_tag_insert_data);
 		
 	}
+	
+
+	
 function delete_tag($id)
 {
 	$this->db->where('company_tags_id', $id);
