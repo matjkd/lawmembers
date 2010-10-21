@@ -17,7 +17,7 @@ class Gallery_model extends Model {
 		
 		$config = array(
 		'allowed_types' => 'jpg|jpeg|gif|png',
-		'upload_path' => $this->gallery_path . '/'.$id.'',
+		'upload_path' => $this->gallery_path,
 		'max_size' => 2000
 		);
 		
@@ -29,10 +29,10 @@ class Gallery_model extends Model {
 		
 		$config = array(
 			'source_image' => $image_data['full_path'],
-				'new_image' => $this->gallery_path . '/'.$id.'/thumbs',
+				'new_image' => $this->gallery_path . '/thumbs',
 			'maintain_ratio' => true,
-			'width' => 200,
-			'height' => 200
+			'width' => 239,
+			'height' => 239
 		
 		);
 		
@@ -52,8 +52,8 @@ class Gallery_model extends Model {
 		$new_image_data = array(
 				'filename' => $row['file_name'],
 		);
-		
-		$this->db->insert('mydb_company', $new_image_data);
+		$this->db->where('idcompany', $id);
+		$this->db->update('mydb_company', $new_image_data);
 		
 		endforeach;
 		

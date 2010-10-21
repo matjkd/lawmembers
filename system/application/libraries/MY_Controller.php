@@ -14,7 +14,9 @@ class MY_Controller extends Controller {
 	$config_data['config_website'] = "web address";
 	$config_data['config_phone'] = "phone";
 	
-
+	$this->config_ftp_host = '213.229.86.110';
+	$this->config_ftp_user = 'laworld';
+	$this->config_ftp_password = 'l33t523';
 	$this->load->vars($config_data);
 	
 	}

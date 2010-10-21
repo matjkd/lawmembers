@@ -5,6 +5,7 @@ function __construct()
 	{
 		parent::__construct();
 		$this->load->model('companies_model');
+		$this->load->model('Gallery_model');
 		$this->is_logged_in();
               
 	}
@@ -102,14 +103,29 @@ function edit_description($id)
 	
 function upload_image()
 	{
+		$current_image = $this->input->post('current_image');
 		
+		if($current_image != NULL)
+		{
+			
+			//Delete Current image before creating new one
+			$this->load->library('ftp');
+				$config['hostname'] = $this->config_ftp_host;
+				$config['username'] = $this->config_ftp_user;
+				$config['password'] = $this->config_ftp_password;
+				$config['debug'] = TRUE;
+				$this->ftp->connect($config);
+				$this->ftp->delete_file('/public_html/admin/images/companies/'.$current_image.'');
+				$this->ftp->delete_file('/public_html/admin/images/companies/thumbs/'.$current_image.'');
+				$this->ftp->close();
+		}
 		$id = $this->input->post('id');
 		if($this->input->post('upload'))
 		{
 			$this->Gallery_model->do_upload($id);
 		}
 			
-		redirect('');   // or whatever logic needs to occur
+		redirect('members/view/'.$id.'');   // or whatever logic needs to occur
 		
 	}
 	
