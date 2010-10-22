@@ -4,7 +4,14 @@ jQuery(function() {
 });
 </script>
 
-<?php foreach($company as $key => $row): ?>
+<?php 
+if($company_id == 0)
+{
+	
+}
+else
+{
+foreach($company as $key => $row): ?>
 
 <script type="text/javascript">
 	$(function() {
@@ -44,24 +51,40 @@ $(document).ready(function() {
      	        		return {id : uid};
    					}
     	    });
-    <?php endforeach; ?>
+  
     
    
    
  
 });
+
+<?php 
+	    
+	    endforeach;
+
+	}
+	?>
 </script>
 
 
-<div class="demo">
-	<div id="accordion">
-	<?php $this->load->view("members/company_detail"); ?>
+
+	<?php 
+	if($company_id == 0)
+	{
+		
+	}
+	else
+	{
+	?>
+		
+	<div class="demo">
+	<div id="accordion">	
+	<?=$this->load->view("members/company_detail")?>
 	<h3><a href="#">Employees</a></h3>
 	<div>
 		
-	<?php $this->load->view("members/ajaxemployees"); ?>
-		
-	</div>
+	<?=$this->load->view("members/ajaxemployees")?> 
+		</div>
 	
 	
 
@@ -70,6 +93,10 @@ $(document).ready(function() {
 	
 </div>
 <hr></hr>
+	<?php }
+	?>
+		
+
 
 
 
