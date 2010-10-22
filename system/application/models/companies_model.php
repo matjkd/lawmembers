@@ -47,6 +47,7 @@ function get_address($id)
 		$this->db->from('mydb_company');
 		$this->db->join('mydb_address', 'mydb_address.idcompany=mydb_company.idcompany', 'left');
 		$this->db->group_by('mydb_company.idcompany');
+		$this->db->order_by('mydb_company.company_name');
 		
 		$Q = $this->db->get();
 		if ($Q->num_rows() > 0)

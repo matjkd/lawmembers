@@ -11,7 +11,7 @@
 <div id="main_edit" style="float:left; width:610px; ">	
 
 <div id="image" style="float:left; width:180px; padding-right:20px;">
-<img width="180" height="180" src="http://www.laworld.com/images/stories/companies/<?=$companydetail->company_image?>">
+
 <img width="180" height="180" src="http://www.laworld.com/admin/images/companies/thumbs/<?=$companydetail->filename?>">
 </div>
 	
