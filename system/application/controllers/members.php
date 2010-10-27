@@ -146,6 +146,13 @@ function edit_description($id)
 		
 			redirect('members/view/'.$id.'');  
 	}
+
+	function add_company()
+	{
+		$data['main'] = 'members/add_company';
+		$this->load->vars($data);
+		$this->load->view('/popups/popup_template');
+	}
 	
 function upload_image()
 	{
