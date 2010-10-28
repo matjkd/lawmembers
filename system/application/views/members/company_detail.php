@@ -71,7 +71,7 @@
 	
 </div>
 
-<div id="view_address" style="float:left; width:230px;">
+<div id="view_address" style="float:left; width:260px;">
 		
 </div>
 		
