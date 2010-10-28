@@ -35,10 +35,10 @@ code {
 }
 
 body {
-	background: #ffffff;
+	background: #279BE2 url('http://www.laworld.com/templates/ja_mica/images/bg.png') repeat-x;
 	margin: 0;
 	padding: 0;
-	font: 12px/1.3 Helvetica, Arial, 'Liberation Sans', FreeSans, sans-serif;
+	font: 11px Helvetica, Arial, 'Liberation Sans', FreeSans, sans-serif;
 }
 
 h2,h3,h4,h5 {
@@ -98,7 +98,7 @@ legend {
 	}
 #top_menu {
 	font-family: Monaco, Verdana, Sans-serif;
-	font-size: 0.8em;
+	font-size: 1em;
 	color: #888888;
 	float: right;
 	margin: 25px 0 0 0;
@@ -107,11 +107,15 @@ legend {
 	color: #999999;
 }
 #mainnav {
-	border-top: solid 1px #303030;
+	border-top: solid 0px #303030;
 	border-bottom: solid 1px #000000;
-	background:#666666 url(../images/menu.jpg) repeat-x 0 0;
+	background:#252525;
 	height: 30px;
 	padding-top:3px;
+}
+
+#mainnav a {
+	color: #dddddd;
 }
 #mainnav_inner {
 	width: 940px;
@@ -128,15 +132,16 @@ legend {
 }
 .footer {
 	text-align:center;
-	font-size: 0.8em;
+	font-size: 1em;
 	clear:both;
 	margin:0px 0 0 0;
 	padding:20px 0;
-	background-color:#aaaaaa;
+	background-color:#252525;
 	border: solid 1px #555555;
+	color: #dddddd;
 }
 .container {
-	background:no-repeat #dddddd;
+	background:no-repeat #ffffff;
 	background-position: top center; 
 	display:block;
 	
@@ -145,7 +150,7 @@ legend {
 }
 .contents{
 min-height:200px;
-background:url(../images/content_bg.png)0px 0px;
+
 border-left: 1px solid #ffffff;
 border-right: 1px solid #ffffff;
 width: 980px;
@@ -157,8 +162,8 @@ text-align: left;
 }
 #login_form {
 	width: 200px;
-	background: #dddddd url(../images/bg.gif) repeat-x 0 0;
-	border: 1px solid #aaaaaa;
+	background: #ffffff;
+	border: 1px solid #2e90bd;
 	margin: 25px auto 0px;
 	padding: 1em;
 	text-align: center;
