@@ -30,13 +30,13 @@ function confirmation(id) {
 
 ?>
 		<tr>
-			<td style="padding:3px; "><span class="<?=$row['company_name']?>"></span><?="<a href='".base_url()."members/view/".$row['idcompany']."'>".$row['company_name']."</a>"?></td>
+			<td style="padding:2px; "><span class="<?=$row['company_name']?>"></span><?="<a href='".base_url()."members/view/".$row['idcompany']."'>".$row['company_name']."</a>"?></td>
 			
-			<td style="padding:3px;"><?=$row['country']?></td>
+			<td style="padding:2px;"><?=$row['country']?></td>
 			
-			<td style="padding:3px;"><?=$row['company_web']?></td>
+			<td style="padding:2px;"><?=$row['company_web']?></td>
 			
-			<td style="padding:3px;"><?="<a href='#' onclick='confirmation(".$row['idcompany'].")'><span class='ui-icon ui-icon-circle-close ui-state-highlight'></span></a>"?></td>
+			<td style="padding:2px;"><?="<a href='#' onclick='confirmation(".$row['idcompany'].")'><span class='ui-icon ui-icon-circle-close ui-state-highlight'></span></a>"?></td>
 		</tr>
 		<?php endforeach;  ?>
 	</tbody>
