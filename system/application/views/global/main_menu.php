@@ -1,13 +1,4 @@
-<script type="text/javascript">
-	$(function() {
-		$(".topmenu a").button();
-		
-		$("a", ".topmenu").click(function() { return true; });
-	});
-	</script>
-	<style>
-		
-	</style>
+
 	
 <div class="topmenu">
 
