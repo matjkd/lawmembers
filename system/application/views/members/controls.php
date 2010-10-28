@@ -59,52 +59,41 @@
 			}
 		});
 
-		$( ".dialog" ).dialog({
-			autoOpen: false			
-		});
 		
 		
-		$( "#add_company" ).button().click(function() {
-			$( "#dialog_company" ).dialog( "open" );
-			return false;
-		});
+		
+	
 		
 		$( "#add_address" ).button().click(function() {
 			$( "#dialog_address" ).dialog( "open" );
 			return false;
 		});
 		
-		$( "#add_employee" ).button().click(function() {
-			$( "#dialog_employee" ).dialog( "open" );
-			return false;
-		});
+		
 		
 		$( "#repeat" ).buttonset();
 
 		
 	});
+
+	
 	
 	</script>
-
+	
+	
+<?=$this->load->view('popups/popup_company')?>
+<?=$this->load->view('popups/popup_address')?>
+<?=$this->load->view('popups/popup_employee')?>
 
 <div id="toolbar" class="ui-widget-header ui-corner-all">
 	
 	<a href="#"><button id="rewind">Previous Record</button></a>
 <span align=center>
-	<a href="#"><button id="add_company">Add Company</button></a>
-	<a href="#"><button id="add_address">Add Address</button></a>	
-	<a href="#"><button id="add_employee">Add Employee</button></a>		
+	<button id="add_company">Add Company</button>
+	<button id="add_address">Add Address</button>	
+	<button id="add_employee">Add Employee</button>		
 </span>
 	<a href="#"><button id="forward">Next Record</button></a>
 </div>
 
 
-<div id="dialog_company"  class="dialog" title="Basic dialog">
-	<p>This is an animated dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon.</p>
-</div>
-<div id="dialog_address"  class="dialog" title="Basic dialog">
-	<p>This is an animated dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon.</p>
-</div>
-<div id="dialog_employee" class="dialog" title="Basic dialog">
-	<p>This is an animated dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon.</p>
-</div>

@@ -5,7 +5,7 @@
 
 <div id="header">
 	<div id="header_inner">
-		<div id="logo"></div>
+		<div id="logo"><img src="<?=base_url()?>images/laworld_logo.png" width=250px height=63px></div>
         <div id="top_menu"><?php $this->load->view('global/menutop'); ?>	
 		</div>
     </div>
