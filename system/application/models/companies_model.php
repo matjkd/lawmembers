@@ -29,6 +29,7 @@ class Companies_model extends Model {
 			}
 		
 	}
+	
 function get_address($id)
 	{
 	
@@ -226,18 +227,13 @@ function add_address($id)
 	{
 		$new_company_insert_data = array(
 			'company_name' => $this->input->post('company_name'),
-			'company_desc' => $this->input->post('company_desc'),
-			'company_phone' => $this->input->post('company_phone'),
-			'company_fax' => $this->input->post('company_fax'),			
-			'company_email' => $this->input->post('company_email'),
-			'company_website' => $this->input->post('company_website'),
-			'company_type' => $this->input->post('company_type')
+			'company_web' => $this->input->post('company_web')
 			
 		);
 		
 		
-		$this->db->insert('companies', $new_company_insert_data);
-		$this->db->from('companies');
+		$this->db->insert('mydb_company', $new_company_insert_data);
+		$this->db->from('mydb_company');
 		$this->db->select('idcompany');
 		$this->db->where('company_name', $this->input->post('company_name'));
 		$data = $this->db->get();
