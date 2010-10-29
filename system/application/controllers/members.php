@@ -153,6 +153,42 @@ function edit_description($id)
 		$this->load->vars($data);
 		$this->load->view('/popups/popup_template');
 	}
+	function create_company()
+	{
+	// field name, error message, validation rules
+		$this->form_validation->set_rules('company_name', 'Company Name', 'trim|required');
+		
+		
+		if($this->form_validation->run() == FALSE)
+		{
+		
+			$errors=validation_errors();
+			$this->session->set_flashdata('message','There was a problem...');
+			redirect('contacts/add_company/');
+		
+		}
+	else
+		{			
+					
+			if($query = $this->companies_model->add_company())
+			{
+				
+				foreach($query as $resultdata)
+				{
+				$companyid = mysql_insert_id();
+				
+				//$this->companies_model->add_address($companyid);
+				//$this->companies_model->add_employee($companyid);
+				//redirect('contacts/view/'.$companyid.'');
+				}
+				
+			}
+			else
+			{
+				redirect('contacts/view/');
+			}
+		}
+	}
 	
 function upload_image()
 	{

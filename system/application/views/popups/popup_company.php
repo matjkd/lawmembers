@@ -21,9 +21,16 @@ $(document).ready(function() {
 	<div id="dialog_company"  class="dialog" title="Add Company">
 
 
+<div id="popup_form" align="center">
+<?=form_open('members/create_company')?>
 
-<iframe src ="<?=base_url()?>members/add_company" width=100% height=100%>
-  <p>Your browser does not support iframes. Go here for standalone form: <?=base_url()?>members/add_company</p>
-</iframe>
+<?=form_label('Company Name')?> <?=form_input('company_name')?><br/>
+
+<?=form_label('Web Address')?> <?=form_input('company_web')?><br/>
+
+<?=form_submit('submit','Submit')?>
+
+<?=form_close()?>
+</div>
 </div>
 
