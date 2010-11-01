@@ -15,7 +15,7 @@
 	{
 	?>
 		
-	<div class="demo">
+	<div style="font-size: 0.9em;">
 	<div id="accordion">	
 	<?=$this->load->view("members/company_detail")?>
 	<h3><a href="#">Employees</a></h3>
