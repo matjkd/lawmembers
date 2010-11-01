@@ -140,6 +140,28 @@ function edit_company()
 			
 		$this->output->set_output($update);
 	}
+function edit_address()
+	{
+		$data['id'] = $this->input->post('id');
+		$data['field'] = $this->input->post('elementid');
+		$data['value'] = $this->input->post('value');
+		
+		$this->companies_model->edit_address($data['id'], $data['field'], $data['value']);
+		
+		$update = $this->input->post('value');
+		
+		if($data['field'] == 'region')
+			{
+							
+				$data['data'] = $this->companies_model->get_region($data['value']);
+			
+				foreach($data['data'] as  $row2):
+					$update = $row2['region_name'];
+				endforeach;	
+			}
+		
+		$this->output->set_output($update);
+	}
 function edit_description($id) 
 	{
 			$this->companies_model->update_description($id); 
@@ -177,7 +199,7 @@ function edit_description($id)
 				{
 				$companyid = mysql_insert_id();
 				
-				//$this->companies_model->add_address($companyid);
+				$this->companies_model->add_address($companyid);
 				//$this->companies_model->add_employee($companyid);
 				//redirect('contacts/view/'.$companyid.'');
 				}

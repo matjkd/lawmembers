@@ -197,25 +197,22 @@ function add_address($id)
 		}
 		
 		$new_address_insert_data = array(
+			'idcompany' => $id_company,
 			'address1' => $this->input->post('address1'),
 			'address2' => $this->input->post('address2'),
 			'address3' => $this->input->post('address3'),
 			'address4' => $this->input->post('address4'),
-			'postcode' => $this->input->post('postcode'),
-			'registerDate' => unix_to_human(now(), TRUE, 'eu')
+			'postcode' => $this->input->post('postcode')
+			//'registerDate' => unix_to_human(now(), TRUE, 'eu')
 		);
 		
-		$this->db->insert('address', $new_address_insert_data);
+		$this->db->insert('mydb_address', $new_address_insert_data);
 		
 		
-		$addressid = mysql_insert_id();
 		
-		$link_address_to_company = array(
-			'company_id' => $id_company,
-			'address_id' => $addressid
-		);
 		
-		$this->db->insert('company_addresses', $link_address_to_company);
+		
+		
 		
 		
 		
@@ -274,9 +271,27 @@ function edit_address($id, $field, $value)
 		$address_update_data = array(
 					$field => $value
 					);
-		$this->db->where('address_id', $id);
-		$update = $this->db->update('address', $address_update_data);
+		$this->db->where('idaddress', $id);
+		$update = $this->db->update('mydb_address', $address_update_data);
 		return $update;
+	}
+	
+function get_region($id)
+	{
+		$data = array();
+		$this->db->from('mydb_regions');
+		$this->db->where('region_id', $id);
+		$Q = $this->db->get();
+		if ($Q->num_rows() == 1)
+		{
+			foreach ($Q->result_array() as $row)
+			
+			$data[] = $row;
+			
+		}
+		
+		$Q->free_result();
+		return $data;
 	}
 function list_all_tags()
 	{
