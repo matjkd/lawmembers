@@ -201,13 +201,13 @@ function edit_description($id)
 				
 				$this->companies_model->add_address($companyid);
 				//$this->companies_model->add_employee($companyid);
-				//redirect('contacts/view/'.$companyid.'');
+				redirect('members/view/'.$companyid.'');
 				}
 				
 			}
 			else
 			{
-				redirect('contacts/view/');
+				redirect('members/view/');
 			}
 		}
 	}

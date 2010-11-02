@@ -187,6 +187,8 @@ function get_addresses($id)
 	
 function add_address($id)
 	{
+		
+		
 		if ($id == NULL)
 		{
 			$id_company = $this->input->post('id_company');
@@ -197,25 +199,11 @@ function add_address($id)
 		}
 		
 		$new_address_insert_data = array(
-			'idcompany' => $id_company,
-			'address1' => $this->input->post('address1'),
-			'address2' => $this->input->post('address2'),
-			'address3' => $this->input->post('address3'),
-			'address4' => $this->input->post('address4'),
-			'postcode' => $this->input->post('postcode')
+			'idcompany' => $id_company
 			//'registerDate' => unix_to_human(now(), TRUE, 'eu')
 		);
 		
 		$this->db->insert('mydb_address', $new_address_insert_data);
-		
-		
-		
-		
-		
-		
-		
-		
-		
 	
 	}
 
