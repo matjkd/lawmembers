@@ -254,7 +254,7 @@ border: solid 1px #999999;
 	width: 100px;
 	background: #dddddd;
 	font-weight:bold;
-	padding:5px;
+	padding:2px;
 	margin-right:5px;
 	float:left;
 }
@@ -274,7 +274,7 @@ width: 150px;
 .formfield {
 	margin:5px 0;
 	border: solid 0px #000000;
-	padding: 5px;
+	padding: 0px;
 }
 #popup_form {
 	margin: 15px auto;

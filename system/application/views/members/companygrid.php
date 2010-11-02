@@ -13,6 +13,7 @@ function confirmation(id) {
 }
 //-->
 </script>
+
 <div style="display:none;" id="dvloader"><img src="<?=base_url()?>images/ajax-loader.gif"></div>
 <table id="table_id"  width="100%" style="clear:both;">
 
@@ -41,3 +42,5 @@ function confirmation(id) {
 		<?php endforeach;  ?>
 	</tbody>
 </table>
+
+

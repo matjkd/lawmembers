@@ -7,6 +7,7 @@ $(document).ready(function() {
     	    	indicator : 'Saving...',
     	    	id   : 'elementid',
     	    	submit : 'OK',
+    	    	 onblur : "submit",
     	        tooltip   : 'Click to edit...',
     	        submitdata : function() 
     	        {
@@ -37,7 +38,7 @@ $(document).ready(function() {
 	<div>
 	
 		
-<table>
+<table width="260px">
 <tr>
 		<td class='leftcolumn'>
 		Address 1
@@ -56,7 +57,7 @@ $(document).ready(function() {
 	Address 2
 		</td>
 		<td>
-		 <div class='editaddress' id='address2' style="color:#cccccc;"></div>
+		 <div class='editaddress' id='address2'></div>
 		</td>
 	</tr>
 		
@@ -86,7 +87,7 @@ $(document).ready(function() {
 	Address 3
 		</td>
 		<td>
-		 <div class='editaddress' id='address3' style="color:#cccccc;"></div>
+		 <div class='editaddress' id='address3'></div>
 		</td>
 	</tr>
 		
@@ -151,6 +152,33 @@ $(document).ready(function() {
 		</td>
 	</tr>
  
+<tr>
+		<td class='leftcolumn'>
+		Tel
+		</td>
+		<td>
+		 <div class='editaddress' id='tel'><?=$addressdetail->tel?></div>
+		</td>
+	</tr>
+	
+	<tr>
+		<td class='leftcolumn'>
+		Fax
+		</td>
+		<td>
+		 <div class='editaddress' id='fax'><?=$addressdetail->fax?></div>
+		</td>
+	</tr>
+	
+	<tr>
+		<td class='leftcolumn'>
+		Email
+		</td>
+		<td>
+		 <div class='editaddress' id='email'><?=$addressdetail->email?></div>
+		</td>
+	</tr>
+
 
 </table>
 		<?php endforeach ?>

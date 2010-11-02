@@ -2,6 +2,15 @@
 jQuery(function() {
     jQuery('.wymeditor').wymeditor();
 });
+<?php foreach($addresses as $key => $row): ?>
+<?php $addressid = $row['idaddress']?>
+<?php endforeach; ?>
+$(document).ready(function() {
+	
+	$('#view_address').load('<?=base_url()?>members/view_address/' + <?=$addressid?> );
+
+});
+
 </script>
 
 <?php 

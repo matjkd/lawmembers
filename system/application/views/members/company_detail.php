@@ -1,5 +1,3 @@
-
-
 	<?php  foreach($company as $companydetail): ?>
 	
 	
@@ -25,7 +23,7 @@
 						
 				<div class="formfield">		
 						<a href="http://<?=$companydetail->company_web?>"><div class="leftcolumn">Website:</div></a>
-						 <div class='edit' id='company_website'><?=$companydetail->company_web?></div>
+						 <div class='edit' id='company_web'><?=$companydetail->company_web?></div>
 						  <div style="clear:both;"></div> 
 				</div>
 				
