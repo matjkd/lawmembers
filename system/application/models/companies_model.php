@@ -77,6 +77,43 @@ function get_address($id)
 		$Q->free_result();
 		return $data;
 	}
+	function next_company($id)
+	{
+		$this->db->select('idcompany');
+		$this->db->from('mydb_company');
+		$this->db->order_by('idcompany', 'asc');
+		$this->db->where('idcompany >', $id);
+		$this->db->limit(1);
+		$Q = $this->db->get();
+		if ($Q->num_rows() == 1)
+		{
+			foreach ($Q->result_array() as $row)
+			
+			$data = $row['idcompany'];
+			return $data;
+		}
+		$Q->free_result();
+		
+	}
+	
+	function previous_company($id)
+	{
+		$this->db->select('idcompany');
+		$this->db->from('mydb_company');
+		$this->db->order_by('idcompany', 'desc');
+		$this->db->where('idcompany <', $id);
+		$this->db->limit(1);
+		$Q = $this->db->get();
+		if ($Q->num_rows() == 1)
+		{
+			foreach ($Q->result_array() as $row)
+			
+			$data = $row['idcompany'];
+			return $data;
+		}
+		$Q->free_result();
+		
+	}
 	
 	function get_employees($id)
 	{

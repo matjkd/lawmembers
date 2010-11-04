@@ -19,6 +19,8 @@ function view()
 		if ($segment_active!=NULL)
 			{
 				$data['company_id'] = $this->uri->segment(3);
+				$data['next_record'] = $this->companies_model->next_company($data['company_id']);
+				$data['previous_record'] = $this->companies_model->previous_company($data['company_id']);
 			}
 		else
 			{
