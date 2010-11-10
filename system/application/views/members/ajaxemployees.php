@@ -58,7 +58,7 @@ foreach($employees as $key => $row):
 			
 			<td style="padding:5px;"><a href="mailto:<?=$row['people_email']?>"><?=$row['people_email']?></a></td>
 				
-			<td style="padding:5px;"><?="<a href='".base_url()."contacts/view_employee/".$row['idkeypeople']."'>View</a> | <a href='#' onclick='employeeconfirm(".$row['idkeypeople'].")'>Delete</a>"?></td>
+			<td style="padding:5px;"><?="<a href='".base_url()."members/view_employee/".$row['idkeypeople']."'>View</a> | <a href='#' onclick='employeeconfirm(".$row['idkeypeople'].")'>Delete</a>"?></td>
 		
 		</tr>
 		<?php

@@ -61,6 +61,17 @@ function view()
 		$this->load->view('main_template');
 	}
 
+	function view_employee($id)
+	{
+		$data['companies'] = $this->companies_model->list_companies(); 
+		$data['employee_id'] = $id;
+		$data['employee_detail'] = $this->companies_model->get_employee($id);
+		$data['main'] = '/user/logged_in_area';
+		$data['grid'] = '/members/companygrid';
+		$data['body'] = '/members/view_employee';
+		$this->load->vars($data);
+		$this->load->view('main_template');
+	}
 	function list_members()
 	{
 		$segment_active = $this->uri->segment(3);
@@ -142,6 +153,22 @@ function edit_company()
 			
 		$this->output->set_output($update);
 	}
+function edit_employee()
+	{
+		$data['id'] = $this->input->post('id');
+		$data['field'] = $this->input->post('elementid');
+		$data['value'] = $this->input->post('value');
+		
+		$this->companies_model->edit_employee($data['id'], $data['field'], $data['value']);
+		
+		$update = $this->input->post('value');
+		if($data['field'] == 'people_resume')
+			{
+				redirect('members/view_employee/'.$data['id'].'');			
+				
+			}
+		$this->output->set_output($update);
+	}
 function edit_address()
 	{
 		$data['id'] = $this->input->post('id');
@@ -171,12 +198,66 @@ function edit_description($id)
 			redirect('members/view/'.$id.'');  
 	}
 
-	function add_company()
+
+	
+	function add_address($id)
 	{
-		$data['main'] = 'members/add_company';
-		$this->load->vars($data);
-		$this->load->view('/popups/popup_template');
+		$this->form_validation->set_rules('address1', 'address1', 'trim|required');
+		if($this->form_validation->run() == FALSE)
+			{
+			
+				$errors=validation_errors();
+				$this->session->set_flashdata('message','There was a problem adding the address. The first line is required');
+				redirect("members/view/$id");
+			}
+			else
+			{
+				if($query = $this->companies_model->add_new_address($id))
+				{
+					
+					foreach($query as $resultdata)
+					{
+					
+					redirect("members/view/$id");
+					}
+					
+				}
+				else
+				{
+					redirect("members/view/$id");
+				}
+			}
 	}
+	
+	function add_employee($id)
+	{
+		$this->form_validation->set_rules('firstname', 'firstname', 'trim|required');
+			if($this->form_validation->run() == FALSE)
+				{
+				
+					$errors=validation_errors();
+					$this->session->set_flashdata('message','There was a problem adding the address. firstname is required');
+					redirect("members/view/$id");
+				}
+				else
+				{
+					if($query = $this->companies_model->add_new_employee($id))
+					{
+						
+						foreach($query as $resultdata)
+						{
+						
+						redirect("members/view/$id");
+						}
+						
+					}
+					else
+					{
+						redirect("members/view/$id");
+					}
+				}
+	}
+	
 	function create_company()
 	{
 	// field name, error message, validation rules

@@ -22,8 +22,19 @@ $(document).ready(function() {
 
 
 
-<iframe src ="<?=base_url()?>members/add_employee" width=100% height=100%>
-  <p>Your browser does not support iframes. Go here for standalone form: <?=base_url()?>members/add_employee</p>
-</iframe>
+
+<div id="popup_form" align="center">
+<?=form_open('members/add_employee/'.$company_id)?>
+
+<?=form_label('First Name')?> <?=form_input('firstname')?><br/>
+
+<?=form_label('Last Name')?> <?=form_input('lastname')?><br/>
+
+<?=form_label('Email')?> <?=form_input('email')?><br/>
+
+<?=form_submit('submit','Submit')?>
+
+<?=form_close()?>
+</div>
 </div>
 

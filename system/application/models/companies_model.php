@@ -42,6 +42,18 @@ function get_address($id)
 			}
 		
 	}
+function get_employee($id)
+	{
+	
+		
+		$this->db->where('idkeypeople', $id);
+		$query = $this->db->get('mydb_keypeople');
+		if($query->num_rows == 1);
+			{
+				return $query->result();
+			}
+		
+	}
 	function list_companies()
 	{
 		$data = array();
@@ -137,28 +149,7 @@ function get_address($id)
 		return $data;
 		
 	}
-	function get_employee($id)
-	{
-		
-		$this->db->from('users');
-		
-		$this->db->where('id', $id);
-		
-		$query = $this->db->get();
-		if($query->num_rows > 0)
-			{
-				foreach ($query->result_array() as $row)
-			
-			$data[] = $row;
-			}
-			else
-			{
-				$data = NULL;
-			}
-		$query->free_result();
-		return $data;
-		
-	}
+	
 	
 	function add_employee($id)
 	{
@@ -243,7 +234,48 @@ function add_address($id)
 		$this->db->insert('mydb_address', $new_address_insert_data);
 	
 	}
+	
+function add_new_address($id)
+	{
+		
+		
+		if ($id == NULL)
+		{
+			return;
+		}
+		
+		
+		$new_address_insert_data = array(
+			'idcompany' => $id,
+			'address1' => $this->input->post('address1')
+			//'registerDate' => unix_to_human(now(), TRUE, 'eu')
+		);
+		
+		$this->db->insert('mydb_address', $new_address_insert_data);
+	
+	}
 
+	
+	function add_new_employee($id)
+		{
+			
+			
+			if ($id == NULL)
+			{
+				return;
+			}
+			
+			
+			$new_employee_insert_data = array(
+				'idcompany' => $id,
+				'firstname' => $this->input->post('firstname')
+				//'registerDate' => unix_to_human(now(), TRUE, 'eu')
+			);
+			
+			$this->db->insert('mydb_keypeople', $new_employee_insert_data);
+		
+		}	
+		
 	
 	function add_company()
 	{
@@ -266,13 +298,23 @@ function add_address($id)
 		
 	}
 	
-function edit_company($id, $field, $value)
+	function edit_company($id, $field, $value)
 	{
 		$company_update_data = array(
 					$field => $value
 					);
 		$this->db->where('idcompany', $id);
 		$update = $this->db->update('mydb_company', $company_update_data);
+		return $update;
+	}
+	
+	function edit_employee($id, $field, $value)
+	{
+		$company_update_data = array(
+					$field => $value
+					);
+		$this->db->where('idkeypeople', $id);
+		$update = $this->db->update('mydb_keypeople', $company_update_data);
 		return $update;
 	}
 
