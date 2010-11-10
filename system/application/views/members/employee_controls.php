@@ -84,25 +84,13 @@
 	
 
 <div id="toolbar" class="ui-widget-header ui-corner-all">
-<?php 
-if($company_id == 0)
-{
-	echo '<button id="add_company">Add Company</button>';
-}
-else
-{
 
-?>
-	<a href="<?=base_url()?>members/view/<?=$previous_record?>"><button id="rewind">Previous Record</button></a>
-		<span align=center>
-			<button id="add_company">Add Company</button>
-			<button id="add_address">Add Address</button>	
-			<button id="add_employee">Add Employee</button>		
-		</span>
-	<a href="<?=base_url()?>members/view/<?=$next_record?>"><button id="forward">Next Record</button></a>
 
-<?php }
-?>
+	<a href="<?=base_url()?>members/view_employee/"><button id="rewind">Previous Record</button></a>
+		
+	<a href="<?=base_url()?>members/view_employee/"><button id="forward">Next Record</button></a>
+
+
 </div>
 
 

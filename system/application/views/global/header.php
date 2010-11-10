@@ -4,14 +4,10 @@
 
 <link rel='stylesheet' href='<?=base_url()?>css/custom-theme/jquery-ui-1.8.5.custom.css' type='text/css' />
 <link rel='stylesheet' href='<?=base_url()?>css/styles.css' type='text/css' />
+<script src="https://www.google.com/jsapi?key=ABQIAAAAo44bloMTDYnLwRZTm304PxSmosswHy4sXfhpqjiCT3epcIpAKBQ_xLI4Q1NiK6x_K79Uw7STa0qxRw" type="text/javascript"></script>
 
-<script src="<?=base_url()?>js/jquery-1.4.2.min.js" type="text/javascript"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 
-<script src="<?=base_url()?>js/jquery-ui-1.8.5.custom.min.js" type="text/javascript"></script>
-<script src="<?=base_url()?>js/wymeditor/jquery.wymeditor.min.js" type="text/javascript"></script>
-<script src="<?=base_url()?>js/jeditable.js" type="text/javascript"></script>
-<script src="<?=base_url()?>js/jquery.jeditable.datepicker.js" type="text/javascript"></script>
-<script src="<?=base_url()?>js/jquery.dataTables.min.js" type="text/javascript"></script>
 
 
 
