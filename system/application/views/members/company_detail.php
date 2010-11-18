@@ -27,7 +27,11 @@
 						  <div style="clear:both;"></div> 
 				</div>
 				
-			
+				<div class="formfield">		
+						<a href="http://<?=$companydetail->language?>"><div class="leftcolumn">Language:</div></a>
+						 <div class='edit' id='language'><?=$companydetail->language?></div>
+						  <div style="clear:both;"></div> 
+				</div>
 					
 				<div class="formfield">
 						<div class="leftcolumn">Active:</div>

@@ -23,6 +23,13 @@
 		
 	<?=$this->load->view("members/ajaxemployees")?> 
 		</div>
+		
+		<h3><a href="#">Local Details</a></h3>
+	<div>
+		
+	add details in local language here
+	<?=$this->load->view("members/edit_local_desc")?> 
+		</div>
 	
 	
 

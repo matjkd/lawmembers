@@ -332,6 +332,20 @@ function add_new_address($id)
 			return TRUE;
 		}
 	}
+function update_local_description($id)
+	{
+		$form_data = array(
+    					'description_local' => $this->input->post('description_local'),
+    					);
+		
+		$this->db->where('idcompany', $id);
+		$this->db->update('mydb_company', $form_data);
+		
+		if ($this->db->affected_rows() == '1')
+		{
+			return TRUE;
+		}
+	}
 	
 function edit_address($id, $field, $value)
 	{

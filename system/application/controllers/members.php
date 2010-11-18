@@ -197,7 +197,12 @@ function edit_description($id)
 		
 			redirect('members/view/'.$id.'');  
 	}
-
+function edit_local_description($id) 
+	{
+			$this->companies_model->update_local_description($id); 
+		
+			redirect('members/view/'.$id.'');  
+	}
 
 	
 	function add_address($id)

@@ -24,7 +24,7 @@ $group = strtolower( $acl->get_group_name( $sitegroupid, 'ARO' ) );
 $submit = mysql_real_escape_string($_POST["submit"]);
 
 $companyid = mysql_real_escape_string($_GET["companyid"]);
-
+$translate = mysql_real_escape_string($_GET["translate"]);
 
 
 if (isset($companyid))
@@ -67,10 +67,32 @@ if($active == 1)
 						 - <a href="add-company.html?companyid=<?php echo $companyid; ?>" >Edit</a>
 						<?php
 						}
+				echo "</h2>";		
+				if(isset($description_local))
+						{
+							if($translate==1)
+								{
+									echo "<a href='view-company.html?companyid=$companyid'>Translate into English</a><br/>";
+								}
+								else
+								{
+									echo "<a href='view-company.html?companyid=$companyid&translate=1'>Translate into $language</a><br/>";
+								}
+						}
 				
-				echo "</h2>Website:<a href='http://$company_web'>$company_web</a><br/>$description<br/>";
-	
+				echo "Website:<a href='http://$company_web'>$company_web</a>";
+				
+				if($translate==1)
+				{
+					echo "<br/>$description_local<br/>";
+				}
+				else
+				{
+				echo "<br/>$description<br/>";
+				}
+				
 	}
+
 if($active == 0)
 	{
 		 header( 'Location: http://www.laworld.com/list-companies.html' ) ;
