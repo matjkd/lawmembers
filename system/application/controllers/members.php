@@ -327,6 +327,33 @@ function upload_image()
 		redirect('members/view/'.$id.'');   // or whatever logic needs to occur
 		
 	}
+function upload_profile_image()
+	{
+		$current_image = $this->input->post('current_image');
+		
+		if($current_image != NULL)
+		{
+			
+			//Delete Current image before creating new one
+			$this->load->library('ftp');
+				$config['hostname'] = $this->config_ftp_host;
+				$config['username'] = $this->config_ftp_user;
+				$config['password'] = $this->config_ftp_password;
+				$config['debug'] = TRUE;
+				$this->ftp->connect($config);
+				$this->ftp->delete_file('/public_html/admin/images/profiles/'.$current_image.'');
+				$this->ftp->delete_file('/public_html/admin/images/profiles/thumbs/'.$current_image.'');
+				$this->ftp->close();
+		}
+		$id = $this->input->post('id');
+		if($this->input->post('upload'))
+		{
+			$this->Gallery_model->do_profile_upload($id);
+		}
+			
+		redirect('members/view_employee/'.$id.'');   // or whatever logic needs to occur
+		
+	}
 	
 function is_logged_in()
 	{

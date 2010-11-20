@@ -3,6 +3,8 @@ class Gallery_model extends Model {
 	
 	var $gallery_path;
 	var $gallery_path_url;
+	var $profile_path;
+	var $profile_path_url;
 	
 	function Gallery_model() {
 		
@@ -10,6 +12,8 @@ class Gallery_model extends Model {
 		
 		$this->gallery_path = './images/companies';
 		$this->gallery_path_url = base_url().'images/companies/';
+		$this->profile_path = './images/profiles';
+		$this->profile_path_url = base_url().'images/profiles/';
 		
 	}
 	
@@ -29,7 +33,7 @@ class Gallery_model extends Model {
 		
 		$config = array(
 			'source_image' => $image_data['full_path'],
-				'new_image' => $this->gallery_path . '/thumbs',
+			'new_image' => $this->gallery_path . '/thumbs',
 			'maintain_ratio' => true,
 			'width' => 239,
 			'height' => 239
@@ -59,6 +63,49 @@ class Gallery_model extends Model {
 		
 		
 		
+	}
+	function do_profile_upload($id)
+	{
+		$config = array(
+		'allowed_types' => 'jpg|jpeg|gif|png',
+		'upload_path' => $this->profile_path,
+		'max_size' => 2000
+		);
+		
+		$this->load->library('upload', $config);
+		$this->upload->do_upload();
+		$image_data = $this->upload->data();
+		
+		
+		
+		$config = array(
+			'source_image' => $image_data['full_path'],
+			'new_image' => $this->profile_path . '/thumbs',
+			'maintain_ratio' => true,
+			'width' => 239,
+			'height' => 239
+		
+		);
+		
+		$this->load->library('image_lib', $config);
+		$this->image_lib->resize();
+		$this->image_lib->clear();
+		
+		
+		
+		$upload_data = array($this->upload->data());
+		
+		foreach($upload_data as $row):
+		
+		
+		// add this to database $row['filename'];
+		$new_image_data = array(
+				'profile_photo' => $row['file_name'],
+		);
+		$this->db->where('idkeypeople', $id);
+		$this->db->update('mydb_keypeople', $new_image_data);
+		
+		endforeach;
 	}
 
 	

@@ -35,7 +35,7 @@ function confirmation(id) {
 			
 			<td style="padding:2px;"><?=$row['country']?></td>
 			
-			<td style="padding:2px;"><?=$row['company_web']?></td>
+			<td style="padding:2px;"><a href="http://<?=$row['company_web']?>" target="_blank"><?=$row['company_web']?></a></td>
 			
 			<td style="padding:2px;"><?="<a href='#' onclick='confirmation(".$row['idcompany'].")'><span class='ui-icon ui-icon-circle-close ui-state-highlight'></span></a>"?></td>
 		</tr>

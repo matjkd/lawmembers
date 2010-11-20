@@ -11,7 +11,14 @@ $role = $this->session->userdata('user_level');
 		else
 		{
 ?>
-<?=anchor('members', 'Members')?>
+
+<div style=" float:left;">
+	<?=anchor('members', 'Members')?>
+</div>
+
+<div style="padding-left:10px; float:left;">
+	<?=anchor('referrals', 'Referrals')?>
+</div>
 
 
 <?php 
