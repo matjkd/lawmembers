@@ -15,7 +15,7 @@ function confirmation(id) {
 </script>
 
 <div style="display:none;" id="dvloader"><img src="<?=base_url()?>images/ajax-loader.gif"></div>
-<table id="table_id"  width="100%" style="clear:both;">
+<table id="usertable"  width="100%" style="clear:both;">
 
 	<thead>
 		<tr>
