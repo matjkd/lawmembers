@@ -16,6 +16,10 @@ $role = $this->session->userdata('user_level');
 	<?=anchor('members', 'Members')?>
 </div>
 
+ <div style="padding-left:10px; float:left;">
+	<?=anchor('members/users', 'Users')?>
+</div>
+
 <div style="padding-left:10px; float:left;">
 	<?=anchor('referrals', 'Referrals')?>
 </div>

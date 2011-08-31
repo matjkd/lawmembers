@@ -5,6 +5,7 @@ function __construct()
 	{
 		parent::__construct();
 		$this->load->model('companies_model');
+                $this->load->model('users_model');
 		$this->load->model('Gallery_model');
 		$this->is_logged_in();
               
@@ -60,6 +61,21 @@ function view()
 		$this->load->vars($data);
 		$this->load->view('main_template');
 	}
+        function users()
+        {
+
+            //get list of all users
+            $data['users'] = $this->users_model->list_users();
+
+                $data['company_id'] = 0;
+                $data['main'] = '/user/logged_in_area';
+		$data['grid'] = '/users/usergrid';
+		$data['body'] = '/users/top';
+		$this->load->vars($data);
+		$this->load->view('main_template');
+
+            
+        }
 
 	function view_employee($id)
 	{
