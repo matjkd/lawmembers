@@ -268,11 +268,14 @@ function add_new_address($id)
 			
 			$new_employee_insert_data = array(
 				'idcompany' => $id,
-				'firstname' => $this->input->post('firstname')
+				'firstname' => $this->input->post('firstname'),
+                                'lastname' => $this->input->post('lastname'),
+                                'people_email' => $this->input->post('email')
 				//'registerDate' => unix_to_human(now(), TRUE, 'eu')
 			);
 			
 			$this->db->insert('mydb_keypeople', $new_employee_insert_data);
+                        return TRUE;
 		
 		}	
 		
@@ -430,31 +433,44 @@ function delete_tag($id)
 	$this->db->delete('company_tags');
 	
 }
-function delete_address($id_address) 
+function delete_addresses($id_company)
 	{
-		
-		$delete_address = $this->db->query('DELETE FROM ignite_address WHERE address_id='.$id_address);
-		$delete_links = $this->db->query('DELETE FROM ignite_company_addresses WHERE address_id='.$id_address);
+		$this->db->where('idcompany', $id_company);
+		$this->db->delete('mydb_address');
+
+
 		return TRUE;
-		
 	}
 	
 	function delete_company($id_company) 
 	{
-		$delete_company = $this->db->query('DELETE FROM ignite_companies WHERE idcompany='.$id_company);
+		$this->db->where('idcompany', $id_company);
+		$this->db->delete('mydb_company');
+
+
+		return TRUE;
 		
+	}
+        function delete_employees($id_company)
+	{
+		$this->db->where('idcompany', $id_company);
+		$this->db->delete('mydb_keypeople');
+
+
+		return TRUE;
+
 		return TRUE;
 	}
-function delete_employee($id_employee) 
+function delete_employee($id)
 	{
-		if($id_employee == 1)
+		if($id == 1)
 		{
 			return;
 		}
 		else
 		{
-		$delete_employee = $this->db->query('DELETE FROM ignite_users WHERE id='.$id_employee);
-		$delete_links = $this->db->query('DELETE FROM ignite_company_members WHERE employee_id='.$id_employee);
+		$this->db->where('idkeypeople', $id);
+		$this->db->delete('mydb_keypeople');
 		return TRUE;
 		}
 	}

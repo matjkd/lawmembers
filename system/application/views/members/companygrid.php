@@ -4,13 +4,13 @@
 function confirmation(id) {
 	var answer = confirm("are you sure you want to delete this company and all users?")
 	if (answer){
-		
-		window.location = "<?=base_url()?>contacts/delete_company/"+ id;
+	
+	 window.location = "<?=base_url()?>members/delete_company/"+ id;
 	}
 	else{
 		alert("nothing deleted!")
 	}
-}
+} 
 //-->
 </script>
 
@@ -22,9 +22,10 @@ function confirmation(id) {
 			<th>Company Name</th>
 			<th>Country</th>
 			<th>web site</th>
+                        <th>Active on site</th>
 			<th>Actions</th>
 		</tr>
-	</thead>
+	</thead>  
 	<tbody>
 <?php foreach($companies as $key => $row):
 
@@ -36,7 +37,9 @@ function confirmation(id) {
 			<td style="padding:2px;"><?=$row['country']?></td>
 			
 			<td style="padding:2px;"><a href="http://<?=$row['company_web']?>" target="_blank"><?=$row['company_web']?></a></td>
-			
+
+                        <td style="padding:2px;"><?=$row['active']?></td>
+
 			<td style="padding:2px;"><?="<a href='#' onclick='confirmation(".$row['idcompany'].")'><span class='ui-icon ui-icon-circle-close ui-state-highlight'></span></a>"?></td>
 		</tr>
 		<?php endforeach;  ?>

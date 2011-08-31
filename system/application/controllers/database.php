@@ -20,7 +20,7 @@ class Database extends MY_Controller
 		$this->load->dbutil();
 		
 		$prefs = array(
-              
+                'tables'      => array('mydb_address', 'mydb_admin', 'mydb_company', 'mydb_keypeople', 'mydb_regions', 'users'),  // Array of tables to backup.
                 'ignore'      => array(),           // List of tables to omit from the backup
                 'format'      => 'gzip',             // gzip, zip, txt
                 'filename'    => 'backup.sql',   	// File name - NEEDED ONLY WITH ZIP FILES
@@ -29,7 +29,7 @@ class Database extends MY_Controller
                 'newline'     => "\n"               // Newline character used in backup file
               );
 
-		
+                		
          $this->dbutil->backup($prefs);
 		 $now = time();
          $date = unix_to_human($now, TRUE, 'eu');

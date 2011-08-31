@@ -1,25 +1,23 @@
 <?php
-if ($this->session->flashdata('conf_msg'))
+if (isset($message))
 {
 ?>
 
-<script type="text/javascript">
-$(document).ready(function() { 
+			<div class="ui-widget" style="padding-bottom:10px; ">
+				<div class='ui-state-error ui-corner-all' style='padding: 0 .7em;'>
+					<p>
+					<span class='ui-icon ui-icon-alert' style='float:left; margin-top:0px; margin-right:.3em;'></span>
+                                        <a href='#' onclick='javascript:this.parentNode.parentNode.parentNode.style.display="none"; return false;'>
+                                            <span class='ui-icon ui-icon-circle-close' style='float:right; margin-top:0px; margin-right:.3em;'></span>
+					</a>
 
-	$("span.spoiler").hide();
+				<?=$message?>
 
-	 $('<a class="reveal"><?=$this->session->flashdata('conf_msg')?></a> ').insertBefore('.spoiler');
 
-	$("a.reveal").mousemove(function(){
-		$(this).parents("message").children("span.spoiler").fadeIn(2500);
-		$(this).parents("message").children("a.reveal").fadeOut(600);
-	});
 
-});
-</script>
-<div align="center" >
-	<message>
-		<span class="spoiler"> </span>
-	</message>
-</div>
+					</p>
+				</div>
+			</div>
+
+
 <?php } ?>

@@ -54,7 +54,15 @@ function view()
 			$data['addresses'] = $this->companies_model->get_addresses($id); 
 			}
 		
-		
+
+                 // show warning
+                        if($this->session->flashdata('message'))
+			{
+				$data['message'] = $this->session->flashdata('message');
+			}
+
+
+
 		$data['main'] = '/user/logged_in_area';
 		$data['grid'] = '/members/companygrid';
 		$data['body'] = '/members/view-company';
@@ -257,25 +265,21 @@ function edit_local_description($id)
 				{
 				
 					$errors=validation_errors();
-					$this->session->set_flashdata('message','There was a problem adding the address. firstname is required');
+					$this->session->set_flashdata('message','There was a problem adding the employee. firstname is required');
 					redirect("members/view/$id");
 				}
 				else
 				{
-					if($query = $this->companies_model->add_new_employee($id))
+					if($this->companies_model->add_new_employee($id))
 					{
 						
-						foreach($query as $resultdata)
-						{
 						
-						redirect("members/view/$id");
-						}
+						$member_id = $this->db->insert_id();
+						redirect("members/view_employee/$member_id");
+						
 						
 					}
-					else
-					{
-						redirect("members/view/$id");
-					}
+					
 				}
 	}
 	
@@ -370,6 +374,65 @@ function upload_profile_image()
 		redirect('members/view_employee/'.$id.'');   // or whatever logic needs to occur
 		
 	}
+        function delete_employee()
+        {
+          
+            $id = $this->input->post('id');
+              $this->companies_model->delete_employee($id);
+          
+        }
+
+        function delete_company($id)
+        {
+
+         //get company details
+           $data['company'] = $this->companies_model->get_company($id); 
+
+            //get users details
+        $data['employees'] = $this->companies_model->get_employees($id);
+
+
+        $data['main'] = '/user/logged_in_area';
+		
+		$data['body'] = '/members/delete_confirm';
+		$this->load->vars($data);
+		$this->load->view('main_template');
+
+
+        }
+
+        function delete_company_confirm() {
+
+            $id = $this->input->post('idcompany');
+
+         
+            if($id == 1)
+		{
+			//so you can't delete my company
+			$this->session->set_flashdata('message', 'You are not allowed to delete this company');
+			redirect('members/view');
+
+		}
+
+                else
+
+                {
+
+
+                //delete employees
+                    $this->companies_model->delete_employees($id);
+
+                //delete addresses
+                    $this->companies_model->delete_addresses($id);
+
+                //delete company
+                    $this->companies_model->delete_company($id);
+
+                $this->session->set_flashdata('message', 'company deleted');
+		redirect('members/view'); 
+
+                }
+        }
 	
 function is_logged_in()
 	{
