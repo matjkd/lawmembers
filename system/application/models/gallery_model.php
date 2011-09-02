@@ -148,7 +148,7 @@ class Gallery_model extends Model {
 		foreach($upload_data as $row):
 
                 //copy files to s3
-              $filelocation = $image_data['full_path'];
+              $filelocation = 'profiles/'.$row['file_name'];
 
 	      $thefile =$this->profile_path."/".$row['file_name'];
 
