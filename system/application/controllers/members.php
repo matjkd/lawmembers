@@ -16,7 +16,10 @@ function __construct()
 	}
 function view()
 	{
-		$segment_active = $this->uri->segment(3);
+
+               $data['userlevel'] = $is_logged_in = $this->session->userdata('user_level');
+
+                $segment_active = $this->uri->segment(3);
 		if ($segment_active!=NULL)
 			{
 				$data['company_id'] = $this->uri->segment(3);
@@ -65,7 +68,15 @@ function view()
 
 		$data['main'] = '/user/logged_in_area';
 		$data['grid'] = '/members/companygrid';
+               
+                if(  $data['userlevel'] < 2){
+                
+		$data['body'] = '/members/edit-company';
+                }
+                 if(  $data['userlevel'] == 2){
 		$data['body'] = '/members/view-company';
+                }
+                
 		$this->load->vars($data);
 		$this->load->view('main_template');
 	}
@@ -87,12 +98,24 @@ function view()
 
 	function view_employee($id)
 	{
+
+             $data['userlevel'] = $is_logged_in = $this->session->userdata('user_level');
 		$data['companies'] = $this->companies_model->list_companies(); 
 		$data['employee_id'] = $id;
 		$data['employee_detail'] = $this->companies_model->get_employee($id);
 		$data['main'] = '/user/logged_in_area';
 		$data['grid'] = '/members/companygrid';
+
+                  if(  $data['userlevel'] < 2){
+
+		$data['body'] = '/members/edit_employee';
+
+                  }
+                   if(  $data['userlevel'] == 2){
+
 		$data['body'] = '/members/view_employee';
+
+                  }
 		$this->load->vars($data);
 		$this->load->view('main_template');
 	}
@@ -197,6 +220,14 @@ function edit_employee()
 							
 				if($data['value'] == 0 ) {$update = 'No';}
 				if($data['value'] == 1 ) {$update = 'Yes';}
+
+			}
+
+                    if($data['field'] == 'level')
+			{
+
+				if($data['value'] == 1 ) {$update = 'Admin';}
+				if($data['value'] == 2 ) {$update = 'Member';}
 
 			}
 		$this->output->set_output($update);
@@ -382,6 +413,25 @@ function upload_profile_image()
 		redirect('members/view_employee/'.$id.'');   // or whatever logic needs to occur
 		
 	}
+        function upload_profile_imageS3()
+        {
+            $current_image = $this->input->post('current_image');
+		
+		if($current_image != NULL)
+                {
+                    //Delete Current image before creating new one
+                    
+                }
+                $id = $this->input->post('id');
+                if($this->input->post('upload'))
+		{
+			$this->Gallery_model->do_profile_upload_S3($id);
+		}
+
+                redirect('members/view_employee/'.$id.'');   // or whatever logic needs to occur
+            
+        }
+
         function delete_employee($id)
         {
           

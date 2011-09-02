@@ -14,6 +14,7 @@ class Gallery_model extends Model {
 		$this->gallery_path_url = base_url().'images/companies/';
 		$this->profile_path = './images/profiles';
 		$this->profile_path_url = base_url().'images/profiles/';
+                $this->load->library('s3');
 		
 	}
 	
@@ -105,6 +106,70 @@ class Gallery_model extends Model {
 		$this->db->where('idkeypeople', $id);
 		$this->db->update('mydb_keypeople', $new_image_data);
 		
+		endforeach;
+	}
+
+        function do_profile_upload_S3($id)
+	{
+
+
+	    $bucketname = "laworld";
+
+
+            $config = array(
+		'allowed_types' => 'jpg|jpeg|gif|png',
+		'upload_path' => $this->profile_path,
+		'max_size' => 2000
+		);
+
+		$this->load->library('upload', $config);
+		$this->upload->do_upload();
+		$image_data = $this->upload->data();
+
+
+
+		$config = array(
+			'source_image' => $image_data['full_path'],
+			'new_image' => $this->profile_path . '/thumbs',
+			'maintain_ratio' => true,
+			'width' => 239,
+			'height' => 239
+
+		);
+
+		$this->load->library('image_lib', $config);
+		$this->image_lib->resize();
+		$this->image_lib->clear();
+
+
+
+		$upload_data = array($this->upload->data());
+
+		foreach($upload_data as $row):
+
+                //copy files to s3
+              $filelocation = "profiles/".$row['file_name'];
+
+	      $thefile =$this->profile_path."/".$row['file_name'];
+
+               if ($this->s3->putObject($thefile, "laworld", $filelocation, S3:: ACL_PUBLIC_READ))
+                                            {
+                                            //echo "We successfully uploaded your file.";
+                                                $this->session->set_flashdata('message', 'file uploaded successfully');
+                                            }
+                                            else
+                                            {
+                                            //	echo "Something went wrong while uploading your file... sorry.";
+                                                $this->session->set_flashdata('message', 'your file did not upload');
+                                            }
+
+		// add this to database $row['filename'];
+		$new_image_data = array(
+				'profile_photo' => $row['file_name'],
+		);
+		$this->db->where('idkeypeople', $id);
+		$this->db->update('mydb_keypeople', $new_image_data);
+
 		endforeach;
 	}
 
