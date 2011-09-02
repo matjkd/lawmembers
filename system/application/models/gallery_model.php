@@ -150,7 +150,7 @@ class Gallery_model extends Model {
                 //copy files to s3
               $filelocation = 'profiles/'.$row['file_name'];
 
-	      $thefile =$this->profile_path."/".$row['file_name'];
+	      $thefile = $image_data['full_path']."/".$row['file_name'];
 
                if ($this->s3->putObject($thefile, $bucketname, $filelocation, S3:: ACL_PUBLIC_READ))
                                             {
