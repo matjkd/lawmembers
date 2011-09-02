@@ -150,17 +150,17 @@ class Gallery_model extends Model {
                 //copy files to s3
               $filelocation = 'profiles/'.$row['file_name'];
 
-	      $thefile = $image_data['full_path']."/".$row['file_name'];
+	      $thefile = $image_data['full_path'];
 
                if ($this->s3->putObject($thefile, $bucketname, $filelocation, S3:: ACL_PUBLIC_READ))
                                             {
-                                            //echo "We successfully uploaded your file.";
-                                                $this->session->set_flashdata('message', 'file uploaded successfully');
+                                           echo "We successfully uploaded your file.";
+                                                //$this->session->set_flashdata('message', 'file uploaded successfully');
                                             }
                                             else
                                             {
-                                            //	echo "Something went wrong while uploading your file... sorry.";
-                                                $this->session->set_flashdata('message', 'your file did not upload');
+                                           	echo "Something went wrong while uploading your file... sorry.";
+                                             //   $this->session->set_flashdata('message', 'your file did not upload');
                                             }
 
 		// add this to database $row['filename'];
