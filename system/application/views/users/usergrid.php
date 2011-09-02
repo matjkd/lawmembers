@@ -2,10 +2,10 @@
 <script type="text/javascript">
 <!--
 function confirmation(id) {
-	var answer = confirm("are you sure you want to delete this company and all users?")
+	var answer = confirm("are you sure you want to delete this user?")
 	if (answer){
 
-		window.location = "<?=base_url()?>contacts/delete_user/"+ id;
+		window.location = "<?=base_url()?>members/delete_employee/"+ id;
 	}
 	else{
 		alert("nothing deleted!")
@@ -22,6 +22,7 @@ function confirmation(id) {
 			<th>Name</th>
 			<th>Company</th>
 			<th>Active</th>
+                        <th>Visible on Site</th>
 			<th>Actions</th>
 		</tr>
 	</thead>
@@ -31,11 +32,12 @@ function confirmation(id) {
 
 ?>
 		<tr>
-			<td style="padding:2px; "><?=$row['firstname']?> <?=$row['lastname']?></td>
+			<td style="padding:2px; "><a href="<?=base_url()?>members/view_employee/<?=$row['idkeypeople']?>"><?=$row['firstname']?> <?=$row['lastname']?></a></td>
 
 			<td style="padding:2px;"><a href="<?=base_url()?>members/view/<?=$row['idcompany']?>"><?=$row['company_name']?></a></td>
 
 			<td style="padding:2px;"><?=$row['user_active']?></a></td>
+                        <td style="padding:2px;"><?=$row['visible']?></a></td>
 
 			<td style="padding:2px;"><?="<a href='#' onclick='confirmation(".$row['idkeypeople'].")'><span class='ui-icon ui-icon-circle-close ui-state-highlight'></span></a>"?></td>
 		</tr>

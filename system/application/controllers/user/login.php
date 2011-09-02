@@ -11,8 +11,16 @@ function Login()
 	
 	function index()
 	{
-		$this->is_logged_in();
-		//$data['query'] = $this->db->get('content');	
+
+
+            $this->is_logged_in();
+		//$data['query'] = $this->db->get('content');
+
+              // show warning
+                        if($this->session->flashdata('message'))
+			{
+				$data['message'] = $this->session->flashdata('message');
+			}
 		$data['main'] = 'user/index';
 		$this->load->vars($data);
 		$this->load->view('main_template');
@@ -20,10 +28,30 @@ function Login()
 	
 	
 	}
+
+        function _prep_password($password)
+	{
+	    return sha1($password.$this->config->item('encryption_key'));
+	}
+
 	function validate_credentials()
 	{		
 		$this->load->model('membership_model');
-		$query = $this->membership_model->validate();
+
+                $this->form_validation->set_rules('username', 'Username', 'trim|required');
+		$this->form_validation->set_rules('password', 'Password', 'trim|required');
+                if($this->form_validation->run() == FALSE)
+				{
+					$errors=validation_errors();
+					$this->session->set_flashdata('message', $errors);
+                                        redirect("user/login", 'refresh');
+				}
+
+                //convert password to salt
+                $password = $this->input->post('password');
+		$passsalt = $this->_prep_password($password);
+
+		$query = $this->membership_model->validate($passsalt);
 		
 		
 	if($query) // if the user's credentials validated...
@@ -31,17 +59,17 @@ function Login()
 			
 			
 			$this->db->where('username', $this->input->post('username'));
-			$query2 = $this->db->get('users');
+			$query2 = $this->db->get('mydb_keypeople');
 			if($query2->num_rows == 1)
 			{
 				foreach($query2->result() as $row)
 					{
-						$user_level = $row->user_level;
-						$user_id = $row->id;
+						$user_level = $row->level;
+						$user_id = $row->idkeypeople;
 						$user_firstname = $row->firstname;
 						$user_lastname = $row->lastname;
-						$activated = $row->activated;
-						$company_id = $row->member_company;
+						$activated = $row->user_active;
+						$company_id = $row->idcompany;
 					}
 			}
 			
@@ -60,7 +88,7 @@ function Login()
 			);
 			
 		$this->session->set_userdata($data);
-		$this->session->set_flashdata('conf_msg', "Welcome");
+		$this->session->set_flashdata('message', "Welcome");
 				redirect('members/');
 		}
 		else // incorrect username or password
@@ -69,7 +97,7 @@ function Login()
 			
 			
 		
-		$this->session->set_flashdata('conf_msg', "Account Details Not Valid");
+		$this->session->set_flashdata('message', "Account Details Not Valid");
 		
 		redirect('user/login');
 			

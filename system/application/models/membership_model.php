@@ -2,13 +2,13 @@
 
 class Membership_model extends Model {
 
-	function validate()
+	function validate($password)
 	{
 		
 		$this->db->where('username', $this->input->post('username'));
-		$this->db->where('password', md5($this->input->post('password')));
-		$this->db->where('activated', 1);
-		$query = $this->db->get('users');
+		$this->db->where('password', $password);
+		$this->db->where('user_active', 1);
+		$query = $this->db->get('mydb_keypeople');
 		
 		if($query->num_rows == 1)
 		{
@@ -53,6 +53,22 @@ class Membership_model extends Model {
 			return $add;
 		}
 	
+	}
+        function update_password($id, $passsalt, $password)
+	{
+		$this->db->where('idkeypeople', $id);
+		$new_member_update_data = array(
+
+			'password' => $passsalt
+			
+
+
+		);
+
+		$insert = $this->db->update('mydb_keypeople', $new_member_update_data);
+
+
+		return $insert;
 	}
 	
 	

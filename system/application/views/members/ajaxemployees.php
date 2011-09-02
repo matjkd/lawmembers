@@ -18,7 +18,7 @@ function employeeconfirm(id) {
 	var answer = confirm("are you sure you want to delete this employee?")
 	if (answer){
 		
-		$.post('<?=base_url()?>members/delete_employee/');
+			window.location = "<?=base_url()?>members/delete_employee/"+ id;
 			
 	}
 	else{

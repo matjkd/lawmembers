@@ -13,7 +13,7 @@ class Users_model extends Model {
 		$data = array();
 		$this->db->from('mydb_keypeople');
 		$this->db->join('mydb_company', 'mydb_company.idcompany=mydb_keypeople.idcompany', 'left');
-		$this->db->group_by('mydb_keypeople.idcompany');
+		
 		$this->db->order_by('mydb_keypeople.idcompany');
 
 		$Q = $this->db->get();

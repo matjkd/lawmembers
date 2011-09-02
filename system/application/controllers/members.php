@@ -75,7 +75,7 @@ function view()
             //get list of all users
             $data['users'] = $this->users_model->list_users();
 
-                $data['company_id'] = 0;
+                $data['company_id'] = NULL;
                 $data['main'] = '/user/logged_in_area';
 		$data['grid'] = '/users/usergrid';
 		$data['body'] = '/users/top';
@@ -190,6 +190,14 @@ function edit_employee()
 			{
 				redirect('members/view_employee/'.$data['id'].'');			
 				
+			}
+
+                  if($data['field'] == 'user_active' || $data['field'] == 'visible' )
+			{
+							
+				if($data['value'] == 0 ) {$update = 'No';}
+				if($data['value'] == 1 ) {$update = 'Yes';}
+
 			}
 		$this->output->set_output($update);
 	}
@@ -374,12 +382,52 @@ function upload_profile_image()
 		redirect('members/view_employee/'.$id.'');   // or whatever logic needs to occur
 		
 	}
-        function delete_employee()
+        function delete_employee($id)
         {
           
-            $id = $this->input->post('id');
-              $this->companies_model->delete_employee($id);
-          
+
+            //get user details
+        $data['employee'] = $this->companies_model->get_employee($id);
+
+
+        $data['main'] = '/user/logged_in_area';
+
+		$data['body'] = '/members/delete_user_confirm';
+		$this->load->vars($data);
+		$this->load->view('main_template');
+
+        }
+
+
+        function delete_employee_confirm()
+        {
+
+        $id = $this->input->post('id');
+
+
+            if($id == 91)
+		{
+			//so you can't delete me
+			$this->session->set_flashdata('message', 'You are not allowed to delete this user');
+			redirect('members/users');
+
+		}
+
+                else
+
+                {
+
+
+                //delete employee
+                    $this->companies_model->delete_employee($id);
+
+
+
+                $this->session->set_flashdata('message', 'user deleted');
+		redirect('members/users');
+                }
+
+
         }
 
         function delete_company($id)
