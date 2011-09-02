@@ -148,11 +148,11 @@ class Gallery_model extends Model {
 		foreach($upload_data as $row):
 
                 //copy files to s3
-              $filelocation = "profiles/".$row['file_name'];
+              $filelocation = $image_data['full_path'];
 
 	      $thefile =$this->profile_path."/".$row['file_name'];
 
-               if ($this->s3->putObject($thefile, "laworld", $filelocation, S3:: ACL_PUBLIC_READ))
+               if ($this->s3->putObject($thefile, $bucketname, $filelocation, S3:: ACL_PUBLIC_READ))
                                             {
                                             //echo "We successfully uploaded your file.";
                                                 $this->session->set_flashdata('message', 'file uploaded successfully');

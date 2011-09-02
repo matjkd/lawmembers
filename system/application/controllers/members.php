@@ -409,8 +409,8 @@ function upload_profile_image()
 		{
 			$this->Gallery_model->do_profile_upload($id);
 		}
-			
-		redirect('members/view_employee/'.$id.'');   // or whatever logic needs to occur
+		echo "done";
+		//redirect('members/view_employee/'.$id.'', refresh);   // or whatever logic needs to occur
 		
 	}
         function upload_profile_imageS3()
@@ -427,8 +427,8 @@ function upload_profile_image()
 		{
 			$this->Gallery_model->do_profile_upload_S3($id);
 		}
-
-                redirect('members/view_employee/'.$id.'');   // or whatever logic needs to occur
+echo "done";
+              //  redirect('members/view_employee/'.$id.'', 'refresh');   // or whatever logic needs to occur
             
         }
 
