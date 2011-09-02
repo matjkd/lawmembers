@@ -15,6 +15,12 @@ class User_admin extends MY_Controller
 		$this->load->vars($data);
 		$this->load->view('main_template');
 	}
+
+
+        function create_user()
+        {
+            
+        }
 	function is_logged_in()
 	{
 		$is_logged_in = $this->session->userdata('is_logged_in');

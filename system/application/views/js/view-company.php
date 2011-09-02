@@ -14,7 +14,7 @@ $(document).ready(function() {
 </script>
 
 <?php 
-if($company_id == 0)
+if($company_id == NULL)
 {
 	
 }
@@ -33,7 +33,7 @@ foreach($company as $key => $row): ?>
 
 $(document).ready(function() {
 	var uid = "<?=$company_id?>";
-    $(".edit").editable("<?=site_url('/members/edit_company')?>", 
+         $(".edit").editable("<?=site_url('/members/edit_company')?>",
     	    {
     	    	indicator : 'Saving...',
     	    	id   : 'elementid',

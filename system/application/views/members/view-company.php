@@ -7,7 +7,7 @@
 </div>
 
 	<?php 
-	if($company_id == 0)
+	if($company_id == NULL)
 	{
 		
 	}
