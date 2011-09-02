@@ -40,7 +40,11 @@ function confirmation(id) {
 
                         <td style="padding:2px;"><?=$row['active']?></td>
 
-			<td style="padding:2px;"><?="<a href='#' onclick='confirmation(".$row['idcompany'].")'><span class='ui-icon ui-icon-circle-close ui-state-highlight'></span></a>"?></td>
+			<td style="padding:2px;">
+                       <?php  if($this->session->userdata('user_level') < 2) { ?>
+                        <?="<a href='#' onclick='confirmation(".$row['idcompany'].")'><span class='ui-icon ui-icon-circle-close ui-state-highlight'></span></a>"?>
+                        <?php } ?>
+                        </td>
 		</tr>
 		<?php endforeach;  ?>
 	</tbody>
