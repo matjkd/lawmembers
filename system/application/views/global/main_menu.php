@@ -21,7 +21,7 @@ $role = $this->session->userdata('user_level');
 </div>
 
 <div style="padding-left:10px; float:left;">
-	<?=anchor('referrals', 'Referrals')?>
+	<?=anchor('events', 'Events')?>
 </div>
 
 
@@ -32,7 +32,7 @@ $role = $this->session->userdata('user_level');
 
 <div style="float:right">
 <?php 
-		if(!isset($is_logged_in) || $role != 1)
+		if(!isset($is_logged_in) || $role > 1)
 		{
 		
 		}
