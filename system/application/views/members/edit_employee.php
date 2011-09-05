@@ -67,7 +67,7 @@
 				</div>
 
 
-    <?php      if($employee->level==0) {echo "This user is Super Admin";} else { ?>
+    <?php      if($employee->level=="0") {echo "This user is Super Admin";} else { ?>
                                 <div class="formfield">
 						 <div class="leftcolumn">Level:</div>
 						 <div class='level' id='level'>
@@ -84,7 +84,7 @@
 
 </div>
 <div style="float:right;">
-<img width="100" height="100" src="http://www.laworld.com/admin/images/profiles/thumbs/<?=$employee->profile_photo?>">
+<img width="100" height="100" src="https://s3-eu-west-1.amazonaws.com/laworld/profiles/thumbs/<?=$employee->profile_photo?>">
 <?php 
 						
 						echo form_open_multipart('members/upload_profile_images3');

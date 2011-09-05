@@ -123,7 +123,14 @@ class Gallery_model extends Model {
 		);
 
 		$this->load->library('upload', $config);
-		$this->upload->do_upload();
+		if($this->upload->do_upload()){ echo "upload done"; } else
+                {
+
+                $this->upload_error = $this->upload->display_errors();
+                echo $this->upload_error;
+
+                }
+
 		$image_data = $this->upload->data();
 
 
@@ -148,13 +155,16 @@ class Gallery_model extends Model {
 		foreach($upload_data as $row):
 
                 //copy files to s3
+                //copy large image
               $filelocation = 'profiles/'.$row['file_name'];
 
-	      $thefile = $image_data['full_path'];
+	      $thefiletmp = $image_data['full_path'];
+              $thefile = file_get_contents($thefiletmp, true);
 
-               if ($this->s3->putObject($thefile, $bucketname, $filelocation, S3:: ACL_PUBLIC_READ))
+                if ($this->s3->putObject($thefile, $bucketname, $filelocation, S3:: ACL_PUBLIC_READ))
                                             {
                                            //echo "We successfully uploaded your file.";
+                                          // @TODO combine the flashdata messages as an array then set flashdata at the end
                                                 $this->session->set_flashdata('message', 'file uploaded successfully');
                                             }
                                             else
@@ -162,6 +172,26 @@ class Gallery_model extends Model {
                                            //	echo "Something went wrong while uploading your file... sorry.";
                                              $this->session->set_flashdata('message', 'your file did not upload');
                                             }
+
+             
+               //copy thumb
+            $filelocation = 'profiles/thumbs/'.$row['file_name'];
+
+	      $thefiletmp = $image_data['file_path']."/thumbs/".$image_data['file_name'];
+              $thefile = file_get_contents($thefiletmp, true);
+
+                if ($this->s3->putObject($thefile, $bucketname, $filelocation, S3:: ACL_PUBLIC_READ))
+                                            {
+                                           //echo "We successfully uploaded your file.";
+                                                $this->session->set_flashdata('message', 'file uploaded successfully');
+                                            }
+                                            else
+                                            {
+                                           //	echo "Something went wrong while uploading your file... sorry.";
+                                             $this->session->set_flashdata('message', 'your thumb file did not upload');
+                                            }
+
+
 
 		// add this to database $row['filename'];
 		$new_image_data = array(
