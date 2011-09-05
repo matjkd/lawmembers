@@ -87,7 +87,7 @@
 <img width="100" height="100" src="http://www.laworld.com/admin/images/profiles/thumbs/<?=$employee->profile_photo?>">
 <?php 
 						
-						echo form_open_multipart('members/upload_profile_image');
+						echo form_open_multipart('members/upload_profile_images3');
                                                 echo realpath(APPPATH . '../images/profile');
 						echo form_hidden('id', $employee->idkeypeople);
 						if(isset($employee->profile_photo))
