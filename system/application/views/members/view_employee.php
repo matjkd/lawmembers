@@ -14,11 +14,7 @@
 						 <div style="clear:both;"></div>
 				</div>
 
-                                 <div class="formfield">
-						 <div class="leftcolumn">Username:</div>
-						 <div  id='username'><?=$employee->username?></div>
-						 <div style="clear:both;"></div>
-				</div>
+                              
 
 				<div class="formfield">
 						 <div class="leftcolumn">Job Title:</div>
