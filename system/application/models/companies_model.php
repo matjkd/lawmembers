@@ -66,7 +66,8 @@ function get_employee($id)
 		if ($Q->num_rows() > 0)
 		{
 			foreach ($Q->result_array() as $row)
-			
+
+
 			$data[] = $row;
 			
 		}
