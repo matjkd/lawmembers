@@ -9,6 +9,8 @@ oTable = $('#file_list').dataTable({
 				});
 });	
 </script>
+(<a href="<?=base_url()?>filetransfer/view_account/<?=$account_id?>"><?=$logCompanyName?></a>)
+<h2><?=$folder_name?></h2>
 
 <table id="file_list"  width="100%" style="clear:both;">
 	

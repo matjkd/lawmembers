@@ -23,7 +23,8 @@ class Filetransfer extends MY_Controller
 	}
 	function setup()
 	{
-		//load company names
+		 $data['userlevel'] = $is_logged_in = $this->session->userdata('user_level');
+                //load company names
 		$data['companies'] = $this->companies_model->list_company_names();
 
 
@@ -32,7 +33,18 @@ class Filetransfer extends MY_Controller
 
 		//load template files
 		$data['main'] = '/user/logged_in_area';
+
+
+                    if(  $data['userlevel'] < 2){
+
 		$data['body'] = '/filetransfer/setup';
+                }
+                 if(  $data['userlevel'] == 2){
+		$data['body'] = '/filetransfer/listaccounts';
+                }
+
+
+		
 
 		if($this->session->flashdata('message'))
 			{
@@ -67,7 +79,7 @@ class Filetransfer extends MY_Controller
 	 */
 	function view_folder($id) //folder id
 	{
-
+       $data['userlevel'] = $is_logged_in = $this->session->userdata('user_level');
 	//get folder info
 	$bucket = $this->config_bucket;
 	$data['mainbucket'] = $bucket;
@@ -115,7 +127,16 @@ class Filetransfer extends MY_Controller
   $data['AWS_SECRET_ACCESS_KEY'] = $this->secret_key ;
 
  		$data['main'] = '/user/logged_in_area';
+
+                  if(  $data['userlevel'] < 2){
+
 		$data['body'] = '/filetransfer/view_folder2';
+                }
+                 if(  $data['userlevel'] == 2){
+		$data['body'] = 'filetransfer/files_table';
+                }
+
+		
 
 		if($this->session->flashdata('message'))
 			{

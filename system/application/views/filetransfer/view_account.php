@@ -25,7 +25,7 @@ function delete_user_from_account(user_id, account_id) {
 	
 	<div class="grid_24">
 	<?php foreach($company as $row):?>
-		<h1><?=$row->company_name?> File Transfer Admin</h1>
+		<h1><?=$row->company_name?> Files</h1>
 		
 	
 	<?php endforeach; ?>
