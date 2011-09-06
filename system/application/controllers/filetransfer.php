@@ -133,7 +133,7 @@ class Filetransfer extends MY_Controller
 		$data['body'] = '/filetransfer/view_folder2';
                 }
                  if(  $data['userlevel'] == 2){
-		$data['body'] = 'filetransfer/files_table';
+		$data['body'] = 'filetransfer/files_table_view';
                 }
 
 		
