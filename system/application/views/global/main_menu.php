@@ -23,6 +23,9 @@ $role = $this->session->userdata('user_level');
 <div style="padding-left:10px; float:left;">
 	<?=anchor('events', 'Events')?>
 </div>
+    <div style="padding-left:10px; float:left;">
+	<?=anchor('filetransfer', 'Files')?>
+</div>
 
 
 <?php 
