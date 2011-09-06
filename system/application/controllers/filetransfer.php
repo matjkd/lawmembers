@@ -49,7 +49,7 @@ class Filetransfer extends MY_Controller
 			{
 			$data['errors'] = validation_errors();
 
-					$this->session->set_flashdata('message', $data['errors']);
+			$this->session->set_flashdata('message', $data['errors']);
 			redirect($this->agent->referrer());
 			}
 		$id = $this->input->post('account_id');
