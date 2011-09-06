@@ -15,15 +15,7 @@ $options = array();
 ?>
 
 
-<?php
- 
-		
 
-
-
-
-
-$attributes0 = array('name' => 'assign');?>
 
 
 
@@ -31,19 +23,19 @@ $attributes0 = array('name' => 'assign');?>
 <a href="<?=base_url()?>filetransfer/view_folder/<?=$folder_id?>">			
     <img alt="folder icon"  src="<?=base_url()?>images/Folder-icon128.png"/>
 </a>
-
+<p>
 
 <?php $attributes1 = array('name' => 'delete_folder');?>
 
 <strong><?=$row['folder_name']?></strong> 
 
-
+<br/>
 
 
 <a href="<?=base_url()?>filetransfer/delete_folder/<?=$folder_id?>"><image height="14px" src="<?=base_url()?>images/del.png"/></a><br/>
 
 
-<br/>
+</p>
 <br/>
 	
 

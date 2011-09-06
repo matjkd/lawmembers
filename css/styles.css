@@ -300,3 +300,10 @@ margin: 3px;
 iframe {
 border: 0px inset;
 }
+
+.filefolder {
+
+    width:200px;
+    float:left;
+    text-align: center;
+}
