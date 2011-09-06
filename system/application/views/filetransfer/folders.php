@@ -1,4 +1,4 @@
-Folders<br/>
+
 	<?php if($folders != NULL) { foreach($folders as $row):?>
 	<div class="filefolder" >
 
