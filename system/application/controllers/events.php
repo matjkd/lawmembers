@@ -23,6 +23,8 @@ function __construct()
                    //get list of all events
                 //$data['events'] = $this->events_model->list_events();
 
+                $data['events'] = $this->events_model->get_events();
+                
                 $data['company_id'] = NULL;
                 $data['main'] = '/user/logged_in_area';
                 $data['grid'] = '/events/events_grid';

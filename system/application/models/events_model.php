@@ -6,6 +6,11 @@ class Events_model extends Model {
 	{
 
 
+		$query = $this->db->get('mydb_events');
+		if($query->num_rows > 0);
+			{
+				return $query->result();
+			}
 
 	}
 
