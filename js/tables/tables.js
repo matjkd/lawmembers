@@ -17,3 +17,13 @@ $(document).ready(function() {
 
 		});
 } );
+
+$(document).ready(function() {
+	$('#events_table').dataTable({
+		"bStateSave": false,
+		"bJQueryUI": true,
+		"sPaginationType": "full_numbers",
+		"aoColumns": [null, null, {"bSearchable": false}, {"bSearchable": false}]
+
+		});
+} );
