@@ -54,7 +54,7 @@ $times = array(
                 );
 ?>
 Add new Event<br/>
-
+<?=form_open('events/create_event')?>
 <p>
 <?=form_label('Location')?>:<br/>
 <?=form_input('location')?>
@@ -68,7 +68,7 @@ Add new Event<br/>
 <p>
 <?=form_label('Start date')?>:<br/>
 <input type="text" id="datepicker" name="startdate"/>
-<input type="text" id="alternate" name="startdate"/>
+<input type="hidden" id="alternate" name="startdate_unix"/>
 </p>
 <p>
 <?=form_label('Start time')?>:<br/>
@@ -77,10 +77,12 @@ Add new Event<br/>
 
 <p>
 <?=form_label('End Date')?>:<br/>
-<input type="text" id="datepicker2" name="startdate"/>
-<input type="text" id="alternate2" name="startdate"/>
+<input type="text" id="datepicker2" name="enddate"/>
+<input type="hidden" id="alternate2" name="enddate_unix"/>
 </p>
 <p>
 <?=form_label('End time')?>:<br/>
 <?=form_dropdown('endtime', $times)?>
+
+<?=form_submit('submit', 'Submit Event!')?>
 </p>

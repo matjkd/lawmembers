@@ -5,4 +5,4 @@
  */
 
 ?>
-Events Table
+Events Table.
