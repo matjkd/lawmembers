@@ -39,13 +39,14 @@ $role = $this->session->userdata('user_level');
 
 <div style="float:right">
 <?php 
-		if(!isset($is_logged_in) || $role != 0)
+		if($is_logged_in == true && $role == '0')
 		{
-		
+		echo anchor('database/backup', 'Backup');
+                echo $is_logged_in;
 		}
 		else
 		{
-			echo anchor('database/backup', 'Backup');
+			
 		}
 		?>
 
