@@ -62,7 +62,7 @@ $policyDoc64 = base64_encode($policyDoc);
 $sigPolicyDoc = base64_encode(hash_hmac("sha1", $policyDoc64, $AWS_SECRET_ACCESS_KEY, TRUE));
 
 ?>
-
+<link href="<?=base_url()?>css/eventgallery.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="<?=base_url()?>js/swfupload/swfupload.js"></script>
 <script type="text/javascript" src="<?=base_url()?>js/swfupload/plugins/swfupload.queue.js"></script>
 <script type="text/javascript" src="<?=base_url()?>js/swfupload/fileprogress.js"></script>

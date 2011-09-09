@@ -38,6 +38,7 @@ class Gallery_model extends Model {
 		$query->free_result();
 		return $data;
         }
+
 	
 	function do_upload($id) {
 		
