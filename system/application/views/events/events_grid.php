@@ -38,7 +38,7 @@ $enddate = date("l, d F, Y, ga", $end);
 
 ?>
 		<tr>
-			<td style="padding:2px; "><a href=""?><?=$row->location_title?></td>
+			<td style="padding:2px; "><a href="<?=base_url()?>events/view_event/<?=$row->event_id?>"><?=$row->location_title?></a></td>
 
 			<td style="padding:2px;"><?=$row->hosted_by_company?></td>
 
