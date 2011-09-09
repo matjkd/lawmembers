@@ -4,7 +4,7 @@
 			dateFormat : 'DD, d MM, yy',
                         onSelect : function(dateText, inst)
                         {
-                            var epoch = $.datepicker.formatDate('@', $(this).datepicker('getDate')) / 1000 + 3600;
+                            var epoch = $.datepicker.formatDate('@', $(this).datepicker('getDate')) / 1000;
 
                             $('#alternate').val(epoch);
                         }
@@ -14,7 +14,7 @@
 			dateFormat : 'DD, d MM, yy',
                         onSelect : function(dateText, inst)
                         {
-                            var epoch = $.datepicker.formatDate('@', $(this).datepicker('getDate')) / 1000 + 3600;
+                            var epoch = $.datepicker.formatDate('@', $(this).datepicker('getDate')) / 1000;
 
                             $('#alternate2').val(epoch);
                         }
