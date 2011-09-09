@@ -22,6 +22,19 @@
                         
 });
 </script>
+
+<script type="text/javascript">
+	$(function() {
+		var availableTags = [<?php $this->load->view('company/company_names');?>];
+		$("#company").autocomplete({
+			source: availableTags
+		});
+	});
+
+	$(function() {
+		$("#tabs").tabs();
+	});
+	</script>
 <?php
 $times = array(
                   '0'  => '00:00',
@@ -55,6 +68,12 @@ $times = array(
 ?>
 Add new Event<br/>
 <?=form_open('events/create_event')?>
+
+<p>
+<?=form_label('Title')?>:<br/>
+<?=form_input('event_title')?>
+</p>
+
 <p>
 <?=form_label('Location')?>:<br/>
 <?=form_input('location')?>
@@ -62,7 +81,8 @@ Add new Event<br/>
 
 <p>
 <?=form_label('Hosted by')?>:<br/>
-<?=form_input('hosted_by_company')?>
+
+<input type="text" name="hosted_by_company" id="company"/>
 </p>
 
 <p>

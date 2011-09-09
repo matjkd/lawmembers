@@ -5,7 +5,7 @@ function confirmation(id) {
 	var answer = confirm("are you sure you want to delete this Event")
 	if (answer){
 
-	 window.location = "<?=base_url()?>events/delete_event"+ id;
+	 window.location = "<?=base_url()?>events/delete_event/"+ id;
 	}
 	else{
 		alert("nothing deleted!")
@@ -20,6 +20,7 @@ function confirmation(id) {
 	<thead>
 		<tr>
 			<th>Title</th>
+                        <th>Location</th>
 			<th>Hosted by</th>
 			<th>Start Date</th>
                         <th>End Date</th>
@@ -38,7 +39,9 @@ $enddate = date("l, d F, Y, ga", $end);
 
 ?>
 		<tr>
-			<td style="padding:2px; "><a href="<?=base_url()?>events/view_event/<?=$row->event_id?>"><?=$row->location_title?></a></td>
+			<td style="padding:2px; "><a href="<?=base_url()?>events/view_event/<?=$row->event_id?>"><?=$row->event_title?></a></td>
+
+                        <td style="padding:2px;"><?=$row->location_title?></td>
 
 			<td style="padding:2px;"><?=$row->hosted_by_company?></td>
 

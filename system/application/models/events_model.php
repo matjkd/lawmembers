@@ -27,6 +27,16 @@ class Events_model extends Model {
 
 	}
 
+        function delete_event($id)
+        {
+            	$this->db->where('event_id', $id);
+		$this->db->delete('mydb_events');
+		return TRUE;
+
+
+
+        }
+
         function update_event($id)
         {
              //convert start date and time to single unix entry
@@ -45,6 +55,7 @@ class Events_model extends Model {
 
             $update_event = array(
 					'location_title' => $this->input->post('location'),
+                                         'event_title' => $this->input->post('event_title'),
                                         'hosted_by_company' => $this->input->post('hosted_by_company'),
                                         'startdate' => $startdatetime,
                                         'enddate' => $enddatetime
@@ -72,6 +83,7 @@ class Events_model extends Model {
             //add data
             $new_event_insert_data = array(
 			'location_title' => $this->input->post('location'),
+                        'event_title' => $this->input->post('event_title'),
 			'hosted_by_company' => $this->input->post('hosted_by_company'),
 			'startdate' => $startdatetime,
 			'enddate' => $enddatetime
