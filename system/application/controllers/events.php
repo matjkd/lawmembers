@@ -112,6 +112,9 @@ function __construct()
 
         endforeach;
 
+        //get images from database
+        $data['gallery_images'] = $this->gallery_model->get_images($image_folder);
+
 
                // show warning
                         if($this->session->flashdata('message'))

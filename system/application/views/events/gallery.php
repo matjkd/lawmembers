@@ -192,3 +192,4 @@ $sigPolicyDoc = base64_encode(hash_hmac("sha1", $policyDoc64, $AWS_SECRET_ACCESS
 
 
 </div>
+<?=$this->load->view('view_gallery')?>

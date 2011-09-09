@@ -63,6 +63,26 @@ class Gallery_model extends Model {
             return;
         }
 
+        function get_images($image_folder)
+        {
+            $this->db->from('mydb_gallery_images');
+
+		$this->db->where('image_folder', $image_folder);
+
+		$query = $this->db->get();
+		if($query->num_rows > 0)
+			{
+				foreach ($query->result_array() as $row)
+
+			$data[] = $row;
+			}
+			else
+			{
+				$data = NULL;
+			}
+		$query->free_result();
+		return $data;
+        }
 	
 	function do_upload($id) {
 		
