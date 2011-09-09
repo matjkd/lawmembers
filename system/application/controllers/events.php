@@ -106,7 +106,7 @@ function __construct()
          //output a link to the file
           $filename = str_replace($data['bucket_name']."/", "", $fname); 
 
-        $this->gallery_model->update_imagesDB($image_folder, $image_filename);
+        $this->gallery_model->update_imagesDB($image_folder, $filename);
 
         }
 
