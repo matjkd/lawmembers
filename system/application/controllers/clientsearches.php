@@ -12,7 +12,11 @@ class Clientsearches extends MY_Controller
 
         function index()
         {
-            
+        $data['main'] = '/user/logged_in_area';
+             
+            $data['body'] = '/clientsearch/form';
+            $this->load->vars($data);
+	$this->load->view('main_template');
         }
 
         function is_logged_in()
