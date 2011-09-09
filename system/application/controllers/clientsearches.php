@@ -10,6 +10,11 @@ class Clientsearches extends MY_Controller
 		$this->is_logged_in();
 	}
 
+        function index()
+        {
+            
+        }
+
         function is_logged_in()
 	{
 		$is_logged_in = $this->session->userdata('is_logged_in');
