@@ -6,7 +6,7 @@
 </p>
 
 <p>
-<?=form_label('Location')?>:<br/>
+<?=form_label('Content')?>:<br/>
 
 <?=form_textarea('content')?>
 </p>
