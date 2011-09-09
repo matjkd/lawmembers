@@ -26,4 +26,26 @@ function __construct()
 
 		$this->load->view('frontend/template');
         }
+
+        function view_event($id)
+        {
+             $data['event'] = $this->events_model->get_event($id);
+                 $data['main'] = "frontend/view_event";
+                   $data['folder_info'] = $this->gallery_model->get_eventgallery($id);
+           
+
+	//grab some variables for the folder
+	foreach($data['folder_info'] as $row):
+		$data['folder_name'] = $row['folder_name'];
+		$data['folder_id'] = $id;
+		$data['safe_name'] = $row['safe_name'];
+		$data['account_id'] = 'events';
+	endforeach;
+        $image_folder= $data['safe_name'];
+
+             $data['gallery_images'] = $this->gallery_model->get_images($image_folder);
+               $this->load->vars($data);
+
+		$this->load->view('frontend/template');
+        }
 }
