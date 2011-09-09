@@ -5,7 +5,7 @@ class Events_model extends Model {
 	function get_events()
 	{
 
-
+                $this->db->order_by('startdate', 'DESC');
 		$query = $this->db->get('mydb_events');
 		if($query->num_rows > 0);
 			{
