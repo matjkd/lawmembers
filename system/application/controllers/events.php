@@ -48,6 +48,38 @@ function __construct()
 		$this->load->vars($data);
 		$this->load->view('main_template');
         }
+        function view_event($id)
+        {
+             $data['userlevel'] = $this->session->userdata('user_level');
+             $data['event'] = $this->events_model->get_event($id);
+
+             // load data for table
+             $data['events'] = $this->events_model->get_events();
+
+
+               // show warning
+                        if($this->session->flashdata('message'))
+			{
+				$data['message'] = $this->session->flashdata('message');
+			}
+
+                $data['main'] = '/user/logged_in_area';
+                $data['grid'] = '/events/events_grid';
+
+                 if(  $data['userlevel'] < 2){
+
+		$data['body'] = '/events/viewtop';
+                }
+                
+                if(  $data['userlevel'] == 2){
+
+                $data['body'] = '/events/memberviewtop';
+                }
+
+                $this->load->vars($data);
+                $this->load->view('main_template');
+
+        }
 
         function create_event()
         {

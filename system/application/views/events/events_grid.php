@@ -2,10 +2,10 @@
 <script type="text/javascript">
 <!--
 function confirmation(id) {
-	var answer = confirm("are you sure you want to delete this company and all users?")
+	var answer = confirm("are you sure you want to delete this Event")
 	if (answer){
 
-	 window.location = "<?=base_url()?>members/delete_company/"+ id;
+	 window.location = "<?=base_url()?>events/delete_event"+ id;
 	}
 	else{
 		alert("nothing deleted!")
@@ -23,22 +23,34 @@ function confirmation(id) {
 			<th>Hosted by</th>
 			<th>Start Date</th>
                         <th>End Date</th>
+                        <th>Actions</th>
 
 		</tr>
 	</thead>
 	<tbody>
 <?php foreach($events as $key => $row):
+// Format date here
+$start = ($row->startdate)-3600;
+ $end = ($row->enddate)-3600;
+$startdate = date("l, d F, Y, ga", $start);
+$enddate = date("l, d F, Y, ga", $end);
 
 
 ?>
 		<tr>
-			<td style="padding:2px; "><?=$row->location_title?></td>
+			<td style="padding:2px; "><a href=""?><?=$row->location_title?></td>
 
 			<td style="padding:2px;"><?=$row->hosted_by_company?></td>
 
-                        <td style="padding:2px;"><?=$row->startdate?></td>
+                        <td style="padding:2px;"><?=$startdate?></td>
 
-                          <td style="padding:2px;"><?=$row->enddate?></td>
+                        <td style="padding:2px;"><?=$enddate?></td>
+
+                         <td style="padding:2px;">
+                         <?php  if($this->session->userdata('user_level') < 2) { ?>
+                        <?="<a href='#' onclick='confirmation($row->event_id)'><span class='ui-icon ui-icon-circle-close ui-state-highlight'></span></a>"?>
+                         <?php } ?>
+                         </td>
 		</tr>
 		<?php endforeach;  ?>
 	</tbody>
