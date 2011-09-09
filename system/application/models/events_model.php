@@ -31,6 +31,10 @@ class Events_model extends Model {
         {
             	$this->db->where('event_id', $id);
 		$this->db->delete('mydb_events');
+
+
+                $this->db->where('folder_id', $id);
+		$this->db->delete('mydb_events_gallery');
 		return TRUE;
 
 
@@ -80,6 +84,8 @@ class Events_model extends Model {
             $unixendtime = ($endtime * 60)*60;
             $enddatetime = $enddate + $unixendtime;
 
+
+
             //add data
             $new_event_insert_data = array(
 			'location_title' => $this->input->post('location'),
@@ -90,6 +96,22 @@ class Events_model extends Model {
 		);
 		
 		$insert = $this->db->insert('mydb_events',   $new_event_insert_data );
+                $eventid = $this->db->insert_id();
+                  //create event gallery
+
+                $safename = $eventid.now();
+
+               $new_gallery_insert_data = array(
+			'folder_id' =>$eventid,
+                        'folder_name' => $eventid,
+			'account_id' => 'events',
+			'safe_name' => $safename
+
+		);
+
+		$galleryinsert = $this->db->insert('mydb_events_gallery',   $new_gallery_insert_data );
+
+
 		return $insert;
 
         }
