@@ -30,8 +30,8 @@ function confirmation(id) {
 	<tbody>
 <?php foreach($events as $key => $row):
 // Format date here
-$start = ($row->startdate)-3600;
- $end = ($row->enddate)-3600;
+$start = ($row->startdate);
+ $end = ($row->enddate);
 $startdate = date("l, d F, Y, ga", $start);
 $enddate = date("l, d F, Y, ga", $end);
 
