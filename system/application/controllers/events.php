@@ -98,10 +98,17 @@ function __construct()
 
 
         foreach ($data['bucket_contents'] as $file):
+
         $image_folder = $data['safe_name'];
-        $image_filename = $file['name'];
+        $fname = $file['name'];
+
+        if(strlen(strstr($fname, $data['bucket_name']))>0) {
+         //output a link to the file
+          $filename = str_replace($data['bucket_name']."/", "", $fname); 
 
         $this->gallery_model->update_imagesDB($image_folder, $image_filename);
+
+        }
 
         endforeach;
 
