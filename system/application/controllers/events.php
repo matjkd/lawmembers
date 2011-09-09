@@ -7,6 +7,9 @@ function __construct()
 		$this->load->model('companies_model');
                 $this->load->model('users_model');
                        $this->load->model('events_model');
+                           $this->load->model('gallery_model');
+                       $this->load->library('upload');
+		$this->load->library('s3');
 		$this->is_logged_in();
 
 	}
@@ -56,6 +59,38 @@ function __construct()
              // load data for table
              $data['events'] = $this->events_model->get_events();
 
+
+             //Gallery Code
+               $data['AWS_ACCESS_KEY_ID'] = $this->access_key ;
+                $data['AWS_SECRET_ACCESS_KEY'] = $this->secret_key ;
+                 $bucket = $this->config_bucket;
+                $data['mainbucket'] = $bucket;
+                $data['folder_info'] = $this->gallery_model->get_eventgallery($id);
+                $data['complete_redirect'] = base_url()."events/view_event/".$id."/";
+
+	//grab some variables for the folder
+	foreach($data['folder_info'] as $row):
+		$data['folder_name'] = $row['folder_name'];
+		$data['folder_id'] = $id;
+		$data['safe_name'] = $row['safe_name'];
+		$data['account_id'] = 'events';
+	endforeach;
+
+       
+
+
+
+       
+
+
+	$data['bucket_name'] = "events/".$data['safe_name'];
+	$folder = "";
+	$data['folder'] = $folder;
+
+
+	//get folder contents
+
+	$data['bucket_contents'] = $this->s3->getBucket($bucket);
 
                // show warning
                         if($this->session->flashdata('message'))
