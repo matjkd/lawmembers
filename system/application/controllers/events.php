@@ -81,6 +81,16 @@ function __construct()
 
         }
 
+        function update_event()
+        {
+                $id = $this->input->post('event_id');
+                 //todo add some check here
+                $this->events_model->update_event($id);
+                 $this->session->set_flashdata('message', 'Event Changed');
+		redirect('events/view_event/'.$id);
+
+        }
+
         function create_event()
         {
                 //validation

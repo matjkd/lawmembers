@@ -26,6 +26,12 @@ class Events_model extends Model {
 
 	}
 
+        function update_event($id)
+        {
+
+            return;
+        }
+
         function add_event()
         {
             //convert start date and time to single unix entry

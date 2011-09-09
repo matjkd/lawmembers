@@ -60,6 +60,12 @@ $startdate = date("l, d F, Y", $row->startdate);
 $enddate = date("l, d F, Y", $row->enddate);
 $starttime = date("H", $row->startdate);
 $endtime = date("H", $row->enddate);
+
+
+$startdateUNIX = $row->startdate-(($starttime*60)*60);
+$enddateUNIX = $row->enddate-(($endtime*60)*60);
+
+
 ?>
 
 Edit Event<br/>
@@ -77,7 +83,7 @@ Edit Event<br/>
 <p>
 <?=form_label('Start date')?>:<br/>
 <input type="text" id="datepicker" name="startdate" value="<?=$startdate?>"/>
-<input type="hidden" id="alternate" name="startdate_unix"/>
+<input type="hidden" id="alternate" name="startdate_unix" value="<?=$startdateUNIX?>"/>
 </p>
 <p>
 <?=form_label('Start time')?>:<br/>
@@ -87,12 +93,16 @@ Edit Event<br/>
 <p>
 <?=form_label('End Date')?>:<br/>
 <input type="text" id="datepicker2" name="enddate" value="<?=$enddate?>"/>
-<input type="hidden" id="alternate2" name="enddate_unix"/>
+<input type="hidden" id="alternate2" name="enddate_unix" value="<?=$enddateUNIX?>"/>
 </p>
 <p>
+
 <?=form_label('End time')?>:<br/>
 <?=form_dropdown('endtime', $times, $endtime)?>
+<input type="hidden"  name="event_id" value="<?=$row->event_id?>"/>
 <?php endforeach; ?>
+
+
 <?=form_submit('submit', 'Update Event!')?>
 </p>
 </div>
