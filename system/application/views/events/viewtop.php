@@ -58,8 +58,8 @@ $times = array(
 // Format date here
 $startdate = date("l, d F, Y", $row->startdate);
 $enddate = date("l, d F, Y", $row->enddate);
-$starttime = date("H", $row->startdate)-1;
-$endtime = date("H", $row->enddate)-1;
+$starttime = date("H", $row->startdate);
+$endtime = date("H", $row->enddate);
 ?>
 
 Edit Event<br/>
