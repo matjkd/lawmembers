@@ -72,11 +72,7 @@ $sigPolicyDoc = base64_encode(hash_hmac("sha1", $policyDoc64, $AWS_SECRET_ACCESS
 
         var isMacUser = <?php echo ($isMacUser ? 'true' : 'false'); ?>;
         var successURL = '<?php echo ($SUCCESS_REDIRECT); ?>';
-        var logUpdate = '<?=base_url()?>transfer/logaction/';
-        var logUsername = '<?=$logUsername?>';
-        var logFolder = '<?=$logFolder?>';
-        var logFolderID = '<?=$folder_id?>';
-        var logCompanyName ='<?=$logCompanyName?>';
+
 
         var swfu;
         window.onload = function () {
