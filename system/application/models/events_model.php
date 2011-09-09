@@ -14,6 +14,17 @@ class Events_model extends Model {
 
 	}
 
+        function get_event($id)
+	{
+
+                $this->db->where('event_id', $id);
+		$query = $this->db->get('mydb_events');
+		if($query->num_rows > 0);
+			{
+				return $query->result();
+			}
+
+	}
 
         function add_event()
         {
