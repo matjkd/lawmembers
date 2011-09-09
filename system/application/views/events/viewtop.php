@@ -130,7 +130,7 @@ Edit Event<br/>
 </p>
 </div>
 
-<div style="float:left; width:600px;">
+<div style="float:left; width:600px; border:1px solid;">
     
     Gallery to go here
     <?=$this->load->view('events/gallery')?>

@@ -17,6 +17,27 @@ class Gallery_model extends Model {
                 $this->load->library('s3');
 		
 	}
+
+        function get_eventgallery($id)
+        {
+            $this->db->from('mydb_events_gallery');
+
+		$this->db->where('folder_id', $id);
+
+		$query = $this->db->get();
+		if($query->num_rows == 1)
+			{
+				foreach ($query->result_array() as $row)
+
+			$data[] = $row;
+			}
+			else
+			{
+				$data = NULL;
+			}
+		$query->free_result();
+		return $data;
+        }
 	
 	function do_upload($id) {
 		
