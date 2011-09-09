@@ -24,7 +24,7 @@ function __construct()
                 //$data['events'] = $this->events_model->list_events();
 
                 $data['events'] = $this->events_model->get_events();
-                
+                $data['companies'] = $this->companies_model->list_company_names();
                 $data['company_id'] = NULL;
                 $data['main'] = '/user/logged_in_area';
                 $data['grid'] = '/events/events_grid';
@@ -52,7 +52,7 @@ function __construct()
         {
              $data['userlevel'] = $this->session->userdata('user_level');
              $data['event'] = $this->events_model->get_event($id);
-
+                $data['companies'] = $this->companies_model->list_company_names();
              // load data for table
              $data['events'] = $this->events_model->get_events();
 
@@ -84,6 +84,10 @@ function __construct()
         function update_event()
         {
                 $id = $this->input->post('event_id');
+
+               
+
+
                  //todo add some check here
                 $this->events_model->update_event($id);
                  $this->session->set_flashdata('message', 'Event Changed');
@@ -115,6 +119,24 @@ function __construct()
 
 
 
+        }
+
+        function delete_event($id)
+        {
+                  //todo add some check here
+                 $data['userlevel'] = $this->session->userdata('user_level');
+                 if($data['userlevel'] == '0' || $data['userlevel'] == '1'){
+
+               $this->events_model->delete_event($id);
+                $this->session->set_flashdata('message', 'Event Deleted');
+
+                 }
+                 else
+                 {
+                                     $this->session->set_flashdata('message', 'You do not have permission to delete events');
+
+                 }
+                 redirect('events/view');
         }
 
         function is_logged_in()

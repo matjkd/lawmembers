@@ -23,7 +23,7 @@ $(document).ready(function() {
 		"bStateSave": false,
 		"bJQueryUI": true,
 		"sPaginationType": "full_numbers",
-		"aoColumns": [null, null, {"bSearchable": false}, {"bSearchable": false}, {"bSearchable": false}]
+		"aoColumns": [null, null, null, {"bSearchable": false}, {"bSearchable": false}, {"bSearchable": false}]
 
 		});
 } );
