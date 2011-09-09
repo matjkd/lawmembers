@@ -7,9 +7,12 @@
 
 <p>
 <?=form_label('Location')?>:<br/>
+
 <?=form_textarea('content')?>
 </p>
 
 
-<?=form_submit('submit', 'Submit Event!')?>
+<?=form_submit('submit', 'Submit')?>
 </p>
+
+<?=$this->load->view('clientsearch/view_searches')?>
