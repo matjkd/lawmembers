@@ -39,6 +39,30 @@ class Gallery_model extends Model {
 		return $data;
         }
 
+        function update_imagesDB($image_folder, $image_filename)
+        {
+            //check if file is already there
+            $this->db->where('image_filename', $image_filename);
+
+            $query = $this->db->get('mydb_gallery_images');
+
+            //if not add to database
+            if($query->num_rows() < 1){
+
+                $images_array = array(
+
+                    'image_folder' => $image_folder,
+                    'image_filename' => $image_filename
+
+                );
+                $this->db->insert('mydb_gallery_images', $images_array);
+
+
+            }
+
+            return;
+        }
+
 	
 	function do_upload($id) {
 		

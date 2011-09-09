@@ -92,6 +92,20 @@ function __construct()
 
 	$data['bucket_contents'] = $this->s3->getBucket($bucket);
 
+        //add images in bucket contents to database
+        //@TODO make it so this doesn't run every time an event is viewed
+        // it is only required for the ordering of images, so link it to an order button, except for when images are added. It should be run then
+
+
+        foreach ($data['bucket_contents'] as $file):
+        $image_folder = $data['safe_name'];
+        $image_filename = $file['name'];
+
+        $this->gallery_model->update_imagesDB($image_folder, $image_filename);
+
+        endforeach;
+
+
                // show warning
                         if($this->session->flashdata('message'))
 			{
