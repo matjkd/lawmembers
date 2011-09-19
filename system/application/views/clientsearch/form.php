@@ -8,11 +8,21 @@
 <p>
 <?=form_label('Content')?>:<br/>
 
-<?=form_textarea('content')?>
-</p>
+	<?php
+$textarea_data = array(
+              'name'        => 'content',
+              'id'          => 'content',
+			  'class' 		=> 'wymeditor'
+            );
 
 
-<?=form_submit('submit', 'Submit')?>
-</p>
+		echo form_textarea($textarea_data);
+
+
+?>
+<br/>
+	<input type="submit" class="wymupdate" />
+
+        <br/>
 
 <?=$this->load->view('clientsearch/view_searches')?>
