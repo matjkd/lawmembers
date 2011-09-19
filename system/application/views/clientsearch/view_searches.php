@@ -1,4 +1,9 @@
-list of searches
+	<script type="text/javascript">
+jQuery(function() {
+    jQuery('.wymeditor').wymeditor();
+});
+        </script>
+
 <?php foreach($searches as $row):
     // Format date here
 $date_added = ($row->date_added);
