@@ -9,8 +9,8 @@
 <div id="main_edit" style="float:left; width:610px; ">	
 
 <div id="image" style="float:left; width:180px; padding-right:20px;">
+<img width="100" height="100" src="https://s3-eu-west-1.amazonaws.com/laworld/companies/thumbs/<?=$companydetail->filename?>">
 
-<img width="180" height="180" src="http://www.laworld.com/admin/images/companies/thumbs/<?=$companydetail->filename?>">
 </div>
 	
 		<div style="float:left; width:410px;">
@@ -45,9 +45,10 @@
 				</div>
 				
 				<div id="upload">
-					<?php 
-						echo realpath(APPPATH . '../images/companies');
-						echo form_open_multipart('members/upload_image');
+                                    <?php
+
+						echo form_open_multipart('members/upload_company_images3');
+                                               echo realpath(APPPATH . '../images/companies');
 						echo form_hidden('id', $companydetail->idcompany);
 						if(isset($companydetail->filename))
 						{
@@ -57,7 +58,8 @@
 						echo form_submit('upload', 'Upload');
 						echo form_close();
 					?>
-				
+
+                                    
 				</div>
 				<div style="clear:both;"></div>
 				
