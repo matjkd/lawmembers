@@ -432,6 +432,25 @@ echo "done";
             
         }
 
+           function upload_company_imageS3()
+        {
+            $current_image = $this->input->post('current_image');
+
+		if($current_image != NULL)
+                {
+                    //Delete Current image before creating new one
+
+                }
+                $id = $this->input->post('id');
+                if($this->input->post('upload'))
+		{
+			$this->Gallery_model->do_company_upload_S3($id);
+		}
+echo "done";
+              //  redirect('members/view/'.$id.'', 'refresh');   // or whatever logic needs to occur
+
+        }
+
         function delete_employee($id)
         {
           
