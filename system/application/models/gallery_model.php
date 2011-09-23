@@ -243,7 +243,7 @@ class Gallery_model extends Model {
                //copy thumb
             $filelocation = 'profiles/thumbs/'.$row['file_name'];
 
-	      $thefiletmp = $image_data['file_path']."/thumbs/".$image_data['file_name'];
+	      $thefiletmp = $image_data['file_path']."thumbs/".$image_data['file_name'];
               $thefile = file_get_contents($thefiletmp, true);
 
                 if ($this->s3->putObject($thefile, $bucketname, $filelocation, S3:: ACL_PUBLIC_READ))
