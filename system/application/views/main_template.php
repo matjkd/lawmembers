@@ -34,7 +34,7 @@
 
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/jquery-ui.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
 <script src="<?=base_url()?>js/wymeditor/jquery.wymeditor.min.js" type="text/javascript"></script>
 <script src="<?=base_url()?>js/jeditable.js" type="text/javascript"></script>
 <script src="<?=base_url()?>js/jquery.jeditable.datepicker.js" type="text/javascript"></script>

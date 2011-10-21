@@ -18,6 +18,7 @@ class Clientsearches extends MY_Controller
         $data['userlevel'] = $this->session->userdata('user_level');
         
         $data['users'] = $this->users_model->list_users();
+        $data['companies'] = $this->companies_model->list_companies();
         
        if(  $data['userlevel'] == 2){
                  redirect('clientsearches/list_searches');

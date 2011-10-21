@@ -5,6 +5,13 @@ $(function() {
 			source: availableTags
 		});
 	});
+        
+        $(function() {
+		var availableTags2 = [<?php $this->load->view('company/company_names');?>];
+		$("#companies").autocomplete({
+			source: availableTags2
+		});
+	});
 </script>
 
 Search Facility for members to list clients offering or searching for products/services worldwide
@@ -21,6 +28,11 @@ Search Facility for members to list clients offering or searching for products/s
   <input  type="text" name="member_name" id="users" />
 </p>
 
+<p>
+<?=form_label('Member Firm')?>:<br/>
+
+  <input  type="text" name="company" id="companies" />
+</p>
 
 <p>
 <?=form_label('Business Opportunity')?>:<br/>
