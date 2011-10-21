@@ -1,4 +1,4 @@
-<script>
+<script type="text/javascript">
 	$(function() {
 		$( "#datepicker" ).datepicker({
 			dateFormat : 'DD, d MM, yy',
@@ -21,9 +21,7 @@
                         });
                         
 });
-</script>
 
-<script type="text/javascript">
 	$(function() {
 		var availableTags = [<?php $this->load->view('company/company_names');?>];
 		$("#company").autocomplete({
