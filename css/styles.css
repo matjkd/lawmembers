@@ -307,3 +307,8 @@ border: 0px inset;
     float:left;
     text-align: center;
 }
+.searchlabel{
+    font-weight: bolder;
+    width:120px;
+    float:left;
+}

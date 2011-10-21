@@ -35,7 +35,7 @@ class Clientsearches extends MY_Controller
         function list_searches()
         {
                 $data['main'] = '/user/logged_in_area';
-
+            $data['searches'] = $this->clientsearch_model->get_searches();
             $data['body'] = '/clientsearch/view_searches';
             $this->load->vars($data);
 	$this->load->view('main_template');

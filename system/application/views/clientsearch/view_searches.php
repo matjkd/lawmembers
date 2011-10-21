@@ -2,8 +2,15 @@
 jQuery(function() {
     jQuery('.wymeditor').wymeditor();
 });
-        </script>
-
+        
+	$(function() {
+		$( "#accordion" ).accordion({
+			collapsible: true
+		});
+	});
+	</script>
+        <div id="accordion">
+            
 <?php foreach($searches as $row):
     // Format date here
 $date_added = ($row->date_added);
@@ -13,24 +20,28 @@ $date_added = date("l, d F, Y, ga", $date_added);
 
 
     ?>
-        <div style="background-color: #dddddd; padding:10px; margin-bottom:5px;">       
-<h1><?=$row->search_title?></h1>
-        <div style="float:left; width:400px; margin-bottom:10px; height:80px;">
+           
+<h3><a href="#"><?=$row->search_title?></a></h3>
+        <div>
+		<p>
+		   <span class="searchlabel">Added:</span><?=$date_added?><br/>
+                                   <span class="searchlabel">Company: </span>   <?=$row->company_name?><br/>
+                                   <span class="searchlabel"> Member: </span><?=$row->firstname?> <?=$row->lastname?><br/>
 
-<?=$date_added?>
+                                   <span class="searchlabel"> Phone Number:</span> <?=$row->tel?><br/>
+                                   <span class="searchlabel"> Website:</span><a href="<?=$row->company_web?>"><?=$row->company_web?></a>
+		</p>
+		  <div style="clear:both; background-color:#eeeeee; padding:5px;">
+                                           
+
+                                                    <?=$row->content?>
+                                            
+         
+                                </div>
+	</div>
+      
+<?php endforeach ?>
 
         </div>
         
-              <div style="float:left; width:400px; margin-bottom:10px; height:80px;">
-Company details etc here
-
-        </div>
-        <div style="clear:both; background-color:#eeeeee; padding:5px;">
-                    <p>
-                    <h3>Business Opportunity</h3>
-               <?=$row->content?>
-            </p>
-         
-        </div>
-        </div>
-<?php endforeach ?>
+   

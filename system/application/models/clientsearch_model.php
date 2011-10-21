@@ -10,9 +10,13 @@ class Clientsearch_model extends Model {
 
     function get_searches()
     {
-                 $this->db->order_by('date_added', 'DESC');
+                 $this->db->order_by('mydb_clientsearch.date_added', 'DESC');
+                 $this->db->join('mydb_company', 'mydb_clientsearch.company=mydb_company.idcompany');
+                 $this->db->join('mydb_keypeople', 'mydb_clientsearch.member=mydb_keypeople.idkeypeople');
+                 $this->db->join('mydb_address', 'mydb_address.idcompany=mydb_company.idcompany');
+                 $this->db->groupby('mydb_company.idcompany');
 		$query = $this->db->get('mydb_clientsearch');
-		if($query->num_rows > 0);
+		if($query->num_rows > 0); 
 			{
 				return $query->result();
 			}
