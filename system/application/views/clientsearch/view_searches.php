@@ -26,8 +26,9 @@ $date_added = date("l, d F, Y, ga", $date_added);
 		<p>
 		   <span class="searchlabel">Added:</span><?=$date_added?><br/>
                                    <span class="searchlabel">Company: </span>   <?=$row->company_name?><br/>
+                                    <span class="searchlabel">Country: </span>   <?=$row->country?><br/>
                                    <span class="searchlabel"> Member: </span><?=$row->firstname?> <?=$row->lastname?><br/>
-
+                                    <span class="searchlabel">Email: </span>   <?=$row->people_email?><br/>
                                    <span class="searchlabel"> Phone Number:</span> <?=$row->tel?><br/>
                                    <span class="searchlabel"> Website:</span><a href="<?=$row->company_web?>"><?=$row->company_web?></a>
 		</p>
