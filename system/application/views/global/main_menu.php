@@ -38,16 +38,16 @@ $role = $this->session->userdata('user_level');
                 
                 if($role < 2 &&$is_logged_in=='1') {?>
                     
- <div style="padding-left:10px; padding-right:10px; float:left;">
+ <div style="padding-left:10px; padding-right:10px; float:right;">
 	<?=anchor('members', 'Member Admin')?> 
 </div>
     
     
- <div style="padding-left:10px; padding-right:10px; float:left;">
+ <div style="padding-left:10px; padding-right:10px; float:right;">
 	<?=anchor('members/users', 'Users Admin')?> 
 </div>
     
-                    <div style="padding-left:10px; padding-right:10px; float:left;">
+                    <div style="padding-left:10px; padding-right:10px; float:right;">
 	<?=anchor('filetransfer', 'Files Admin')?> 
 </div>
             <?php    }
