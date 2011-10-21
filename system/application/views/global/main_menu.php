@@ -12,30 +12,45 @@ $role = $this->session->userdata('user_level');
 		{
 ?>
 
-<div style=" float:left;">
-	<?=anchor('members', 'Members')?>
-</div>
-
- <div style="padding-left:10px; float:left;">
-	<?=anchor('members/users', 'Users')?>
-</div>
-
-<div style="padding-left:10px; float:left;">
-	<?=anchor('events', 'Events')?>
-</div>
-    <div style="padding-left:10px; float:left;">
-	<?=anchor('filetransfer', 'Files')?>
-</div>
-
-        <div style="padding-left:10px; float:left;">
-	<?=anchor('clientsearches', 'Client Searches')?>
+ <div style="padding-left:10px; padding-right:10px; float:left;">
+	<?=anchor('filetransfer', 'Members')?> 
 </div>
 
 
+<div style="padding-left:10px; padding-right:10px; float:left;">
+	<?=anchor('events', 'Events')?> 
+</div>
+
+    
+    <div style="padding-left:10px; padding-right:10px; float:left;">
+	<?=anchor('filetransfer/view_account/1', 'Files')?> 
+</div>
+
+      <div style="padding-left:10px; padding-right:10px; float:left;">
+	<?=anchor('clientsearches', 'Client Business Opportunities')?>
+</div>
+
+ 
 <?php 
 
 
                 }
+                
+                if($role < 2 &&$is_logged_in=='1') {?>
+                    
+ <div style="padding-left:10px; padding-right:10px; float:left;">
+	<?=anchor('members', 'Member Admin')?> 
+</div>
+    
+    
+ <div style="padding-left:10px; padding-right:10px; float:left;">
+	<?=anchor('members/users', 'Users Admin')?> 
+</div>
+    
+                    <div style="padding-left:10px; padding-right:10px; float:left;">
+	<?=anchor('filetransfer', 'Files Admin')?> 
+</div>
+            <?php    }
 
 		?>
 

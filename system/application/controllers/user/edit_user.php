@@ -8,7 +8,7 @@ class Edit_user extends MY_Controller
 		$this->load->library(array('encrypt'));
 		$this->load->model('companies_model');
 		$this->load->model('membership_model');
-	
+	$this->load->model('users_model');
 	
 		$this->is_logged_in();
               
@@ -54,6 +54,30 @@ class Edit_user extends MY_Controller
 		}
 		
 	}
+        
+                 function set_passwords()
+                {
+                      //set generic password
+                    
+                    //get all users
+                    $data['members'] = $this->users_model->get_members();
+
+                    //set username as email address and surname as password, then make active where user is member
+
+                    foreach($data['members'] as $row):
+                        $password = strtolower(preg_replace('/([^@]*).*/', '$1', $row['people_email']));
+                        //echo $row['lastname']." ".$row['people_email']." ".$password."<br/>";
+                    
+                      
+                        $passsalt = $this->_prep_password($password);
+                        $username = $row['people_email'];
+                        $id = $row['idkeypeople'];
+                       $this->users_model->set_passwords($id, $passsalt, $password, $username);
+                    endforeach;
+                } 
+
+            
+            
 	
 	function main($id)
 	{

@@ -6,8 +6,9 @@ class Clientsearches extends MY_Controller
 	{
 		parent::__construct();
 		$this->load->library('user_agent');
-		$this->load->model('companies_model');
-                $this->load->model('clientsearch_model');
+		$this->load->model('users_model');
+                                $this->load->model('companies_model');
+                                $this->load->model('clientsearch_model');
 		$this->is_logged_in();
 	}
 
@@ -15,6 +16,8 @@ class Clientsearches extends MY_Controller
         {
         
         $data['userlevel'] = $this->session->userdata('user_level');
+        
+        $data['users'] = $this->users_model->list_users();
         
        if(  $data['userlevel'] == 2){
                  redirect('clientsearches/list_searches');

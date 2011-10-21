@@ -5,7 +5,8 @@ class User_admin extends MY_Controller
 	{
 		parent::__construct();
 		
-		$this->load->model('Grid_model');
+		
+                $this->load->model('users_model');
 		$this->is_logged_in();
               
 	}
@@ -21,7 +22,28 @@ class User_admin extends MY_Controller
         {
             
         }
-	function is_logged_in()
+	
+        
+        function set_passwords()
+        {
+            
+            //get all users
+            $data['members'] = $this->users_model->get_members();
+            
+            //set username as email address and surname as password, then make active where user is member
+            
+            foreach($data['members'] as $row):
+                
+                echo $row['lastname']." ".$row['people_email']."<br/>";
+                
+            endforeach;
+            
+            
+            
+            
+        }
+        
+        function is_logged_in()
 	{
 		$is_logged_in = $this->session->userdata('is_logged_in');
 		if(!isset($is_logged_in) || $is_logged_in != true)
