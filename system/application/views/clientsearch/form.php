@@ -15,23 +15,29 @@ $(function() {
 </script>
 
 Search Facility for members to list clients offering or searching for products/services worldwide
+
+<button class="submitbutton" id="opener">Add Business Opportunity</button>
+
+
+
+<div id="dialog" title="Add Business Opportunity" style="display:none;">
 <?=form_open('clientsearches/add_search')?>
 
 <p>
 <?=form_label('Title')?>:<br/>
-<?=form_input('search_title')?>
+<?=form_input('search_title', set_value('title'))?>
 </p>
 
 <p>
 <?=form_label('Member Name')?>:<br/>
 
-  <input  type="text" name="member_name" id="users" />
+  <input  type="text" name="member_name" id="users" value="<?=set_value('member_name')?>"/>
 </p>
 
 <p>
-<?=form_label('Member Firm')?>:<br/>
+<?=form_label('Member Firm', set_value('member_firm'))?>:<br/>
 
-  <input  type="text" name="company" id="companies" />
+  <input  type="text" name="company" id="companies"  value="<?=set_value('company')?>"/>
 </p>
 
 <p>
@@ -45,13 +51,13 @@ $textarea_data = array(
             );
 
 
-		echo form_textarea($textarea_data);
+		echo form_textarea($textarea_data, set_value('content'));
 
 
 ?>
 <br/>
 	<input type="submit" class="wymupdate" />
-
+</div>
         <br/>
 
 <?=$this->load->view('clientsearch/view_searches')?>
