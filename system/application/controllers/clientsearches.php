@@ -27,6 +27,11 @@ class Clientsearches extends MY_Controller {
 
         $data['main'] = '/user/logged_in_area';
 
+
+        if (isset($this->alertmessage)) {
+            $data['message'] = $this->alertmessage;
+        }
+        
         $data['searches'] = $this->clientsearch_model->get_searches();
         $data['body'] = '/clientsearch/form';
         $this->load->vars($data);
@@ -34,7 +39,7 @@ class Clientsearches extends MY_Controller {
     }
 
     function list_searches() {
-         $data['userlevel'] = $this->session->userdata('user_level');
+        $data['userlevel'] = $this->session->userdata('user_level');
         $data['main'] = '/user/logged_in_area';
         $data['searches'] = $this->clientsearch_model->get_searches();
         $data['body'] = '/clientsearch/view_searches';
@@ -43,15 +48,27 @@ class Clientsearches extends MY_Controller {
     }
 
     function add_search() {
-
-        $this->clientsearch_model->add_search();
-        $data['message'] = "search added";
-        redirect('clientsearches');
-    }
-    
-    function delete_search($id) {
-        echo "why hello there.";
         
+        //do validation
+        $this->form_validation->set_rules('member_name', 'member_name', 'trim|required');
+        $this->form_validation->set_rules('title', 'title', 'trim');
+        $this->form_validation->set_rules('company', 'company', 'trim');
+        $this->form_validation->set_rules('content', 'content', 'trim');
+        
+        
+        if ($this->clientsearch_model->add_search()) {
+              $this->alertmessage =  "entry added";
+            redirect('clientsearches');
+        } else {
+           $this->alertmessage = "data entered wrongly. Members must be in the laworld database";
+            $this->index();
+        }
+    }
+
+    function delete_search($id) {
+        $this->clientsearch_model->delete_search($id);
+        $data['message'] = "search deleted";
+        redirect('clientsearches');
     }
 
     function is_logged_in() {
