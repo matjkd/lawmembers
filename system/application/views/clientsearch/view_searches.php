@@ -21,7 +21,7 @@ $date_added = date("l, d F, Y, ga", $date_added);
 
     ?>
            
-<h3><a href="#"><?=$row->search_title?></a></h3>
+<h3><a href="#"><?=$row->search_title?> - <?=$row->country?></a></h3>
         <div>
 		<p>
 		   <span class="searchlabel">Added:</span><?=$date_added?><br/>
@@ -39,8 +39,15 @@ $date_added = date("l, d F, Y, ga", $date_added);
                                             
          
                                 </div>
+                <?php if($userlevel < 2) { ?>
+               <div style="clear:both; background-color:#555555; color:#ffffff; padding:5px;">
+                    <a href="<?=base_url()?>clientsearches/delete_search/<?=$row->search_id?>">delete this entry</a>
+                </div>
+                    
+                <?php } ?>
 	</div>
       
+
 <?php endforeach ?>
 
         </div>
