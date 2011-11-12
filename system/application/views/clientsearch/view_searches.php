@@ -12,6 +12,7 @@
 <div id="accordion">
 
     <?php
+    if($searches != NULL){
     foreach ($searches as $row):
         // Format date here
         $date_added = ($row->date_added);
@@ -46,7 +47,9 @@
         </div>
 
 
-<?php endforeach ?>
+<?php endforeach;
+    }
+    ?>
 
 </div>
 
