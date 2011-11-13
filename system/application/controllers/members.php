@@ -14,6 +14,15 @@ function __construct()
 	{
 		redirect('members/view/');
 	}
+        function landing(){
+            
+           
+                $data['main'] = '/user/logged_in_area';
+		
+		$data['body'] = '/global/landingpage';
+		$this->load->vars($data);
+		$this->load->view('main_template');
+        }
 function view()
 	{
 
@@ -95,6 +104,7 @@ function view()
 
             
         }
+        
 
 	function view_employee($id)
 	{
