@@ -10,16 +10,16 @@
 
             <?= form_open('events/delete_image') ?>
             <?php
-            $filename = "events/" . $row['image_folder'] . "/" . $row['image_filename'];
-            $bucket_name = "laworld";
+            $filename =  $row['image_filename'];
+            $bucket_name = "events/".$row['image_folder'];
             ?>
             <?= form_hidden('folder', $bucket_name) ?> 
 
-        <?= form_hidden('filename', $filename) ?> 
-  <?= form_hidden('image_id', $row['image_id']) ?> 
+            <?= form_hidden('filename', $filename) ?> 
+            <?= form_hidden('image_id', $row['image_id']) ?> 
 
             <?= form_submit('submit', 'delete image') ?>
-        <?= form_close() ?>
+            <?= form_close() ?>
         </div>
     <?php endforeach;
 } ?>
