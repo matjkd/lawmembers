@@ -4,6 +4,7 @@ class Events extends MY_Controller {
 
     function __construct() {
         parent::__construct();
+        $this->load->library('user_agent');
         $this->load->model('companies_model');
         $this->load->model('users_model');
         $this->load->model('events_model');
