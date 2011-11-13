@@ -1,4 +1,6 @@
-<?php
+<?php 
+if (!defined('BASEPATH'))
+    exit('No direct script access allowed');
 
 class Companies_model extends Model {
 
@@ -6,6 +8,11 @@ class Companies_model extends Model {
         parent::__construct();
     }
 
+    /**
+     *
+     * @param type $id
+     * @return type 
+     */
     function get_company($id) {
 
         $this->db->where('idcompany', $id);
@@ -16,6 +23,11 @@ class Companies_model extends Model {
         }
     }
 
+    /**
+     *
+     * @param type $idname
+     * @return type 
+     */
     function get_company_by_name($idname) {
 
         $this->db->where('company_name', $idname);
@@ -26,6 +38,11 @@ class Companies_model extends Model {
         }
     }
 
+    /**
+     *
+     * @param type $id
+     * @return type 
+     */
     function get_address($id) {
 
 
@@ -37,6 +54,11 @@ class Companies_model extends Model {
         }
     }
 
+    /**
+     *
+     * @param type $id
+     * @return type 
+     */
     function get_employee($id) {
 
 
@@ -48,6 +70,10 @@ class Companies_model extends Model {
         }
     }
 
+    /**
+     *
+     * @return type 
+     */
     function list_companies() {
         $data = array();
         $this->db->from('mydb_company');
@@ -65,6 +91,10 @@ class Companies_model extends Model {
         return $data;
     }
 
+    /**
+     *
+     * @return type 
+     */
     function list_company_names() {
         $this->db->select('company_name');
         $this->db->from('mydb_company');
@@ -77,6 +107,11 @@ class Companies_model extends Model {
         return $data;
     }
 
+    /**
+     *
+     * @param type $id
+     * @return type 
+     */
     function next_company($id) {
         $this->db->select('idcompany');
         $this->db->from('mydb_company');
@@ -92,6 +127,11 @@ class Companies_model extends Model {
         $Q->free_result();
     }
 
+    /**
+     *
+     * @param type $id
+     * @return type 
+     */
     function previous_company($id) {
         $this->db->select('idcompany');
         $this->db->from('mydb_company');
@@ -107,6 +147,11 @@ class Companies_model extends Model {
         $Q->free_result();
     }
 
+    /**
+     *
+     * @param type $id
+     * @return string 
+     */
     function get_employees($id) {
 
         $this->db->from('mydb_keypeople');
@@ -124,6 +169,10 @@ class Companies_model extends Model {
         return $data;
     }
 
+    /**
+     *
+     * @param type $id 
+     */
     function add_employee($id) {
         if ($id == NULL) {
             $id_company = $this->input->post('id_company');
@@ -156,6 +205,11 @@ class Companies_model extends Model {
         $this->db->insert('company_members', $link_employee_to_company);
     }
 
+    /**
+     *
+     * @param type $id
+     * @return string 
+     */
     function get_addresses($id) {
         $this->db->from('mydb_address');
         $this->db->where('idcompany', $id);
@@ -171,6 +225,10 @@ class Companies_model extends Model {
         return $data;
     }
 
+    /**
+     *
+     * @param type $id 
+     */
     function add_address($id) {
 
 
@@ -188,6 +246,11 @@ class Companies_model extends Model {
         $this->db->insert('mydb_address', $new_address_insert_data);
     }
 
+    /**
+     *
+     * @param type $id
+     * @return type 
+     */
     function add_new_address($id) {
 
 
@@ -205,6 +268,11 @@ class Companies_model extends Model {
         $this->db->insert('mydb_address', $new_address_insert_data);
     }
 
+    /**
+     *
+     * @param type $id
+     * @return type 
+     */
     function add_new_employee($id) {
 
 
@@ -225,6 +293,10 @@ class Companies_model extends Model {
         return TRUE;
     }
 
+    /**
+     *
+     * @return type 
+     */
     function add_company() {
         $new_company_insert_data = array(
             'company_name' => $this->input->post('company_name'),
@@ -242,6 +314,13 @@ class Companies_model extends Model {
         }
     }
 
+    /**
+     *
+     * @param type $id
+     * @param type $field
+     * @param type $value
+     * @return type 
+     */
     function edit_company($id, $field, $value) {
         $company_update_data = array(
             $field => $value
@@ -251,6 +330,13 @@ class Companies_model extends Model {
         return $update;
     }
 
+    /**
+     *
+     * @param type $id
+     * @param type $field
+     * @param type $value
+     * @return type 
+     */
     function edit_employee($id, $field, $value) {
         $company_update_data = array(
             $field => $value
@@ -260,6 +346,11 @@ class Companies_model extends Model {
         return $update;
     }
 
+    /**
+     *
+     * @param type $id
+     * @return type 
+     */
     function update_description($id) {
         $form_data = array(
             'description' => $this->input->post('description'),
@@ -273,6 +364,11 @@ class Companies_model extends Model {
         }
     }
 
+    /**
+     *
+     * @param type $id
+     * @return type 
+     */
     function update_local_description($id) {
         $form_data = array(
             'description_local' => $this->input->post('description_local'),
@@ -286,6 +382,13 @@ class Companies_model extends Model {
         }
     }
 
+    /**
+     *
+     * @param type $id
+     * @param type $field
+     * @param type $value
+     * @return type 
+     */
     function edit_address($id, $field, $value) {
         $address_update_data = array(
             $field => $value
@@ -295,6 +398,11 @@ class Companies_model extends Model {
         return $update;
     }
 
+    /**
+     *
+     * @param type $id
+     * @return type 
+     */
     function get_region($id) {
         $data = array();
         $this->db->from('mydb_regions');
@@ -309,6 +417,10 @@ class Companies_model extends Model {
         return $data;
     }
 
+    /**
+     *
+     * @return type 
+     */
     function list_all_tags() {
         $data = array();
         $this->db->from('tags');
@@ -322,6 +434,11 @@ class Companies_model extends Model {
         return $data;
     }
 
+    /**
+     *
+     * @param type $id
+     * @return type 
+     */
     function list_tags($id) {
         $data = array();
         $this->db->from('company_tags');
@@ -338,6 +455,10 @@ class Companies_model extends Model {
         return $data;
     }
 
+    /**
+     *
+     * @param type $id 
+     */
     function add_tag($id) {
         $new_tag_insert_data = array(
             'tag_id' => $this->input->post('tag_id'),
@@ -374,7 +495,7 @@ class Companies_model extends Model {
         $this->db->delete('mydb_keypeople');
 
 
-      
+
 
         return TRUE;
     }

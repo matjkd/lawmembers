@@ -6,9 +6,10 @@ class Login extends MY_Controller {
         parent::__construct();
         $this->load->library(array('encrypt', 'form_validation'));
     }
-/**
- * 
- */
+
+    /**
+     * 
+     */
     function index() {
 
 
@@ -26,9 +27,10 @@ class Login extends MY_Controller {
     function _prep_password($password) {
         return sha1($password . $this->config->item('encryption_key'));
     }
-/**
- * 
- */
+
+    /**
+     * 
+     */
     function validate_credentials() {
         $this->load->model('membership_model');
 
@@ -48,8 +50,6 @@ class Login extends MY_Controller {
 
 
         if ($query) { // if the user's credentials validated...
-
-
             $this->db->where('username', $this->input->post('username'));
             $query2 = $this->db->get('mydb_keypeople');
             if ($query2->num_rows == 1) {
@@ -79,25 +79,24 @@ class Login extends MY_Controller {
             $this->session->set_flashdata('message', "Welcome");
             redirect('members/landing');
         } else { // incorrect username or password
-
-
-
             $this->session->set_flashdata('message', "Account Details Not Valid");
 
             redirect('user/login');
         }
     }
-/**
- * 
- */
+
+    /**
+     * 
+     */
     function register() {
         $data['main'] = '/user/register';
         $this->load->vars($data);
         $this->load->view('main_template');
     }
-/**
- * 
- */
+
+    /**
+     * 
+     */
     function create_member() {
 
 
@@ -131,9 +130,10 @@ class Login extends MY_Controller {
             }
         }
     }
-/**
- * 
- */
+
+    /**
+     * 
+     */
     function logout() {
         $this->session->sess_destroy();
         $is_logged_in = $this->session->userdata('is_logged_in');
@@ -142,9 +142,10 @@ class Login extends MY_Controller {
         }
         $this->index();
     }
-/**
- * 
- */
+
+    /**
+     * 
+     */
     function is_logged_in() {
         $is_logged_in = $this->session->userdata('is_logged_in');
         if (!isset($is_logged_in) || $is_logged_in == true) {
