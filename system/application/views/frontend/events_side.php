@@ -1,4 +1,4 @@
-<?php foreach($events as $key => $row):
+<div style="width:150px;"><?php foreach($events as $key => $row):
 // Format date here
 $start = ($row->startdate);
  $end = ($row->enddate);
@@ -14,7 +14,7 @@ $enddate = date("l, d F, Y, ga", $end);
 if(now() < $start){  ?>
 
 
-<div style="width:150px;">
+
 <div id="frontend" style="color:#000000;">
  <?php } else { ?>
     <div id="frontend" style="color:#999999;">
@@ -25,5 +25,6 @@ if(now() < $start){  ?>
 <?=$startdate?> to <?=$enddate?>
 </p>
 </div>
-</div>
+
 <?php endforeach ?>
+</div>
