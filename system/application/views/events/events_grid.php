@@ -44,9 +44,9 @@
 
                 <td style="padding:2px;"><?= $row->hosted_by_company ?></td>
 
-                <td style="padding:2px;"><span style="display:none;"><?=$start?></span><?= $startdate ?></td>
+                <td style="padding:2px;"><span style="display:none;"><?= $start ?></span><?= $startdate ?></td>
 
-                <td style="padding:2px;"><span style="display:none;"><?=$end?></span><?= $enddate ?></td>
+                <td style="padding:2px;"><span style="display:none;"><?= $end ?></span><?= $enddate ?></td>
 
                 <td style="padding:2px;">
                     <?php if ($this->session->userdata('user_level') < 2) { ?>
