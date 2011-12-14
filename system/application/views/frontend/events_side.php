@@ -1,4 +1,4 @@
-<div style="width:150px;"><?php foreach($events as $key => $row):
+<div style="width:200px;"><?php foreach($events as $key => $row):
 // Format date here
 $start = ($row->startdate);
  $end = ($row->enddate);
