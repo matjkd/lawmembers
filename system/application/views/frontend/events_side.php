@@ -17,11 +17,11 @@ if(now() < $start){  ?>
 
 <div id="frontend" style="color:#000000;">
  <?php } else { ?>
-    <div id="frontend" style="color:#999999;">
+    <div id="frontend" style="color:#999999; text-decoration:  line-through;">
 
  <?php } ?>
 <p>
-<strong><a href="http://www.laworld.com/news-and-publications/meetings-and-events.html" target="_top"><?=$row->event_title?></a></strong>
+<strong><a style="font-weight: bolder; color:#CA430A;" href="http://www.laworld.com/news-and-publications/meetings-and-events.html" target="_top"><?=$row->event_title?></a></strong>
 <?=$startdate?> to <?=$enddate?>
 </p>
 </div>
