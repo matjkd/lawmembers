@@ -21,7 +21,7 @@ if(now() < $start){  ?>
 
  <?php } ?>
 <p>
-<strong><a href="http://www.laworld.com/news-and-publications/meetings-and-events.html"><?=$row->event_title?></a></strong>
+<strong><a href="http://www.laworld.com/news-and-publications/meetings-and-events.html" target="_top"><?=$row->event_title?></a></strong>
 <?=$startdate?> to <?=$enddate?>
 </p>
 </div>
