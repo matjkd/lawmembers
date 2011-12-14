@@ -48,6 +48,36 @@ class Events extends MY_Controller {
         $this->load->vars($data);
         $this->load->view('main_template');
     }
+    function view_side() {
+
+        $data['userlevel'] = $this->session->userdata('user_level');
+        //get list of all events
+        //$data['events'] = $this->events_model->list_events();
+
+        $data['events'] = $this->events_model->get_events();
+        $data['companies'] = $this->companies_model->list_company_names();
+        $data['company_id'] = NULL;
+        $data['main'] = '/user/logged_in_area';
+        $data['grid'] = '/events/events_grid';
+
+        if ($data['userlevel'] < 2) {
+
+            $data['body'] = '/events/top';
+        }
+        if ($data['userlevel'] == 2) {
+            $data['body'] = '/events/membertop';
+        }
+
+        // show warning
+        if ($this->session->flashdata('message')) {
+            $data['message'] = $this->session->flashdata('message');
+        }
+
+
+
+        $this->load->vars($data);
+        $this->load->view('main_template');
+    }
 
     function view_event($id) {
         $data['userlevel'] = $this->session->userdata('user_level');
