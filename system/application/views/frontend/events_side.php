@@ -14,7 +14,7 @@ $enddate = date("l, d F, Y, ga", $end);
 if(now() < $start){  ?>
 
 
-
+<div style="width:150px;">
 <div id="frontend" style="color:#000000;">
  <?php } else { ?>
     <div id="frontend" style="color:#999999;">
@@ -24,5 +24,6 @@ if(now() < $start){  ?>
 <strong><a href="http://www.laworld.com/news-and-publications/meetings-and-events.html"><?=$row->event_title?></a></strong>
 <?=$startdate?> to <?=$enddate?>
 </p>
+</div>
 </div>
 <?php endforeach ?>
