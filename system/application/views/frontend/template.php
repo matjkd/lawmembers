@@ -11,10 +11,10 @@
 
     <div class="container">
 
-		<div class="contents">
+		
 		<?php // $this->load->view('global/warning'); ?>
         <?php $this->load->view($main); ?>
-        </div>
+      
 
   	</div>
 
