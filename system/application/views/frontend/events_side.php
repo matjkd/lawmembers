@@ -2,8 +2,8 @@
 // Format date here
 $start = ($row->startdate);
  $end = ($row->enddate);
-$startdate = date("l, d F, Y, ga", $start);
-$enddate = date("l, d F, Y, ga", $end);
+$startdate = date("ga, l the d  of F, Y", $start);
+$enddate = date("ga, l the d of F, Y", $end);
 
 
 ?>
