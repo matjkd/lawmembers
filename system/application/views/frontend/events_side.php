@@ -2,8 +2,8 @@
 // Format date here
 $start = ($row->startdate);
  $end = ($row->enddate);
-$startdate = date("ga, l  d  F, Y", $start);
-$enddate = date("ga, l  d F, Y", $end);
+$startdate = date("l, d F, Y, ga", $start);
+$enddate = date("l, d F, Y, ga", $end);
 
 
 ?>
@@ -15,8 +15,8 @@ $enddate = date("ga, l  d F, Y", $end);
 if(now() < $start){  ?>
 
 <p>
-<strong><a style="font-weight: bolder; color:#CA430A;" href="http://www.laworld.com/news-and-publications/meetings-and-events.html" target="_top"><?=$row->event_title?></a></strong>
-<?=$startdate?> to <?=$enddate?>
+<strong><a style="font-weight: bolder; color:#CA430A;" href="http://www.laworld.com/news-and-publications/meetings-and-events.html" target="_top"><?=$row->event_title?> (<?=$row->location_title?>)</a></strong>
+from <?=$startdate?> to <?=$enddate?>
 </p>
 
 
