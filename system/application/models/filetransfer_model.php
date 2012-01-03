@@ -77,6 +77,7 @@ class Filetransfer_model extends Model {
     function getTransferAccounts() {
         $this->db->join('mydb_company', 'mydb_company.idcompany = mydb_transfer_account.company_id', 'left');
         $this->db->join('mydb_address', 'mydb_address.idcompany=mydb_company.idcompany', 'left');
+         $this->db->group_by('mydb_company.company_name');
         $query = $this->db->get('mydb_transfer_account');
 
         if ($query->num_rows > 0) {
