@@ -98,6 +98,7 @@ class Companies_model extends Model {
     function list_company_names() {
         $this->db->select('company_name');
         $this->db->from('mydb_company');
+        $this->db->group_by('company_name');
         $Q = $this->db->get();
         if ($Q->num_rows() > 0) {
             foreach ($Q->result_array() as $row)
