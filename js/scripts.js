@@ -13,3 +13,9 @@ $(document).ready(function(){
         return false;
     });
 });
+
+$(document).ready(function(){
+    jQuery(function() {
+        jQuery('.wymeditor').wymeditor();
+    });
+});

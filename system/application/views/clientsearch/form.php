@@ -53,7 +53,7 @@ Search Facility for members to list clients offering or searching for products/s
 
         echo form_textarea($textarea_data, set_value('content'));
         ?>
-        <br/>
+    </p>
         <input type="submit" class="wymupdate" />
 </div>
 <br/>
