@@ -15,11 +15,57 @@ class Newsletters extends MY_Controller {
         $data['userlevel'] = $this->session->userdata('user_level');
         $data['users'] = $this->users_model->list_users();
         $data['companies'] = $this->companies_model->list_companies();
+        $data['newsletters'] = $this->newsletter_model->list_newsletters();
         $data['main'] = '/user/logged_in_area';
 
         $data['body'] = '/newsletters/main';
         $this->load->vars($data);
         $this->load->view('main_template');
+    }
+
+    function edit($id) {
+        $data['userlevel'] = $this->session->userdata('user_level');
+        $data['users'] = $this->users_model->list_users();
+        $data['companies'] = $this->companies_model->list_companies();
+        $data['newsletter'] = $this->newsletter_model->get_newsletter($id);
+        foreach ($data['newsletter'] as $row):
+            $data['company_id'] = $row->company_id;
+            $data['title'] = $row->newsletter_title;
+            $data['newsletter_date'] = $row->newsletter_date;
+            $data['filename'] = $row->filename;
+            $data['content'] = $row->content;
+            $data['newsletter_id'] = $row->newsletter_id;
+        endforeach;
+
+        //convert date to human readable
+        $datestring = " %d/%m/%Y ";
+        $time = $data['newsletter_date'];
+        $data['humandate'] = mdate($datestring, $time);
+
+
+        $data['main'] = '/user/logged_in_area';
+
+        $data['body'] = '/newsletters/edit';
+        $this->load->vars($data);
+        $this->load->view('main_template');
+    }
+
+    function update_newsletter() {
+        $this->form_validation->set_rules('title', 'title', 'trim');
+        
+        if ($this->form_validation->run() == FALSE) { // validation hasn'\t been passed
+            echo "validation error";
+        } else { // passed validation proceed to post success logic
+            
+            $id = $this->uri->segment(3);
+            $this->newsletter_model->edit_newsletter($id);
+
+
+            $this->upload_image($id);
+
+
+            redirect("newsletters");
+        }
     }
 
     function submit_newsletter() {
@@ -41,7 +87,7 @@ class Newsletters extends MY_Controller {
 
 
 
-                  redirect('/newsletters');   // or whatever logic needs to occur
+                redirect('/newsletters');   // or whatever logic needs to occur
             } else {
                 echo 'An error occurred saving your information. Please try again later';
                 // Or whatever error handling is necessary
@@ -93,8 +139,6 @@ class Newsletters extends MY_Controller {
                 }
             }
             $d->close();
-            
-            
         } else {
 
             $this->session->set_flashdata('message', 'News Added');
