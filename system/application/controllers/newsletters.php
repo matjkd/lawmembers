@@ -7,6 +7,7 @@ class Newsletters extends MY_Controller {
         $this->load->model('companies_model');
         $this->load->model('users_model');
         $this->load->model('Gallery_model');
+        $this->load->model('newsletter_model');
         $this->is_logged_in();
     }
 
@@ -40,7 +41,7 @@ class Newsletters extends MY_Controller {
 
 
 
-                redirect('/admin');   // or whatever logic needs to occur
+                  redirect('/newsletters');   // or whatever logic needs to occur
             } else {
                 echo 'An error occurred saving your information. Please try again later';
                 // Or whatever error handling is necessary
@@ -50,9 +51,9 @@ class Newsletters extends MY_Controller {
 
     function upload_image($id = 0) {
 
-        $this->gallery_model->do_upload();
+        $this->Gallery_model->do_newsletter_upload();
 
-        $bucket = $this->config_bucket . "/newsletters";
+        $bucket = "laworldnewsletters";
 
         if (!empty($_FILES) && $_FILES['file']['error'] != 4) {
 
@@ -69,35 +70,31 @@ class Newsletters extends MY_Controller {
             } else {
                 $blog_id = $id;
             }
-            $this->content_model->add_file($fileName, $blog_id);
+            $this->newsletter_model->add_file($fileName, $blog_id);
             //move the file
 
             if ($this->s3->putObject($thefile, $bucket, $filelocation, S3:: ACL_PUBLIC_READ)) {
                 //echo "We successfully uploaded your file.";
-                $this->session->set_flashdata('message', 'News Added and file uploaded successfully');
+                $this->session->set_flashdata('message', 'Newsletter Added and file uploaded successfully');
             } else {
                 //echo "Something went wrong while uploading your file... sorry.";
-                $this->session->set_flashdata('message', 'News Added, but your file did not upload');
+                $this->session->set_flashdata('message', 'Newsletter Added, but your file did not upload');
             }
 
-            //uploadthumb
-            $thumblocation = base_url() . 'images/temp/thumbs/' . $fileName;
-            $newfilename = "thumb_" . $fileName;
 
-
-            $newfile = file_get_contents($thumblocation, true);
-
-            if ($this->s3->putObject($newfile, $bucket, $newfilename, S3:: ACL_PUBLIC_READ)) {
-                //echo "We successfully uploaded your file.";
-                $this->session->set_flashdata('message', 'News Added and file uploaded successfully');
-            } else {
-                //echo "Something went wrong while uploading your file... sorry.";
-                $this->session->set_flashdata('message', 'News Added, but your file did not upload');
-            }
 //delete files from server
             $this->gallery_path = "./images/temp";
-            unlink($this->gallery_path . '/' . $fileName . '');
-            unlink($this->gallery_path . '/thumbs/' . $fileName . '');
+            $mydir = $this->gallery_path . '/';
+
+            $d = dir($mydir);
+            while ($entry = $d->read()) {
+                if ($entry != "." && $entry != "..") {
+                    unlink($mydir . $entry);
+                }
+            }
+            $d->close();
+            
+            
         } else {
 
             $this->session->set_flashdata('message', 'News Added');

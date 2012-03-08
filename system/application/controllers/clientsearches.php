@@ -31,7 +31,7 @@ class Clientsearches extends MY_Controller {
         if (isset($this->alertmessage)) {
             $data['message'] = $this->alertmessage;
         }
-        
+
         $data['searches'] = $this->clientsearch_model->get_searches();
         $data['body'] = '/clientsearch/form';
         $this->load->vars($data);
@@ -48,19 +48,19 @@ class Clientsearches extends MY_Controller {
     }
 
     function add_search() {
-        
+
         //do validation
         $this->form_validation->set_rules('member_name', 'member_name', 'trim|required');
         $this->form_validation->set_rules('title', 'title', 'trim');
         $this->form_validation->set_rules('company', 'company', 'trim');
         $this->form_validation->set_rules('content', 'content', 'trim');
-        
-        
+
+
         if ($this->clientsearch_model->add_search()) {
-              $this->alertmessage =  "entry added";
-            redirect('clientsearches');
+            $this->alertmessage = "entry added";
+            $this->index();
         } else {
-           $this->alertmessage = "data entered wrongly. Members must be in the laworld database";
+            $this->alertmessage = "..";
             $this->index();
         }
     }

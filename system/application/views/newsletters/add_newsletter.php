@@ -6,31 +6,25 @@
         });
     });
         
-    $(function() {
-        var availableTags2 = [<?php $this->load->view('company/company_names'); ?>];
-        $("#companies").autocomplete({
-            source: availableTags2
-        });
-    });
     
     //date picker on menu page
 
-$(document).ready(function() {
-    $( "#datepicker" ).datepicker({
-        dateFormat : 'DD, d MM, yy',
-        onSelect : function(dateText, inst)
-        {
-            var epoch = $.datepicker.formatDate('@', $(this).datepicker('getDate')) / 1000;
+    $(document).ready(function() {
+        $( "#datepicker" ).datepicker({
+            dateFormat : 'DD, d MM, yy',
+            onSelect : function(dateText, inst)
+            {
+                var epoch = $.datepicker.formatDate('@', $(this).datepicker('getDate')) / 1000;
 
-            $('#alternate').val(epoch);
-        }
-    });
+                $('#alternate').val(epoch);
+            }
+        });
 
 
   
 
 
-});
+    });
 </script>
 
 <button class="submitbutton" id="opener">Add Newsletter</button>
@@ -38,37 +32,42 @@ $(document).ready(function() {
 
 
 <div id="dialog" title="Add Newsletter" style="display:none;">
-<?= form_open_multipart("newsletters/submit_newsletter") ?> 
+    <?= form_open_multipart("newsletters/submit_newsletter") ?> 
 
-<p>
-    Newsletter Title:<br/>
-    <?= form_input('title', set_value('title')) ?>
-</p>
-
-
- <p>
-        <?= form_label('Member Firm', set_value('member_firm')) ?>:<br/>
-
-        <input  type="text" name="company" id="companies"  value="<?= set_value('company') ?>"/>
+    <p>
+        Newsletter Title:<br/>
+        <?= form_input('title', set_value('title')) ?>
     </p>
 
 
-<p>
-    Date: <br/>
-    <input type="text" name="date_added" id="datepicker" value=""><br/>
-     <input type="hidden" name="date_added" id="alternate" value="">
-</p>
+    <p>
+        <?= form_label('Member Firm', set_value('member_firm')) ?>:<br/>
 
 
-<p class="file">
-    <?= form_label('file') ?><br/>
+        <select name="company">  
+            <?php foreach ($companies as $row): ?>
+                <option value="<?= $row['idcompany'] ?>"><?= $row['company_name'] ?></option>
+            <?php endforeach; ?>
+        </select>
+    </p>
 
-<?= form_upload('file') ?>
-</p>
+
+    <p>
+        Date: <br/>
+        <input type="text" name="date_addedview" id="datepicker" value=""><br/>
+        <input type="hidden" name="date_added" id="alternate" value="">
+    </p>
+
+
+    <p class="file">
+        <?= form_label('file') ?><br/>
+
+        <?= form_upload('file') ?>
+    </p>
 
 
 
-<p>
+    <p>
         <?= form_label('Description') ?>:<br/>
 
         <?php
@@ -81,8 +80,8 @@ $(document).ready(function() {
 
         echo form_textarea($textarea_data, set_value('content'));
         ?>
-     </p>
-        <input type="submit" class="wymupdate" />
+    </p>
+    <input type="submit" class="wymupdate" />
 
-<?= form_close() ?> 
+    <?= form_close() ?> 
 </div>
