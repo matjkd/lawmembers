@@ -8,7 +8,7 @@
                <th>Location</th>
             <th>Link (right click and save as)</th>
             <th>Date Added</th>
-            <th>actions</th>
+           
         </tr>
 
     </thead>
@@ -32,7 +32,7 @@
                 <td> <?= $row->city ?>, <?= $row->country ?></td>
                 <td><a href="https://s3-eu-west-1.amazonaws.com/laworldnewsletters/<?= $link ?>"><?= $row->newsletter_filename ?></a></td>
                 <td> <?= $date_added ?></td>
-                <td> <a href="<?= base_url() ?>newsletters/edit/<?= $row->newsletter_id ?>">edit</a></td>            
+                      
 
             </tr>
 
