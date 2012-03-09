@@ -10,11 +10,13 @@ class Newsletter_model extends Model {
      * 
      */
 
-    function list_newsletters() {
+    function list_newsletters($limit = "") {
 
         $this->db->join('mydb_company', 'mydb_newsletters.company_id = mydb_company.idcompany');
         $this->db->join('mydb_address', 'mydb_address.idcompany = mydb_company.idcompany');
         $this->db->group_by('mydb_newsletters.newsletter_id');
+        $this->db->limit($limit);
+        $this->db->order_by('mydb_newsletters.newsletter_date', 'asc');
         $query = $this->db->get('mydb_newsletters');
         if ($query->num_rows > 0) {
             return $query->result();

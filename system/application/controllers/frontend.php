@@ -7,6 +7,7 @@ class Frontend extends MY_Controller {
         $this->load->model('companies_model');
         $this->load->model('users_model');
         $this->load->model('events_model');
+        $this->load->model('newsletter_model');
         $this->load->model('gallery_model');
 
         $this->load->library('s3');
@@ -24,7 +25,8 @@ class Frontend extends MY_Controller {
 
         $this->load->view('frontend/template');
     }
-     function view_sideevents() {
+
+    function view_sideevents() {
         $data['events'] = $this->events_model->get_events();
 
         $data['main'] = "frontend/events_side";
@@ -49,6 +51,14 @@ class Frontend extends MY_Controller {
         $image_folder = $data['safe_name'];
 
         $data['gallery_images'] = $this->gallery_model->get_images($image_folder);
+        $this->load->vars($data);
+
+        $this->load->view('frontend/template');
+    }
+
+    function view_newsletters() {
+        $data['newsletters'] = $this->newsletter_model->list_newsletters(10);
+        $data['main'] = "frontend/newsletters/main";
         $this->load->vars($data);
 
         $this->load->view('frontend/template');
