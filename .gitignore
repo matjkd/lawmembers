@@ -3,5 +3,9 @@ system/application/config/config.php
 system/application/config/postmark.php
 system/application/config/email.php
 nbproject/
-
+images/captcha/*
+nbproject/*
+stats/*
+.htaccess
+*.*~
 .htaccess
