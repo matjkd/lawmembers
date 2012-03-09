@@ -70,8 +70,31 @@ class Gallery_model extends Model {
     }
 
     function do_newsletter_upload() {
+        
+        
+        
+        
         $this->gallery_path = './images/temp/';
         $this->gallery_path_url = base_url() . 'images/temp/';
+        
+        
+        
+         //check file path exists.
+        //maybe extend this check for each subfolder in future
+        $path = $this->doc_root . 'images/temp/';
+
+        //create directories if required
+        if (file_exists($path)) {
+
+            // folder exists, do nothing
+        } else {
+
+            //create folders
+            mkdir('' . $this->doc_root . 'images/temp/');
+          
+        }
+        
+        
 
 
         $config = array(

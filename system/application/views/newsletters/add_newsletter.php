@@ -12,6 +12,9 @@
     $(document).ready(function() {
         $( "#datepicker" ).datepicker({
             dateFormat : 'DD, d MM, yy',
+             changeMonth: true,
+            changeYear: true,
+            
             onSelect : function(dateText, inst)
             {
                 var epoch = $.datepicker.formatDate('@', $(this).datepicker('getDate')) / 1000;
@@ -35,7 +38,7 @@
     <?= form_open_multipart("newsletters/submit_newsletter") ?> 
 
     <p>
-        Newsletter Title:<br/>
+        Newsletter Title (if you leave blank it will use the filename):<br/>
         <?= form_input('title', set_value('title')) ?>
     </p>
 
@@ -53,14 +56,14 @@
 
 
     <p>
-        Date: <br/>
+        Date of Newsletter: <br/>
         <input type="text" name="date_addedview" id="datepicker" value=""><br/>
         <input type="hidden" name="date_added" id="alternate" value="">
     </p>
 
 
     <p class="file">
-        <?= form_label('file') ?><br/>
+      
 
         <?= form_upload('file') ?>
     </p>

@@ -32,7 +32,7 @@ class Newsletters extends MY_Controller {
             $data['company_id'] = $row->company_id;
             $data['title'] = $row->newsletter_title;
             $data['newsletter_date'] = $row->newsletter_date;
-            $data['filename'] = $row->filename;
+            $data['filename'] = $row->newsletter_filename;
             $data['content'] = $row->content;
             $data['newsletter_id'] = $row->newsletter_id;
         endforeach;
@@ -69,7 +69,7 @@ class Newsletters extends MY_Controller {
     }
 
     function submit_newsletter() {
-        $this->form_validation->set_rules('title', 'Title', 'trim|max_length[255]|required');
+        $this->form_validation->set_rules('title', 'Title', 'trim|max_length[255]');
         $this->form_validation->set_rules('content', 'Content', 'trim');
         $this->form_validation->set_error_delimiters('<br /><span class="error">', '</span>');
 

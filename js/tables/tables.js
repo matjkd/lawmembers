@@ -27,3 +27,12 @@ $(document).ready(function() {
 
 		});
 } );
+
+$(document).ready(function() {
+	$('#newsletter_table').dataTable({
+		"bStateSave": false,
+		"bJQueryUI": true,
+		"sPaginationType": "full_numbers"
+
+		});
+} );
