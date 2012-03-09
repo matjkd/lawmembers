@@ -29,13 +29,9 @@ $role = $this->session->userdata('user_level');
       <div style="padding-left:10px; padding-right:10px; float:left;">
 	<?=anchor('clientsearches', 'Client Business Opportunities')?>
 </div>
-<<<<<<< HEAD
   <div style="padding-left:10px; padding-right:10px; float:left;">
 	<?=anchor('newsletters', 'Newsletters')?>
 </div>
-=======
-
->>>>>>> a13ec6ec834fce02ad7b972183a438b4377fb8ba
  
 <?php 
 
