@@ -3,12 +3,13 @@
     <thead>
         <tr>
             <th>Title</th>
-            <th>Newsletter Date</th>
-             <th>Company</th>
-               <th>Location</th>
+            <th>Date</th>
+            <th>Company</th>
+            <th>City</th>
+            <th>Country</th>
             <th>Link (right click and save as)</th>
-            <th>Date Added</th>
-           
+
+
         </tr>
 
     </thead>
@@ -18,21 +19,22 @@
 
             $link = str_replace(" ", "+", $row->newsletter_filename);
             $datestring1 = "%F %Y ";
-             $datestring2 = " %d/%m/%Y ";
+            $datestring2 = " %d/%m/%Y ";
             $time = $row->newsletter_date;
             $time2 = $row->date_added;
             $newsletter_date = mdate($datestring1, $time);
-            $date_added =  mdate($datestring2, $time2);
+            $date_added = mdate($datestring2, $time2);
             ?>
 
             <tr>
                 <td>  <?= $row->newsletter_title ?> </td>
-                <td> <?=  $newsletter_date ?></td>
-                <td> <a href="<?=base_url()?>members/view/<?= $row->company_id ?>"><?= $row->company_name ?></a></td>
-                <td> <?= $row->city ?>, <?= $row->country ?></td>
+                <td> <?= $newsletter_date ?></td>
+                <td> <a href="<?= base_url() ?>members/view/<?= $row->company_id ?>"><?= $row->company_name ?></a></td>
+                <td> <?= $row->city ?></td>
+                <td> <?= $row->country ?></td>
                 <td><a href="https://s3-eu-west-1.amazonaws.com/laworldnewsletters/<?= $link ?>"><?= $row->newsletter_filename ?></a></td>
-                <td> <?= $date_added ?></td>
-                      
+
+
 
             </tr>
 
