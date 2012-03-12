@@ -16,7 +16,7 @@ class Newsletter_model extends Model {
         $this->db->join('mydb_address', 'mydb_address.idcompany = mydb_company.idcompany');
         $this->db->group_by('mydb_newsletters.newsletter_id');
         $this->db->limit($limit);
-        $this->db->order_by('mydb_newsletters.newsletter_date', 'asc');
+        $this->db->order_by('mydb_newsletters.newsletter_date', 'desc');
         $query = $this->db->get('mydb_newsletters');
         if ($query->num_rows > 0) {
             return $query->result();

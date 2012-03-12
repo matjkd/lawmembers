@@ -50,7 +50,8 @@ $(document).ready(function() {
     $('#newsletter_table').dataTable({
         "bStateSave": false,
         "bJQueryUI": true,
-        "sPaginationType": "full_numbers"
+        "sPaginationType": "full_numbers",
+         "aaSorting": [[ 1, "desc" ]]
 
     });
 } );
