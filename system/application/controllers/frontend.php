@@ -57,7 +57,7 @@ class Frontend extends MY_Controller {
     }
 
     function view_newsletters() {
-        $data['newsletters'] = $this->newsletter_model->list_newsletters(10);
+        $data['newsletters'] = $this->newsletter_model->list_newsletters();
         $data['main'] = "frontend/newsletters/main";
         $this->load->vars($data);
 
