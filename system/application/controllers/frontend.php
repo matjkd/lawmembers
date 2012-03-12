@@ -58,6 +58,8 @@ class Frontend extends MY_Controller {
 
     function view_newsletters() {
         $data['newsletters'] = $this->newsletter_model->list_newsletters();
+        $data['countries'] = $this->newsletter_model->list_countries();
+        $data['country'] = $this->input->post('country');
         $data['main'] = "frontend/newsletters/main";
         $this->load->vars($data);
 

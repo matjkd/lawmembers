@@ -1,3 +1,26 @@
+<div id="selectform">
+<?= form_open('frontend/view_newsletters') ?>
+<select name="country">
+    <?php foreach ($countries as $row): 
+        
+        if($row->country == $country) {
+            $selected ="selected='selected'";
+        } else {
+            $selected ="";
+        }
+        
+        ?>
+    
+    
+        <option <?=$selected?> value="<?= $row->country ?>"><?= $row->country ?></option>
+    <?php endforeach;
+    ?>
+</select>
+<?= form_submit('Submit', 'Select Country') ?>
+
+<?= form_close() ?>
+
+</div>
 <script src="<?= base_url() ?>js/tables/tables.js" type="text/javascript" ></script>
 <table id="newsletter_table" style="width:100%;">
     <thead>

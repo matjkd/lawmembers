@@ -11,11 +11,32 @@ class Newsletter_model extends Model {
      */
 
     function list_newsletters($limit = "") {
-
+        $country = $this->input->post('country');
         $this->db->join('mydb_company', 'mydb_newsletters.company_id = mydb_company.idcompany');
         $this->db->join('mydb_address', 'mydb_address.idcompany = mydb_company.idcompany');
         $this->db->group_by('mydb_newsletters.newsletter_id');
         $this->db->limit($limit);
+        $this->db->order_by('mydb_newsletters.newsletter_date', 'desc');
+        if ($country != NULL) {
+            $this->db->where('mydb_address.country', $country);
+        }
+        $query = $this->db->get('mydb_newsletters');
+        if ($query->num_rows > 0) {
+            return $query->result();
+        }
+    }
+
+    /*
+     * list countries used in newsletters
+     */
+
+    function list_countries() {
+
+        $this->db->join('mydb_company', 'mydb_newsletters.company_id = mydb_company.idcompany');
+        $this->db->join('mydb_address', 'mydb_address.idcompany = mydb_company.idcompany');
+
+        $this->db->group_by('mydb_address.country');
+
         $this->db->order_by('mydb_newsletters.newsletter_date', 'desc');
         $query = $this->db->get('mydb_newsletters');
         if ($query->num_rows > 0) {
@@ -46,7 +67,7 @@ class Newsletter_model extends Model {
         $newsletterdate = $this->input->post('date_added') + 3601;
         $now = time();
         $title = $this->input->post('title');
-        if($title == NULL) {
+        if ($title == NULL) {
             $title = $_FILES['file']['name'];
         }
         $datetime = $now;
