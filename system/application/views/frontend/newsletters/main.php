@@ -1,6 +1,7 @@
 <div id="selectform">
 <?= form_open('frontend/view_newsletters') ?>
 <select name="country">
+     <option  value="">Please Select</option>
     <?php foreach ($countries as $row): 
         
         if($row->country == $country) {
