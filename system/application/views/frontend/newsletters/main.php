@@ -25,12 +25,10 @@
 <table id="newsletter_table" style="width:100%;">
     <thead>
         <tr>
-            <th>Title</th>
             <th>Date</th>
-            <th>Company</th>
-            <th>City</th>
-            <th>Country</th>
-            <th>Link (right click and save as)</th>
+            <th>Title</th>
+            <th>Jurisdiction</th>
+      
 
 
         </tr>
@@ -50,13 +48,12 @@
             ?>
 
             <tr>
-                <td>  <?= $row->newsletter_title ?> </td>
+           
                 <td> <?= $newsletter_date ?></td>
-                <td> <?= $row->company_name ?></td>
-                <td> <?= $row->city ?></td>
-                <td> <?= $row->country ?></td>
-                <td><a href="https://s3-eu-west-1.amazonaws.com/laworldnewsletters/<?= $link ?>"><?= $row->newsletter_filename ?></a></td>
-
+                     <td>  <a href="https://s3-eu-west-1.amazonaws.com/laworldnewsletters/<?= $link ?>"><?= $row->newsletter_title ?></a><br/> <em>Written by <?= $row->company_name ?></em> </td>
+               
+                <td> <?= $row->city ?>, <?= $row->country ?></td>
+               
 
 
             </tr>
