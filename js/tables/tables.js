@@ -51,7 +51,7 @@ $(document).ready(function() {
         "bStateSave": false,
         "bJQueryUI": true,
         "sPaginationType": "full_numbers",
-         "aaSorting": [[ 1, "desc" ]]
+         "aaSorting": [[ 0, "desc" ]]
 
     });
 } );
