@@ -52,7 +52,7 @@
             <tr>
                 <td>  <?= $row->newsletter_title ?> </td>
                 <td> <?= $newsletter_date ?></td>
-                <td> <a href="<?= base_url() ?>members/view/<?= $row->company_id ?>"><?= $row->company_name ?></a></td>
+                <td> <?= $row->company_name ?></td>
                 <td> <?= $row->city ?></td>
                 <td> <?= $row->country ?></td>
                 <td><a href="https://s3-eu-west-1.amazonaws.com/laworldnewsletters/<?= $link ?>"><?= $row->newsletter_filename ?></a></td>
