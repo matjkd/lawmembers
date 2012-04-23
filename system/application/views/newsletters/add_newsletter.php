@@ -17,7 +17,7 @@
             
             onSelect : function(dateText, inst)
             {
-                var epoch = $.datepicker.formatDate('@', $(this).datepicker('getDate')) / 1000;
+                var epoch = $.datepicker.formatDate('@', $(this).datepicker('getDate')) / 1000 + 5000;
 
                 $('#alternate').val(epoch);
             }
