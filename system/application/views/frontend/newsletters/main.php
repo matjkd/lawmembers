@@ -50,7 +50,7 @@
 
             <tr>
            
-                <td> <?= $newsletter_date ?></td>
+                <td><span style="display:none;"><?=$time?></span><?=$newsletter_date?></td>
                      <td>  <a href="https://s3-eu-west-1.amazonaws.com/laworldnewsletters/<?= $link ?>"><?= $row->newsletter_title ?></a><br/> <em>Written by <?= $row->company_name ?></em> </td>
                
                 <td> <?= $row->city ?>, <?= $row->country ?></td>
