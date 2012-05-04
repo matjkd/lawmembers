@@ -83,6 +83,9 @@ class Newsletter_model extends Model {
         return $insert;
     }
 
+    /*
+     * 
+     */
     function edit_newsletter($id) {
         $newsletterdate = $this->input->post('date_added') + 3601;
         $content_update = array(
@@ -99,6 +102,12 @@ class Newsletter_model extends Model {
         $this->db->where('newsletter_id', $id);
         $update = $this->db->update('mydb_newsletters', $content_update);
         return $update;
+    }
+    
+    function delete_newsletter($id) {
+    	$this->db->where('newsletter_id', $id);
+    	$delete = $this->db->delete('mydb_newsletters');
+    	return $delete;
     }
 
     /**

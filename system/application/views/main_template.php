@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <?php $this->load->view('global/header'); ?>
 <body>
-
+<input type="hidden" id="baseurl" value="<?=base_url()?>"/>
 <div id="header">
 	<div id="header_inner">
 		<div id="logo"><img src="<?=base_url()?>images/laworld_logo.png" width=250px height=63px></div>
