@@ -28,7 +28,7 @@
 <?php foreach ($countries as $row): ?>
 
 <?= form_open('frontend/view_newsletters') ?>
-<div style="width:100%; height:30px; padding:10px 0; margin-bottom:20px; background:#ddd;">
+<div style="width:100%; height:30px; padding:3px 0; margin-bottom:10px; background:#ddd;">
 	<?= form_hidden('country', $row->country) ?>
 	<div style="color:#00478F; float:left; padding-top:8px; padding-left:20px;">
 		<h4><?= $row->country ?></h4>
