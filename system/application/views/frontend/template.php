@@ -27,5 +27,6 @@
 <script src="<?=base_url()?>js/jeditable.js" type="text/javascript"></script>
 <script src="<?=base_url()?>js/jquery.jeditable.datepicker.js" type="text/javascript"></script>
 <script src="<?=base_url()?>js/jquery.dataTables.min.js" type="text/javascript"></script>
+<script src="<?=base_url()?>js/frontendScripts.js" type="text/javascript"></script>
 </body>
 </html>

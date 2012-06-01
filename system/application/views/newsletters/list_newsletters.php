@@ -25,14 +25,14 @@
             $date_added =  mdate($datestring2, $time2);
             ?>
 
-            <tr>
+            <tr id="row_<?=$row->newsletter_id?>">
                 <td>  <?= $row->newsletter_title ?> </td>
                 <td> <?=  $newsletter_date ?></td>
                 <td> <a href="<?=base_url()?>members/view/<?= $row->company_id ?>"><?= $row->company_name ?></a></td>
                 <td> <?= $row->city ?>, <?= $row->country ?></td>
                 <td><a href="https://s3-eu-west-1.amazonaws.com/laworldnewsletters/<?= $link ?>"><?= $row->newsletter_filename ?></a></td>
                 <td> <?= $date_added ?></td>
-                <td> <a href="<?= base_url() ?>newsletters/edit/<?= $row->newsletter_id ?>">edit</a></td>            
+                <td> <a href="<?= base_url() ?>newsletters/edit/<?= $row->newsletter_id ?>">edit</a> | <span class="ui-icon ui-icon-circle-close spanlink" onclick="deleteNewsletter(<?= $row->newsletter_id ?>)" >delete</span></td>            
 
             </tr>
 
