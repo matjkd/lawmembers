@@ -144,7 +144,7 @@ class Newsletters extends MY_Controller {
 			$this->newsletter_model->add_file($fileName, $blog_id);
 			//move the file
 
-			if ($this->s3->putObject($thefile, $bucket, $filelocation, S3:: ACL_PUBLIC_READ)) {
+			if ($this->s3->putObject($thefile, $bucket, $filelocation, S3:: ACL_PUBLIC_READ, array(), array('Content-Type'=>'application/pdf'))) {
 				//echo "We successfully uploaded your file.";
 				$this->session->set_flashdata('message', 'Newsletter Added and file uploaded successfully');
 			} else {
