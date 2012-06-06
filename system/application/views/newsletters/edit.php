@@ -7,6 +7,9 @@
     $(document).ready(function() {
         $( "#datepicker" ).datepicker({
             dateFormat : 'DD, d MM, yy',
+            changeMonth: true,
+            changeYear: true,
+           
             onSelect : function(dateText, inst)
             {
                 var epoch = $.datepicker.formatDate('@', $(this).datepicker('getDate')) / 1000;
@@ -31,7 +34,8 @@
 
     <p>
         Newsletter Title:<br/>
-        <?= form_input('title', $title) ?>
+        <?php $inputstyle = "style='width:500px'"; ?>
+        <?= form_input('title', $title, $inputstyle) ?>
     </p>
 
 
@@ -39,19 +43,19 @@
         <?= form_label('Member Firm', set_value('member_firm')) ?>:<br/>
 
 
-        
-        
-        
+
+
+
         <select name="company">  
             <?php foreach ($companies as $row): ?>
-            <?php
+                <?php
                 if ($row['idcompany'] == $company_id) {
                     $selectedcompany = "selected='selected'";
                 } else {
                     $selectedcompany = "";
                 }
                 ?>
-                <option value="<?= $row['idcompany'] ?>" <?=$selectedcompany?>><?= $row['company_name'] ?></option>
+                <option value="<?= $row['idcompany'] ?>" <?= $selectedcompany ?>><?= $row['company_name'] ?></option>
             <?php endforeach; ?>
         </select>
     </p>
@@ -59,14 +63,14 @@
 
     <p>
         Date of Newsletter: <br/>
-        <input type="text" name="date_addedview" id="datepicker" value="<?=$humandate?>"><br/>
-        <input type="hidden" name="date_added" id="alternate" value="<?=$newsletter_date?>">
+        <input type="text" name="date_addedview" id="datepicker" value="<?= $humandate ?>"><br/>
+        <input type="hidden" name="date_added" id="alternate" value="<?= $newsletter_date ?>">
     </p>
 
 
     <p class="file">
-        <?=$filename?>
-        <?= form_label('file') ?><br/>
+        <?= $filename ?><br/>
+       
 
         <?= form_upload('file') ?>
     </p>
