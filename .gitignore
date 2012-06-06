@@ -4,6 +4,8 @@ system/application/config/postmark.php
 system/application/config/email.php
 nbproject/
 images/captcha/*
+images/profiles/*
+images/companies/*
 nbproject/*
 stats/*
 .htaccess

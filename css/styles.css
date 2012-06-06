@@ -312,3 +312,9 @@ border: 0px inset;
     width:120px;
     float:left;
 }
+.spanlink {
+    color: #607890;
+    text-decoration: underline;
+    cursor: pointer;
+ 
+}
