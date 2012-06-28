@@ -1,5 +1,5 @@
 <?php foreach($gallery_titles as $row): ?>
 
-<?=$row['gallery_title']?><br/>
+<a href="<?=base_url()?>frontend/gallery/<?=$row['gallery_id']?>"><?=$row['gallery_title']?></a><br/>
 
 <?php  endforeach; ?>
