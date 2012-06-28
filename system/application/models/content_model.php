@@ -27,6 +27,16 @@ class Content_model extends Model {
 			return $query->result();
 		}
 	}
+	
+	function get_content_id($id) {
+	
+		$this->db->where('content_id', $id);
+		$query = $this->db->get('mydb_content');
+		if ($query->num_rows == 1)
+			; {
+			return $query->result();
+		}
+	}
 
 	function get_gallery($gallery) {
 
@@ -69,6 +79,29 @@ class Content_model extends Model {
 		);
 		$insert = $this->db->insert('mydb_content', $form_data);
 		return $insert;
+	}
+	
+	function edit_content($id) {
+	
+	
+		$content_update = array(
+				'content' => $this->input->post('content'),
+				'menu' => $this->input->post('menu'),
+				'gallery' => $this->input->post('gallery'),
+				'title' => $this->input->post('title'),
+				'extra' => $this->input->post('extra'),
+				'meta_desc' => $this->input->post('meta_desc'),
+				'meta_keywords' => $this->input->post('meta_keywords'),
+				'meta_title' => $this->input->post('meta_title'),
+				'sidebox' => $this->input->post('sidebox')
+		);
+	
+	
+	
+	
+		$this->db->where('content_id', $id);
+		$update = $this->db->update('mydb_content', $content_update);
+		return $update;
 	}
 	/**
 	 *

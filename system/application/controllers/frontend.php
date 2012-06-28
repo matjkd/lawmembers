@@ -88,6 +88,14 @@ class Frontend extends MY_Controller {
 		$this->load->vars($data);
 		$this->load->view('frontend/template');
 	}
+	
+	function galleries() {
+		$data['gallery_titles'] = $this->gallery_model->get_galleries();
+		$data['main'] = "frontend/galleryList";
+		$this->load->vars($data);
+		
+		$this->load->view('frontend/template');
+	}
 
 	function view_newsletters() {
 		$data['newsletters'] = $this->newsletter_model->list_newsletters();

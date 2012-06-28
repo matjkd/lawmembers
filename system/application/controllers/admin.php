@@ -72,6 +72,23 @@ class Admin extends MY_Controller {
 			}
 		}
 	}
+	
+	function edit_content() {
+		$this->form_validation->set_rules('title', 'title', 'trim');
+		$this->form_validation->set_rules('menu', 'menu', 'trim|required');
+		if ($this->form_validation->run() == FALSE) { // validation hasn'\t been passed
+			echo "validation error";
+		} else { // passed validation proceed to post success logic
+			$id = $this->uri->segment(3);
+			$this->content_model->edit_content($id);
+	
+	
+			$this->upload_image($id);
+	
+	
+			redirect("admin/edit/$id");
+		}
+	}
 
 	function upload_image($id = 0) {
 
@@ -84,6 +101,7 @@ class Admin extends MY_Controller {
 			$fileName = $_FILES['file']['name'];
 			$tmpName = $_FILES['file']['tmp_name'];
 			$fileName = str_replace(" ", "_", $fileName);
+			
 			$filelocation = $fileName;
 
 			$thefile = file_get_contents($tmpName, true);
@@ -95,11 +113,12 @@ class Admin extends MY_Controller {
 			} else {
 				$blog_id = $id;
 			}
-			$this->content_model->add_file($fileName, $blog_id);
+			$safefileName = str_replace(",", "_", $fileName);
+			$this->content_model->add_file($safefileName, $blog_id);
 			
 			//move the file
 
-			if ($this->s3->putObject($thefile, $this->bucket, "gallery/".$filelocation, S3:: ACL_PUBLIC_READ)) {
+			if ($this->s3->putObject($thefile, $this->bucket, "gallery/".$safefileName, S3:: ACL_PUBLIC_READ)) {
 				//echo "We successfully uploaded your file.";
 				$this->session->set_flashdata('message', 'News Added and file uploaded successfully');
 			} else {
@@ -109,7 +128,8 @@ class Admin extends MY_Controller {
 
 			//uploadthumb
 			$thumblocation = base_url() . 'images/temp/thumbs/' . $fileName;
-			$newfilename = "thumb_" . $fileName;
+		
+			$newfilename = "thumb_" . $safefileName;
 
 
 			$newfile = file_get_contents($thumblocation, true);
@@ -129,6 +149,22 @@ class Admin extends MY_Controller {
 
 			$this->session->set_flashdata('message', 'News Added');
 		}
+	}
+	
+	function edit($contentid) {
+	
+	
+		$id = $contentid;
+		$data['menu'] = $id;
+		$data['page'] = $id;
+		$data['content'] = $this->content_model->get_content_id($id);
+		$data['gallery_titles'] = $this->gallery_model->get_galleries();
+		$data['main'] = "admin/edit_content";
+	
+	
+	
+		$this->load->vars($data);
+		$this->load->view('main_template');
 	}
 
 
