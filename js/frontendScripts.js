@@ -1,4 +1,4 @@
-
+ var base_url = $('#baseurl').val();
 function hoverMenu(menu) {
 
 	$(menu).hover(function() {

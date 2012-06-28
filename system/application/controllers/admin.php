@@ -18,8 +18,18 @@ class Admin extends MY_Controller {
 		echo "hello";
 	}
 
-	function tester() {
-		echo "what";
+
+	function sort_gallery() {
+		$pages = $this->input->post('pages');
+		parse_str($pages, $pageOrder);
+	
+		// list id is retrieved from the ID on the sortable list
+		foreach ($pageOrder['gallery'] as $key => $value):
+		mysql_query("UPDATE mydb_content SET `order` = '$key' WHERE `content_id` = '$value'") or die(mysql_error());
+	
+	
+		//$this->db->update('practice_area_links', $pro_update);
+		endforeach;
 	}
 	
 	function create_gallery() {

@@ -3,7 +3,7 @@
 <?php $this->load->view('global/frontendheader'); ?>
 <body>
 
-
+   <input type="hidden" id="baseurl" value="<?=base_url()?>"/>
 
 
 
