@@ -6,6 +6,7 @@ class Frontend extends MY_Controller {
 		parent::__construct();
 		$this->load->model('companies_model');
 		$this->load->model('users_model');
+		$this->load->model('content_model');
 		$this->load->model('events_model');
 		$this->load->model('newsletter_model');
 		$this->load->model('gallery_model');
@@ -53,6 +54,38 @@ class Frontend extends MY_Controller {
 		$data['gallery_images'] = $this->gallery_model->get_images($image_folder);
 		$this->load->vars($data);
 
+		$this->load->view('frontend/template');
+	}
+	
+	function gallery($gallery) {
+		$data['content'] = $this->content_model->get_gallery($gallery);
+		if ($data['content'] != NULL) {
+			foreach ($data['content'] as $row):
+	
+			if ($row->title != NULL) {
+				$data['title'] = $row->title;
+			}
+			$data['sidebox'] = $row->sidebox;
+	
+			if ($row->meta_title != NULL) {
+				$data['metatitle'] = $row->meta_title;
+			}
+	
+			if ($row->meta_keywords != NULL) {
+				$data['meta_keywords'] = $row->meta_keywords;
+			}
+	
+			if ($row->meta_desc != NULL) {
+				$data['meta_description'] = $row->meta_desc;
+			}
+	
+			$data['slideshow_active'] = $row->slideshow;
+			endforeach;
+		}
+	
+	
+		$data['main'] = "global/gallery";
+		$this->load->vars($data);
 		$this->load->view('frontend/template');
 	}
 

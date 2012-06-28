@@ -17,6 +17,53 @@ class Gallery_model extends Model {
         $this->profile_path_url = base_url() . 'images/profiles/';
         $this->load->library('s3');
     }
+    
+    function create_gallery() {
+    $gallery_name = $this->input->post('gallery_name');
+    $form_data = array(
+    		'gallery_title' => $gallery_name,
+    		'visible' =>1
+    	
+    );
+    $insert = $this->db->insert('mydb_galleries', $form_data);
+    return $insert;
+    	
+    }
+    
+    function do_image_upload() {
+    	$this->gallery_path = './images/temp/';
+    	$this->gallery_path_url = base_url() . 'images/temp/';
+    
+    
+    	$config = array(
+    			'allowed_types' => 'jpg|jpeg|gif|png',
+    			'upload_path' => $this->gallery_path,
+    			'max_size' => 10000
+    	);
+    
+    	$this->load->library('upload', $config);
+    	if (!$this->upload->do_upload('file')) {
+    		$error = array('error' => $this->upload->display_errors());
+    		print_r($error);
+    	} else {
+    		$image_data = $this->upload->data();
+    	}
+    
+    
+    
+    	//resize the images
+    	$config = array(
+    			'source_image' => $image_data['full_path'],
+    			'new_image' => $this->gallery_path . 'thumbs',
+    			'maintain_ratio' => true,
+    			'width' => 350,
+    			'height' => 200
+    	);
+    
+    	$this->load->library('image_lib', $config);
+    	$this->image_lib->resize();
+    	$this->image_lib->clear();
+    }
 
     function get_eventgallery($id) {
         $this->db->from('mydb_events_gallery');
@@ -368,6 +415,22 @@ class Gallery_model extends Model {
             $this->db->update('mydb_company', $new_image_data);
 
         endforeach;
+    }
+    
+    function get_galleries() {
+    	$this->db->from('mydb_galleries');
+    	
+    	
+    	
+    	$query = $this->db->get();
+    	if ($query->num_rows >0) {
+    		foreach ($query->result_array() as $row)
+    			$data[] = $row;
+    	} else {
+    		$data = NULL;
+    	}
+    	$query->free_result();
+    	return $data;
     }
 
 }

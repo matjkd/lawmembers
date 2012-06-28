@@ -39,6 +39,7 @@ class MY_Controller extends Controller {
 			$this->secret_key = $row->access_key;
 			$this->config_email = $row->main_email;
 			$this->config_bucket = $row->bucket;
+			$this->bucket = $row->bucket;
 			$this->doc_root = $row->doc_root;
 			$this->config->set_item('access_key', $this->access_key);
 			$this->config->set_item('secret_key', $this->secret_key);
