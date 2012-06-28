@@ -11,7 +11,7 @@
 	/* styling */
 	background-color:#333;
 	
-	width:675px;	
+	width:400px;	
 	min-height:200px;
 	border:1px solid #666;
 	
@@ -87,7 +87,7 @@ if($content != NULL )  {
 <div class="simple_overlay" id="img_<?=$row->content_id?>">
 
 	<!-- large image -->
-	<img style="width:655px" alt="<?=$row->title?>" src="https://s3-eu-west-1.amazonaws.com/<?=$this->bucket?>/gallery/<?=$row->news_image?>" />
+	<img style="width:400px" alt="<?=$row->title?>" src="https://s3-eu-west-1.amazonaws.com/<?=$this->bucket?>/gallery/<?=$row->news_image?>" />
 
 	<!-- image details -->
 	<div class="details">
