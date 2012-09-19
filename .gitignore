@@ -1,7 +1,13 @@
+*/config/development
+*/logs/log-*.php
+*/logs/!index.html
+*/cache/*
+*/cache/!index.html
 system/application/config/database.php
 system/application/config/config.php
 system/application/config/postmark.php
 system/application/config/email.php
+system/application/config/s3.php
 nbproject/
 images/captcha/*
 images/profiles/*
