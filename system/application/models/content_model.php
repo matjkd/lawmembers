@@ -17,6 +17,14 @@ class Content_model extends Model {
 			return $query->result();
 		}
 	}
+	
+	function get_old_content() {
+		$this->db->where('state', 1);
+		$query = $this->db->get('9fmc_content');
+		if ($query->num_rows >0) {
+			return $query->result();
+		}
+	}
 
 	function get_content_cat($cat) {
 
