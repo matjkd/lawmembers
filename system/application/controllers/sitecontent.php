@@ -42,8 +42,10 @@ class Sitecontent extends MY_Controller {
 		if ($query->num_rows == 0)
 			 {
 			$x = $x +1;
-			echo $row->title."</br>";
-				//$insert = $this->db->insert('mydb_content', $form_data);
+			echo $row->alias."</br>";
+				$insert = $this->db->insert('mydb_content', $form_data);
+		} else {
+			echo "transfered<br/>";
 		}
 			 
 		 endforeach;
