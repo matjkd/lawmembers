@@ -1,7 +1,4 @@
 <script type="text/javascript">
-jQuery(function() {
-    jQuery('.wymeditor').wymeditor();
-});
 
 
 

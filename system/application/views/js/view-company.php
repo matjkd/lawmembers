@@ -1,7 +1,5 @@
 <script type="text/javascript">
-jQuery(function() {
-    jQuery('.wymeditor').wymeditor();
-});
+
 <?php foreach($addresses as $key => $row): ?>
 <?php $addressid = $row['idaddress']?>
 <?php endforeach; ?>
