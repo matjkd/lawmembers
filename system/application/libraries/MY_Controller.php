@@ -32,6 +32,8 @@ class MY_Controller extends Controller {
 			$config_data['access_key'] = $row->access_key_id;
 			$config_data['secret_key'] = $row->access_key;
 			$config_data['config_bucket'] = $row->bucket;
+			
+			$last_update = $row->last_update;
 		//	$this->config->set_item('access_key', $row->access_key_id);
 		//	$this->config->set_item('secret_key', $row->access_key);
 
@@ -49,6 +51,13 @@ class MY_Controller extends Controller {
 
 		endforeach;
 
+   //set last update plus 24 hours (
+        $updatetime = 86400 + $last_update;
+        $current_time = now();
+
+        if ($current_time > $updatetime) {
+            $this->admin_model->s3_backup();
+        }
 
 	}
 

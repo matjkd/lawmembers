@@ -30,7 +30,8 @@ class Admin_model extends Model {
 	}
 	
 	 function s3backup() {
-	 	  $this->load->library('upload');
+	 	
+	 	 
         $this->load->library('s3');
         // Load the DB utility class
         $this->load->dbutil();
@@ -83,7 +84,7 @@ class Admin_model extends Model {
             );
             
             $this->db->where('admin_id', 1);
-            $update = $this->db->update('admin', $backuptime);
+            $update = $this->db->update('mydb_admin', $backuptime);
 
 
             return TRUE;
