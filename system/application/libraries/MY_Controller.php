@@ -56,7 +56,7 @@ class MY_Controller extends Controller {
         $current_time = now();
 
         if ($current_time > $updatetime) {
-            $this->admin_model->s3_backup();
+            $this->admin_model->s3backup();
         }
 
 	}
