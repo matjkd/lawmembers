@@ -17,15 +17,20 @@ $(document).ready(function() {
 
 <script type="text/javascript">
 function addressconfirm(id) {
-	var answer = confirm("are you sure you want to delete this address?")
+	var answer = confirm("are you sure you want to delete this address?" + id)
 	if (answer){
 		
-		$.post('<?=base_url()?>members/delete_address/', {id: id});
-			
+		$.post('<?=base_url()?>members/delete_address/' + id, {id: id});
+		alert('address deleted');	
+		
+		window.location.reload();
+		
 	}
 	else{
 		alert("nothing deleted!")
 	}
+	
+	
 	$('#ajax_addresses').load('<?=base_url()?>members/address_table/<?=$company_id?>');
 }
 

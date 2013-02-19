@@ -483,6 +483,13 @@ class Companies_model extends Model {
         return TRUE;
     }
 
+function delete_address($address_id) {
+        $this->db->where('idaddress', $address_id);
+        $this->db->delete('mydb_address');
+
+
+        return TRUE;
+    }
     function delete_company($id_company) {
         $this->db->where('idcompany', $id_company);
         $this->db->delete('mydb_company');

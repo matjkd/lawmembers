@@ -514,6 +514,12 @@ class Members extends MY_Controller {
         $this->load->vars($data);
         $this->load->view('main_template');
     }
+	
+	function delete_address($id) {
+		
+		echo "delete ".$id;
+		$this->companies_model->delete_address($id);
+	}
 
     /**
      * 
