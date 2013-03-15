@@ -48,7 +48,7 @@ function showaddress(id2) {
 		<tr>
 			<th>Address 1</th>
 			<th>Address 2</th>
-			<th>Postcode</th>
+			<th>city</th>
 			<th>Actions</th>
 		</tr>
 	</thead>
@@ -69,7 +69,7 @@ foreach($addresses as $key => $row):
 					
 			<td style="padding:5px;"><?=$row['address2']?></td>
 			
-			<td style="padding:5px;"><?=$row['postcode']?></td>
+			<td style="padding:5px;"><?=$row['city']?></td>
 				
 			<td style="padding:5px;"><?="<a href='#' onclick='showaddress(".$row['idaddress'].")'>edit</a> 
 | <a href='#' onclick='addressconfirm(".$row['idaddress'].")'>Delete</a>"?>
