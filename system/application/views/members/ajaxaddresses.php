@@ -47,7 +47,7 @@ function showaddress(id2) {
 	<thead>
 		<tr>
 			<th>Address 1</th>
-			<th>Address 2</th>
+			<th>order</th>
 			<th>city</th>
 			<th>Actions</th>
 		</tr>
@@ -67,7 +67,7 @@ foreach($addresses as $key => $row):
 		<tr>
 			<td style="padding:5px;"><?=$row['address1']?> </td>
 					
-			<td style="padding:5px;"><?=$row['address2']?></td>
+			<td style="padding:5px;"><?=$row['order']?></td>
 			
 			<td style="padding:5px;"><?=$row['city']?></td>
 				

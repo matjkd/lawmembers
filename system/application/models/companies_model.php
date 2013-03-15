@@ -214,7 +214,7 @@ class Companies_model extends Model {
     function get_addresses($id) {
         $this->db->from('mydb_address');
         $this->db->where('idcompany', $id);
-
+		$this->db->order_by('order', 'asc');
         $query = $this->db->get();
         if ($query->num_rows > 0) {
             foreach ($query->result_array() as $row)
