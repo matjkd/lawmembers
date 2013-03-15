@@ -178,6 +178,15 @@ $(document).ready(function() {
 		 <div class='editaddress' id='email'><?=$addressdetail->email?></div>
 		</td>
 	</tr>
+	
+	<tr>
+		<td class='leftcolumn'>
+		Order
+		</td>
+		<td>
+		 <div class='editaddress' id='order'><?=$addressdetail->order?></div>
+		</td>
+	</tr>
 
 
 </table>
